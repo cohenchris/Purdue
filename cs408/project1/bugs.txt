@@ -1,0 +1,112 @@
+Chris Cohen
+CS408 - Software Testing
+Fall 2020
+
+----------------------------------------------------------------------
+-bftpd_1:
+  When executing RETR with a valid file, the server should respond with the following:
+
+  150 BINARY data connection established.
+  226 File transmission successful.
+
+  Instead, it responds with the following:
+
+  150 BINARY data connection established.
+  425 Data connection has not been established
+
+
+  My test cases 3 and 7 cause this to fail.
+
+----------------------------------------------------------------------
+- bftpd_2:
+  When executing LIST, the server should respond with the following:
+  
+  150 BINARY data connection established.
+  226 File transmission successful.
+
+  Instead, it responds with the following:
+
+  150 BINARY data connection established.
+  553 Directory list has been submitted.
+
+  My test case 3 causes this to fail.
+  
+----------------------------------------------------------------------
+- bftpd_3:
+  When executing PWD, the server should respond with the correct path in the following format:
+  
+  257 <path>
+
+  Instead, it responds with the following:
+
+  25 <path>
+
+  My test case 4 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_4:
+  When executing CDUP, the server should move the working directory up to the parent directory.
+  With bftpd_4, this does not happen. The server stays in the same directory
+
+  My test case 4 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_5:
+  When executing MKD, the server should respond with the following:
+
+  257 "<dir>" has been created.
+
+  Instead, it responds with the following:
+
+  257 "<dir>d" has been created.
+
+  My test case 4 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_6:
+  When executing SIZE, the server should respond with the following:
+
+  213 <size in bytes>
+
+  Instead, it responds with the following:
+
+  213 <some hex value>
+
+  My test case 4 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_7:
+  When executing QUIT, the server should respond with the following:
+
+  221 <exit message from .conf>
+
+  Instead, it responds with the following:
+
+  221 Client exiting successfully
+
+  My test cases 1, 2, 3, 4, 5, and 7 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_8:
+  When you have a config that disables the QUIT command, the USER command is disabled instead.
+
+  My test case 8 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_9:
+  When starting the FTP server, the server should greet you with the following:
+
+  220 <custom welcome message>
+
+  Instead, it responds with the following:
+
+  220 <custom welcome message in all lowercase>
+
+  My test case 2 causes this to fail.
+
+----------------------------------------------------------------------
+- bftpd_10:
+
+  This bug has to do with USERLIMIT in the config file.
+
+----------------------------------------------------------------------

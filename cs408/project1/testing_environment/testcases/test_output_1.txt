@@ -1,0 +1,8 @@
+220 bftpd 5.6 at 127.0.0.1 ready.
+503 USER expected.
+331 Password please.
+503 Username already given.
+230 User logged in.
+503 Username already given.
+503 Already logged in.
+221 See you later...

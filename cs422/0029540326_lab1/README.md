@@ -15,6 +15,3 @@ Example Requests:
 
 When finished sending requests, you must type `close` to properly close the
 connection.
-
-
-NOTE: Run the command `chmod -r Upload/forbidden.txt` for the forbidden file to function properly

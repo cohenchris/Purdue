@@ -1,0 +1,13 @@
+220 bftpd 5.6 at 127.0.0.1 ready.
+331 Password please.
+230 User logged in.
+227 Entering Passive Mode (127,0,0,1,x,x)
+150 BINARY data connection established.
+226 File transmission successful.
+Hello, World!
+227 Entering Passive Mode (127,0,0,1,x,x)
+350 Restarting at offset 10.
+150 BINARY data connection established.
+226 File transmission successful.
+ld!
+221 See you later...

@@ -1,0 +1,45 @@
+test_input_1    ->  test correct server welcome message
+                    test basic logging in
+                    test giving password before username
+                    test giving username twice
+                    test giving username after already logging in
+                    test giving password after already logging in
+                    test valid quit response
+
+
+test_input_2    ->  test custom welcome message
+                    test EVERY command without logging in
+
+
+test_input_3    ->  test validity of all PASV commands (LIST, NLST, STOR, RETR)
+                    test all PASV commands WITHOUT initializing PASV
+                    test valid PASV initialization
+                    test all PASV commands after PASV initialization
+
+
+test_input_4    ->  testing validity of all NON-PASV commands after logging in
+                    testing validity of directory making/modifying
+                    test PWD successfully
+                    test CWD invalid path
+                    test MKD successfully
+                    test MKD for file already existing
+                    test CWD forbidden path
+                    test CWD valid path
+                    test PWD updating when directory changed
+                    test RMD for non-empty directory
+                    test CDUP successfully
+                    test SIZE successfully
+                    test REST successfully
+
+
+test_input_5    ->  test login denial
+
+
+test_input_6    ->  test denial of every command
+                    test sending a random command
+
+
+test_input_7    ->  test USERLIMIT_GLOBAL
+                    test USERLIMIMT_SINGLEUSER
+
+test_input_8    ->  test successful disabling of QUIT

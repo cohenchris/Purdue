@@ -1,0 +1,21 @@
+bftpd.conf
+1:user cs408
+1:pass cs408
+1:pwd
+1:cwd /invalidpath
+1:mkd test
+1:mkd test
+1:cwd forbidden
+1:cwd test
+1:pwd
+1:mkd test2
+1:cdup
+1:pwd
+1:rmd test
+1:cwd test
+1:rmd test2
+1:cdup
+1:rmd test
+1:size test.txt
+1:rest 10
+1:quit

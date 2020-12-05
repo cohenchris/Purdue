@@ -1,0 +1,19 @@
+disabled.conf
+1:user cs408
+1:pass cs408
+1:pwd
+1:cwd
+1:cdup
+1:mkd test
+1:rmd test
+1:pasv
+1:nlst
+1:list
+1:size test.txt
+1:stat test.txt
+1:stor test.txt
+1:retr test.txt
+1:rest 10
+1:thisshouldntwork
+1:dele
+1:quit
