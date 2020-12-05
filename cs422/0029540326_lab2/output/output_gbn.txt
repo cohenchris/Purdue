@@ -1,0 +1,2608 @@
+
+EVENT time: 18.705740,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaa
+- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- Started timer
+
+EVENT time: 24.170835,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 29.402449,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 0	seq# = 999999
+- A side received corrupt packet :(
+
+EVENT time: 35.124840,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbb
+- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 37.680447,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ccccccccccccccccccc
+- Sending Message:				ccccccccccccccccccc	ack# = 2	seq# = 2
+          TOLAYER3: packet being corrupted
+
+EVENT time: 38.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+	- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Sending Message:				ccccccccccccccccccc	ack# = 2	seq# = 2
+
+EVENT time: 42.147713,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zcccccccccccccccccc	ack# = 2	seq# = 2
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 46.394402,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ddddddddddddddddddd
+- Sending Message:				ddddddddddddddddddd	ack# = 3	seq# = 3
+          TOLAYER3: packet being lost.
+
+EVENT time: 51.166374,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 0	seq# = 0
+- A side received corrupt packet :(
+
+EVENT time: 51.576138,  type: 2, fromlayer3  entity: 1
+- B side received packet:			bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 53.202408,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	eeeeeeeeeeeeeeeeeee
+- Sending Message:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+
+EVENT time: 57.152939,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 1	seq# = 1
+- A side received corrupt packet :(
+
+EVENT time: 58.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+	- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+	- Sending Message:				ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Sending Message:				ddddddddddddddddddd	ack# = 3	seq# = 3
+          TOLAYER3: packet being lost.
+	- Sending Message:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+
+EVENT time: 59.039051,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ccccccccccccccccccc	ack# = 2	seq# = 2
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 2	seq# = 2
+          TOLAYER3: packet being corrupted
+
+EVENT time: 63.197636,  type: 2, fromlayer3  entity: 1
+- B side received packet:			eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  3, got 4.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 2	seq# = 2
+          TOLAYER3: packet being corrupted
+
+EVENT time: 64.617668,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 2	seq# = 2
+- A side received corrupt packet :(
+
+EVENT time: 69.035599,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 2	seq# = 2
+
+EVENT time: 70.867599,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 2	seq# = 2
+- A side received corrupt packet :(
+
+EVENT time: 70.910789,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ccccccccccccccccccc	ack# = 2	seq# = 2
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  3, got 2.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 2	seq# = 2
+
+EVENT time: 72.217178,  type: 2, fromlayer3  entity: 1
+- B side received packet:			eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  3, got 4.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 2	seq# = 2
+
+EVENT time: 72.839478,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	fffffffffffffffffff
+- Sending Message:				fffffffffffffffffff	ack# = 5	seq# = 5
+
+EVENT time: 73.456062,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ggggggggggggggggggg
+- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+          TOLAYER3: packet being lost.
+
+EVENT time: 75.686882,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 2	seq# = 2
+- A side received valid packet.
+** 3 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+
+EVENT time: 76.283989,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	hhhhhhhhhhhhhhhhhhh
+- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+          TOLAYER3: packet being lost.
+
+EVENT time: 78.458145,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	iiiiiiiiiiiiiiiiiii
+- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+          TOLAYER3: packet being lost.
+
+EVENT time: 82.230896,  type: 2, fromlayer3  entity: 1
+- B side received packet:			fffffffffffffffffff	ack# = 5	seq# = 5
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  3, got 5.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 2	seq# = 2
+          TOLAYER3: packet being lost.
+
+EVENT time: 82.674294,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	jjjjjjjjjjjjjjjjjjj
+- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+          TOLAYER3: packet being lost.
+
+EVENT time: 85.082962,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 2	seq# = 2
+- A side received valid packet.
+** 3 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 94.315727,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 2	seq# = 2
+- A side received valid packet.
+** 3 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 95.686882,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Sending Message:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Sending Message:				fffffffffffffffffff	ack# = 5	seq# = 5
+          TOLAYER3: packet being lost.
+	- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+          TOLAYER3: packet being corrupted
+	- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+          TOLAYER3: packet being lost.
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+
+EVENT time: 97.658607,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	kkkkkkkkkkkkkkkkkkk
+- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 98.703918,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ddddddddddddddddddd	ack# = 3	seq# = 3
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 3	seq# = 3
+
+EVENT time: 103.457977,  type: 2, fromlayer3  entity: 1
+- B side received packet:			eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 108.551895,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 3	seq# = 3
+- A side received valid packet.
+** 4 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 109.442078,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ggggggggggggggggggg	ack# = 6	seq# = 6
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  5, got 6.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 111.297134,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 113.437668,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	lllllllllllllllllll
+- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+          TOLAYER3: packet being lost.
+
+EVENT time: 117.304016,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 999999
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 119.658302,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	mmmmmmmmmmmmmmmmmmm
+- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+
+EVENT time: 120.785316,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 125.261879,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  5, got 9.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+          TOLAYER3: packet being lost.
+
+EVENT time: 129.817047,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 131.297134,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				fffffffffffffffffff	ack# = 5	seq# = 5
+          TOLAYER3: packet being corrupted
+	- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+          TOLAYER3: packet being corrupted
+	- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+          TOLAYER3: packet being corrupted
+	- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+          TOLAYER3: packet being corrupted
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being corrupted
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+
+EVENT time: 134.087784,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  5, got 10.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+          TOLAYER3: packet being corrupted
+
+EVENT time: 134.724152,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	nnnnnnnnnnnnnnnnnnn
+- Packet 13 buffered in sending buffer.
+
+EVENT time: 135.236816,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 999999	seq# = 4
+- A side received corrupt packet :(
+
+EVENT time: 139.988739,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zffffffffffffffffff	ack# = 5	seq# = 5
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 141.196960,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ooooooooooooooooooo
+- Packet 14 buffered in sending buffer.
+
+EVENT time: 148.249649,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ppppppppppppppppppp
+- Packet 15 buffered in sending buffer.
+
+EVENT time: 148.811859,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zgggggggggggggggggg	ack# = 6	seq# = 6
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 149.111435,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 150.395721,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 151.297134,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				fffffffffffffffffff	ack# = 5	seq# = 5
+	- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+          TOLAYER3: packet being corrupted
+	- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being corrupted
+
+EVENT time: 155.642853,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  5, got 8.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+
+EVENT time: 156.713440,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 163.684784,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	qqqqqqqqqqqqqqqqqqq
+- Packet 16 buffered in sending buffer.
+
+EVENT time: 164.586594,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+          TOLAYER3: packet being lost.
+
+EVENT time: 165.844330,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 170.383362,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	rrrrrrrrrrrrrrrrrrr
+- Packet 17 buffered in sending buffer.
+
+EVENT time: 171.297134,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				fffffffffffffffffff	ack# = 5	seq# = 5
+	- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+          TOLAYER3: packet being lost.
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being corrupted
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+
+EVENT time: 172.349716,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+** 5 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 173.909042,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+          TOLAYER3: packet being corrupted
+
+EVENT time: 175.808777,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	sssssssssssssssssss
+- Packet 18 buffered in sending buffer.
+
+EVENT time: 176.322769,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 4	seq# = 4
+- A side received corrupt packet :(
+
+EVENT time: 176.905426,  type: 2, fromlayer3  entity: 1
+- B side received packet:			lllllllllllllllllll	ack# = 11	seq# = 11
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  5, got 11.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 4	seq# = 4
+          TOLAYER3: packet being corrupted
+
+EVENT time: 179.009201,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 4	seq# = 4
+- A side received corrupt packet :(
+
+EVENT time: 181.283447,  type: 2, fromlayer3  entity: 1
+- B side received packet:			fffffffffffffffffff	ack# = 5	seq# = 5
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+          TOLAYER3: packet being lost.
+
+EVENT time: 184.605209,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zgggggggggggggggggg	ack# = 6	seq# = 6
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+
+EVENT time: 186.142715,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 5	seq# = 5
+- A side received valid packet.
+** 6 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Sending NEW buffered message:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being lost.
+
+EVENT time: 186.201691,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  6, got 7.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+          TOLAYER3: packet being corrupted
+
+EVENT time: 189.919907,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  6, got 8.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+          TOLAYER3: packet being lost.
+
+EVENT time: 191.882996,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 999999	seq# = 5
+- A side received corrupt packet :(
+
+EVENT time: 193.972565,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ttttttttttttttttttt
+- Packet 19 buffered in sending buffer.
+
+EVENT time: 194.791580,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  6, got 9.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+          TOLAYER3: packet being lost.
+
+EVENT time: 201.330811,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  6, got 10.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+          TOLAYER3: packet being lost.
+
+EVENT time: 205.438553,  type: 2, fromlayer3  entity: 1
+- B side received packet:			lllllllllllllllllll	ack# = 11	seq# = 11
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  6, got 11.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+          TOLAYER3: packet being lost.
+
+EVENT time: 206.142715,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+          TOLAYER3: packet being lost.
+	- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+          TOLAYER3: packet being lost.
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being corrupted
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Sending Message:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+
+EVENT time: 207.885330,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	uuuuuuuuuuuuuuuuuuu
+- Packet 20 buffered in sending buffer.
+
+EVENT time: 212.720001,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+
+EVENT time: 213.864334,  type: 2, fromlayer3  entity: 1
+- B side received packet:			fffffffffffffffffff	ack# = 5	seq# = 5
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  6, got 5.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 5	seq# = 5
+
+EVENT time: 216.282700,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ggggggggggggggggggg	ack# = 6	seq# = 6
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 6	seq# = 6
+
+EVENT time: 219.297546,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 7	seq# = 7
+
+EVENT time: 220.438263,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 5	seq# = 5
+- A side received valid packet.
+** 6 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 224.057510,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	vvvvvvvvvvvvvvvvvvv
+- Packet 21 buffered in sending buffer.
+
+EVENT time: 225.030594,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 226.062958,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	wwwwwwwwwwwwwwwwwww
+- Packet 22 buffered in sending buffer.
+
+EVENT time: 226.142715,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+          TOLAYER3: packet being lost.
+	- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Sending Message:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+          TOLAYER3: packet being lost.
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Sending Message:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+
+EVENT time: 228.570892,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 5	seq# = 5
+- A side received valid packet.
+** 6 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 228.901932,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+          TOLAYER3: packet being corrupted
+
+EVENT time: 233.026901,  type: 2, fromlayer3  entity: 1
+- B side received packet:			lllllllllllllllllll	ack# = 11	seq# = 11
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  9, got 11.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 236.722610,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 6	seq# = 6
+- A side received valid packet.
+** 7 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Sending NEW buffered message:			ooooooooooooooooooo	ack# = 14	seq# = 14
+
+EVENT time: 241.037369,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 7	seq# = 7
+- A side received valid packet.
+** 8 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Sending NEW buffered message:			ppppppppppppppppppp	ack# = 15	seq# = 15
+
+EVENT time: 242.952332,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  9, got 12.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 245.346100,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	xxxxxxxxxxxxxxxxxxx
+- Packet 23 buffered in sending buffer.
+
+EVENT time: 245.477234,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	yyyyyyyyyyyyyyyyyyy
+- Packet 24 buffered in sending buffer.
+
+EVENT time: 246.623703,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending NEW buffered message:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+          TOLAYER3: packet being lost.
+
+EVENT time: 248.081589,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 8	seq# = 8
+- A side received corrupt packet :(
+
+EVENT time: 251.665848,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  9, got 7.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 252.188599,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	zzzzzzzzzzzzzzzzzzz
+- Packet 25 buffered in sending buffer.
+
+EVENT time: 252.635300,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 253.793549,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  9, got 8.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 256.917908,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaa
+- Packet 26 buffered in sending buffer.
+
+EVENT time: 257.067383,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbb
+- Packet 27 buffered in sending buffer.
+
+EVENT time: 260.607605,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 260.967804,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+          TOLAYER3: packet being lost.
+
+EVENT time: 266.623718,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+          TOLAYER3: packet being corrupted
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Sending Message:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Sending Message:				ooooooooooooooooooo	ack# = 14	seq# = 14
+          TOLAYER3: packet being lost.
+	- Sending Message:				ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending Message:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+
+EVENT time: 266.763336,  type: 2, fromlayer3  entity: 1
+- B side received packet:			lllllllllllllllllll	ack# = 11	seq# = 11
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  9, got 11.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 269.046051,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 269.708801,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ccccccccccccccccccc
+- Packet 28 buffered in sending buffer.
+
+EVENT time: 272.397247,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ddddddddddddddddddd
+- Packet 29 buffered in sending buffer.
+
+EVENT time: 273.382233,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  9, got 12.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 275.997803,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 280.302887,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 280.538635,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  9, got 13.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+          TOLAYER3: packet being corrupted
+
+EVENT time: 282.580597,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  9, got 7.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+
+EVENT time: 286.623718,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+          TOLAYER3: packet being corrupted
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+	- Sending Message:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Sending Message:				ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Sending Message:				ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending Message:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+          TOLAYER3: packet being lost.
+
+EVENT time: 287.430176,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 289.418091,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  9, got 8.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 8	seq# = 8
+          TOLAYER3: packet being corrupted
+
+EVENT time: 290.616821,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	eeeeeeeeeeeeeeeeeee
+- Packet 30 buffered in sending buffer.
+
+EVENT time: 292.874481,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 9	seq# = 9
+          TOLAYER3: packet being corrupted
+
+EVENT time: 295.734436,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	fffffffffffffffffff
+- Packet 31 buffered in sending buffer.
+
+EVENT time: 295.774292,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 8	seq# = 8
+- A side received corrupt packet :(
+
+EVENT time: 301.245117,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 302.487274,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 10	seq# = 10
+
+EVENT time: 306.203918,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 8	seq# = 8
+- A side received corrupt packet :(
+
+EVENT time: 306.623718,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Sending Message:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+          TOLAYER3: packet being lost.
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being corrupted
+	- Sending Message:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being corrupted
+	- Sending Message:				ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Sending Message:				ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending Message:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+
+EVENT time: 307.660828,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  11, got 12.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 10	seq# = 10
+
+EVENT time: 308.025513,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ggggggggggggggggggg
+- Packet 32 buffered in sending buffer.
+
+EVENT time: 310.967010,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  11, got 13.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 10	seq# = 10
+
+EVENT time: 314.943695,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 9	seq# = 999999
+- A side received corrupt packet :(
+
+EVENT time: 320.107056,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  11, got 14.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 10	seq# = 10
+
+EVENT time: 321.153900,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  11, got 15.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 10	seq# = 10
+          TOLAYER3: packet being corrupted
+
+EVENT time: 323.192474,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+
+EVENT time: 324.792267,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+** 11 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Sending NEW buffered message:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being lost.
+	- Sending NEW buffered message:			sssssssssssssssssss	ack# = 18	seq# = 18
+          TOLAYER3: packet being corrupted
+
+EVENT time: 326.165863,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	hhhhhhhhhhhhhhhhhhh
+- Packet 33 buffered in sending buffer.
+
+EVENT time: 330.796448,  type: 2, fromlayer3  entity: 1
+- B side received packet:			lllllllllllllllllll	ack# = 11	seq# = 11
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 11	seq# = 11
+
+EVENT time: 331.902588,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 12	seq# = 12
+
+EVENT time: 333.037750,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+** 11 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 335.188293,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+          TOLAYER3: packet being lost.
+
+EVENT time: 337.638184,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+** 11 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 338.034851,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  14, got 15.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+
+EVENT time: 343.901520,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  14, got 16.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+          TOLAYER3: packet being corrupted
+
+EVENT time: 344.268127,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+** 11 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 344.472473,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	iiiiiiiiiiiiiiiiiii
+- Packet 34 buffered in sending buffer.
+
+EVENT time: 344.792267,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				lllllllllllllllllll	ack# = 11	seq# = 11
+          TOLAYER3: packet being corrupted
+	- Sending Message:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+	- Sending Message:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being corrupted
+	- Sending Message:				ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Sending Message:				ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending Message:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being lost.
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+
+EVENT time: 346.976349,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  14, got 9.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+
+EVENT time: 348.194092,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	jjjjjjjjjjjjjjjjjjj
+- Packet 35 buffered in sending buffer.
+
+EVENT time: 348.394226,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 999999	seq# = 10
+- A side received corrupt packet :(
+
+EVENT time: 349.306641,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	kkkkkkkkkkkkkkkkkkk
+- Packet 36 buffered in sending buffer.
+
+EVENT time: 349.812653,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 11	seq# = 11
+- A side received valid packet.
+** 12 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Sending NEW buffered message:			ttttttttttttttttttt	ack# = 19	seq# = 19
+          TOLAYER3: packet being corrupted
+
+EVENT time: 350.157288,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  14, got 10.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+
+EVENT time: 353.041290,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 12	seq# = 12
+- A side received valid packet.
+** 13 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending NEW buffered message:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+
+EVENT time: 354.545380,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	lllllllllllllllllll
+- Packet 37 buffered in sending buffer.
+
+EVENT time: 355.623932,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zllllllllllllllllll	ack# = 11	seq# = 11
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+          TOLAYER3: packet being lost.
+
+EVENT time: 360.106476,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	mmmmmmmmmmmmmmmmmmm
+- Packet 38 buffered in sending buffer.
+
+EVENT time: 361.889709,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 13	seq# = 13
+- A side received valid packet.
+** 14 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending NEW buffered message:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+
+EVENT time: 361.970581,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	nnnnnnnnnnnnnnnnnnn
+- Packet 39 buffered in sending buffer.
+
+EVENT time: 364.766754,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  14, got 13.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 13	seq# = 13
+
+EVENT time: 368.461945,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ooooooooooooooooooo
+- Packet 40 buffered in sending buffer.
+
+EVENT time: 368.983612,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 999999	seq# = 13
+- A side received corrupt packet :(
+
+EVENT time: 371.321045,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 14	seq# = 14
+
+EVENT time: 372.587799,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 13	seq# = 13
+- A side received valid packet.
+** 14 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 379.763428,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ppppppppppppppppppp
+- Packet 41 buffered in sending buffer.
+
+EVENT time: 379.853912,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+          TOLAYER3: packet being lost.
+
+EVENT time: 380.950745,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 13	seq# = 13
+- A side received valid packet.
+** 14 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 381.889709,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Sending Message:				ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending Message:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being lost.
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being lost.
+
+EVENT time: 382.379333,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	qqqqqqqqqqqqqqqqqqq
+- Packet 42 buffered in sending buffer.
+
+EVENT time: 382.883423,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  16, got 9.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+          TOLAYER3: packet being corrupted
+
+EVENT time: 383.390289,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 13	seq# = 13
+- A side received valid packet.
+** 14 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 390.379578,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  16, got 10.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+
+EVENT time: 391.513428,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 14	seq# = 14
+- A side received valid packet.
+** 15 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending NEW buffered message:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+
+EVENT time: 391.902069,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+
+EVENT time: 392.263153,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	rrrrrrrrrrrrrrrrrrr
+- Packet 43 buffered in sending buffer.
+
+EVENT time: 394.379547,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 15	seq# = 15
+- A side received corrupt packet :(
+
+EVENT time: 398.716187,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Znnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+
+EVENT time: 403.621887,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+** 16 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending NEW buffered message:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+
+EVENT time: 408.179504,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  16, got 14.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+
+EVENT time: 409.684082,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+** 16 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 411.501801,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	sssssssssssssssssss
+- Packet 44 buffered in sending buffer.
+
+EVENT time: 412.601624,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  16, got 15.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 15	seq# = 15
+
+EVENT time: 414.110596,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+** 16 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 419.326660,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 419.575531,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+** 16 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 420.767181,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ttttttttttttttttttt
+- Packet 45 buffered in sending buffer.
+
+EVENT time: 423.621887,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+          TOLAYER3: packet being corrupted
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+
+EVENT time: 425.354095,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+** 16 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 426.932861,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zssssssssssssssssss	ack# = 18	seq# = 18
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 428.671967,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	uuuuuuuuuuuuuuuuuuu
+- Packet 46 buffered in sending buffer.
+
+EVENT time: 430.918976,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending NEW buffered message:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 432.421204,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 434.021973,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zllllllllllllllllll	ack# = 11	seq# = 11
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 438.685089,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 439.332092,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 999999
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 443.399719,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 14.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 447.736298,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	vvvvvvvvvvvvvvvvvvv
+- Packet 47 buffered in sending buffer.
+
+EVENT time: 447.913910,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 448.389648,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 15.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 450.918976,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+          TOLAYER3: packet being lost.
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+          TOLAYER3: packet being lost.
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 452.354980,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 455.916321,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 16.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 460.482574,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	wwwwwwwwwwwwwwwwwww
+- Packet 48 buffered in sending buffer.
+
+EVENT time: 462.099121,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 462.399445,  type: 2, fromlayer3  entity: 1
+- B side received packet:			sssssssssssssssssss	ack# = 18	seq# = 18
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 18.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 463.386658,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	xxxxxxxxxxxxxxxxxxx
+- Packet 49 buffered in sending buffer.
+
+EVENT time: 464.853729,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Ztttttttttttttttttt	ack# = 19	seq# = 19
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 465.257294,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 465.523834,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	yyyyyyyyyyyyyyyyyyy
+- Packet 50 buffered in sending buffer.
+
+EVENT time: 470.918976,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being lost.
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being corrupted
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+          TOLAYER3: packet being corrupted
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 473.793976,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 20.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 474.913727,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 477.450897,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 478.363037,  type: 2, fromlayer3  entity: 1
+- B side received packet:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 21.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 480.118408,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	zzzzzzzzzzzzzzzzzzz
+- Packet 51 buffered in sending buffer.
+
+EVENT time: 483.144379,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 14.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 487.266724,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 490.128174,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaa
+- Packet 52 buffered in sending buffer.
+
+EVENT time: 490.283142,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 15.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+          TOLAYER3: packet being lost.
+
+EVENT time: 490.918976,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+          TOLAYER3: packet being corrupted
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being corrupted
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 494.029510,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 495.501587,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbb
+- Packet 53 buffered in sending buffer.
+
+EVENT time: 496.193756,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 498.695740,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 16.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 506.711700,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 507.348480,  type: 2, fromlayer3  entity: 1
+- B side received packet:			sssssssssssssssssss	ack# = 18	seq# = 18
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 18.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 508.817200,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 509.332733,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ttttttttttttttttttt	ack# = 19	seq# = 19
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 19.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+          TOLAYER3: packet being lost.
+
+EVENT time: 510.918976,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+          TOLAYER3: packet being corrupted
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+          TOLAYER3: packet being lost.
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 512.155823,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 999999	seq# = 20
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+          TOLAYER3: packet being corrupted
+
+EVENT time: 514.096375,  type: 2, fromlayer3  entity: 1
+- B side received packet:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 22.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 515.035706,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ccccccccccccccccccc
+- Packet 54 buffered in sending buffer.
+
+EVENT time: 516.722473,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ddddddddddddddddddd
+- Packet 55 buffered in sending buffer.
+
+EVENT time: 516.810608,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 16	seq# = 16
+- A side received corrupt packet :(
+
+EVENT time: 518.617310,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 519.945923,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  17, got 23.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 524.406982,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 525.757690,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	eeeeeeeeeeeeeeeeeee
+- Packet 56 buffered in sending buffer.
+
+EVENT time: 526.194458,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	fffffffffffffffffff
+- Packet 57 buffered in sending buffer.
+
+EVENT time: 529.231140,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  17, got 16.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 16	seq# = 16
+
+EVENT time: 530.918945,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being lost.
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+          TOLAYER3: packet being corrupted
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 535.792419,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ggggggggggggggggggg
+- Packet 58 buffered in sending buffer.
+
+EVENT time: 536.076477,  type: 2, fromlayer3  entity: 1
+- B side received packet:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 17	seq# = 17
+          TOLAYER3: packet being corrupted
+
+EVENT time: 538.105896,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	hhhhhhhhhhhhhhhhhhh
+- Packet 59 buffered in sending buffer.
+
+EVENT time: 538.708252,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+** 17 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 541.659119,  type: 2, fromlayer3  entity: 1
+- B side received packet:			sssssssssssssssssss	ack# = 18	seq# = 18
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+          TOLAYER3: packet being lost.
+
+EVENT time: 542.613708,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	iiiiiiiiiiiiiiiiiii
+- Packet 60 buffered in sending buffer.
+
+EVENT time: 545.811890,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 999999	seq# = 17
+- A side received corrupt packet :(
+
+EVENT time: 548.638184,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	jjjjjjjjjjjjjjjjjjj
+- Packet 61 buffered in sending buffer.
+
+EVENT time: 549.760376,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Ztttttttttttttttttt	ack# = 19	seq# = 19
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 550.918945,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+	- Sending Message:				sssssssssssssssssss	ack# = 18	seq# = 18
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 551.383118,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 20.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 556.519409,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Sending NEW buffered message:			zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+          TOLAYER3: packet being corrupted
+	- Sending NEW buffered message:			aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+
+EVENT time: 556.762695,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	kkkkkkkkkkkkkkkkkkk
+- Packet 62 buffered in sending buffer.
+
+EVENT time: 557.538208,  type: 2, fromlayer3  entity: 1
+- B side received packet:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 21.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 558.753845,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 562.293030,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	lllllllllllllllllll
+- Packet 63 buffered in sending buffer.
+
+EVENT time: 565.427673,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	mmmmmmmmmmmmmmmmmmm
+- Packet 64 buffered in sending buffer.
+
+EVENT time: 566.878479,  type: 2, fromlayer3  entity: 1
+- B side received packet:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 22.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 568.657288,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 570.493713,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 571.388184,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 23.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 574.917542,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 576.519409,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+
+EVENT time: 580.374939,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 24.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+          TOLAYER3: packet being lost.
+
+EVENT time: 581.636230,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	nnnnnnnnnnnnnnnnnnn
+- Packet 65 buffered in sending buffer.
+
+EVENT time: 586.891174,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ooooooooooooooooooo
+- Packet 66 buffered in sending buffer.
+
+EVENT time: 588.541931,  type: 2, fromlayer3  entity: 1
+- B side received packet:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  19, got 17.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 590.022583,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 999999
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+          TOLAYER3: packet being corrupted
+
+EVENT time: 596.059448,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 596.519409,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+          TOLAYER3: packet being lost.
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+          TOLAYER3: packet being lost.
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being lost.
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+          TOLAYER3: packet being lost.
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+          TOLAYER3: packet being lost.
+
+EVENT time: 596.519470,  type: 2, fromlayer3  entity: 1
+- B side received packet:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 21.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+          TOLAYER3: packet being lost.
+
+EVENT time: 598.445984,  type: 2, fromlayer3  entity: 1
+- B side received packet:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 22.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 599.757324,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ppppppppppppppppppp
+- Packet 67 buffered in sending buffer.
+
+EVENT time: 601.882629,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 18	seq# = 18
+- A side received corrupt packet :(
+
+EVENT time: 603.342651,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 608.359253,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 23.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+          TOLAYER3: packet being corrupted
+
+EVENT time: 610.601074,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 18	seq# = 18
+- A side received corrupt packet :(
+
+EVENT time: 612.935608,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  19, got 24.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 616.519409,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+          TOLAYER3: packet being lost.
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+          TOLAYER3: packet being lost.
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+
+EVENT time: 618.974365,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	qqqqqqqqqqqqqqqqqqq
+- Packet 68 buffered in sending buffer.
+
+EVENT time: 621.942566,  type: 2, fromlayer3  entity: 1
+- B side received packet:			sssssssssssssssssss	ack# = 18	seq# = 18
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  19, got 18.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 18	seq# = 18
+
+EVENT time: 622.689270,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 624.531677,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	rrrrrrrrrrrrrrrrrrr
+- Packet 69 buffered in sending buffer.
+
+EVENT time: 628.784302,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+** 19 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 631.126282,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ttttttttttttttttttt	ack# = 19	seq# = 19
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+
+EVENT time: 635.608582,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 19	seq# = 19
+- A side received valid packet.
+** 20 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+	- Sending NEW buffered message:			bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+
+EVENT time: 636.806885,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 999999
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+          TOLAYER3: packet being lost.
+
+EVENT time: 639.832458,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	sssssssssssssssssss
+- Packet 70 buffered in sending buffer.
+
+EVENT time: 639.970459,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+
+EVENT time: 641.055542,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+
+EVENT time: 644.310425,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  20, got 23.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+          TOLAYER3: packet being lost.
+
+EVENT time: 649.130005,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 19	seq# = 19
+- A side received valid packet.
+** 20 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 651.665771,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ttttttttttttttttttt
+- Packet 71 buffered in sending buffer.
+
+EVENT time: 653.164490,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  20, got 24.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+          TOLAYER3: packet being lost.
+
+EVENT time: 655.608582,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+          TOLAYER3: packet being lost.
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+          TOLAYER3: packet being corrupted
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+	- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+          TOLAYER3: packet being corrupted
+
+EVENT time: 655.872192,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 19	seq# = 19
+- A side received valid packet.
+** 20 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 659.140808,  type: 2, fromlayer3  entity: 1
+- B side received packet:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  20, got 17.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+
+EVENT time: 660.642700,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	uuuuuuuuuuuuuuuuuuu
+- Packet 72 buffered in sending buffer.
+
+EVENT time: 663.167969,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zssssssssssssssssss	ack# = 18	seq# = 18
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+
+EVENT time: 664.782715,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 19	seq# = 19
+- A side received valid packet.
+** 20 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 671.323975,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ttttttttttttttttttt	ack# = 19	seq# = 19
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  20, got 19.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 19	seq# = 19
+          TOLAYER3: packet being corrupted
+
+EVENT time: 673.908813,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 19	seq# = 19
+- A side received valid packet.
+** 20 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 675.608582,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being corrupted
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+          TOLAYER3: packet being corrupted
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+          TOLAYER3: packet being lost.
+	- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+
+EVENT time: 675.908691,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	vvvvvvvvvvvvvvvvvvv
+- Packet 73 buffered in sending buffer.
+
+EVENT time: 678.893616,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 19	seq# = 19
+- A side received corrupt packet :(
+
+EVENT time: 679.576660,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+
+EVENT time: 681.084229,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 682.955566,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	wwwwwwwwwwwwwwwwwww
+- Packet 74 buffered in sending buffer.
+
+EVENT time: 687.260498,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ZCK			ack# = 20	seq# = 20
+- A side received corrupt packet :(
+
+EVENT time: 687.862915,  type: 2, fromlayer3  entity: 1
+- B side received packet:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  21, got 22.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 690.231323,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  21, got 23.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 691.390442,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+	- Sending NEW buffered message:			ccccccccccccccccccc	ack# = 28	seq# = 28
+
+EVENT time: 694.757019,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  21, got 24.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 696.968872,  type: 2, fromlayer3  entity: 1
+- B side received packet:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  21, got 17.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 700.885559,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	xxxxxxxxxxxxxxxxxxx
+- Packet 75 buffered in sending buffer.
+
+EVENT time: 701.197815,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 702.672546,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zssssssssssssssssss	ack# = 18	seq# = 18
+- B side received corrupted packet.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 704.670593,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 711.124695,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 711.390442,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+          TOLAYER3: packet being lost.
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+          TOLAYER3: packet being lost.
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+          TOLAYER3: packet being corrupted
+	- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+          TOLAYER3: packet being lost.
+	- Sending Message:				ccccccccccccccccccc	ack# = 28	seq# = 28
+
+EVENT time: 711.783264,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ttttttttttttttttttt	ack# = 19	seq# = 19
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  21, got 19.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+
+EVENT time: 718.475342,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 718.543274,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	yyyyyyyyyyyyyyyyyyy
+- Packet 76 buffered in sending buffer.
+
+EVENT time: 719.325439,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	zzzzzzzzzzzzzzzzzzz
+- Packet 77 buffered in sending buffer.
+
+EVENT time: 721.401489,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- B side received a packet with a lower
+  sequence number than expected. Expected
+  21, got 20.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+
+EVENT time: 723.563660,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 724.580017,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 730.381348,  type: 2, fromlayer3  entity: 1
+- B side received packet:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- B side received valid packet.
+  Sending pkt to upper layer.
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 21	seq# = 21
+
+EVENT time: 731.390442,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT - timer restarted,
+  all packets in window resent
+	- Sending Message:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Sending Message:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+          TOLAYER3: packet being lost.
+	- Sending Message:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+          TOLAYER3: packet being corrupted
+	- Sending Message:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Sending Message:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+          TOLAYER3: packet being lost.
+	- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+	- Sending Message:				ccccccccccccccccccc	ack# = 28	seq# = 28
+
+EVENT time: 732.282654,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 20	seq# = 999999
+- A side received corrupt packet :(
+
+EVENT time: 735.263245,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaa
+- Packet 78 buffered in sending buffer.
+
+EVENT time: 735.820557,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  22, got 23.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 21	seq# = 21
+
+EVENT time: 737.492859,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 21	seq# = 21
+- A side received valid packet.
+** 22 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Updated ACKS, restarted timer to reflect
+  the oldest packet in the sending window.
+- A side making sure all packets in sending
+  window have been sent to B side...
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 28	seq# = 28
+	- Sending NEW buffered message:			ddddddddddddddddddd	ack# = 29	seq# = 29
+          TOLAYER3: packet being lost.
+
+EVENT time: 744.785461,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- B side received a packet with a greater
+  sequence number than expected. Expected
+  22, got 24.
+  Discarding packet...
+- B side sending ACK for packet with highest
+  in-order sequence number
+- B side sent ACK:				ACK			ack# = 21	seq# = 21
+
+EVENT time: 744.826416,  type: 2, fromlayer3  entity: 0
+- A side received from Lower Layer:		ACK			ack# = 21	seq# = 21
+- A side received valid packet.
+** 22 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+
+EVENT time: 746.562134,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbb
+- Packet 79 buffered in sending buffer.
+
+EVENT time: 748.833496,  type: 2, fromlayer3  entity: 1

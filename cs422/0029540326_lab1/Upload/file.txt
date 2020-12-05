@@ -1,0 +1,3 @@
+I'm doing a project for CS422 - a web server!
+This project is being created by Chris Cohen, due on March 3rd, 2020.
+I'm currently a junior in computer science, taking CS422 - Networking and CS354 - Operating Systems.
