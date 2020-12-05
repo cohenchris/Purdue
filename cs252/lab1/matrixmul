@@ -1,0 +1,100 @@
+#!/bin/bash
+
+if (( $# != 2 ))
+then
+  echo "Usage: matrixmul <matrix1> <matrix2>"
+  exit 1
+fi
+
+if (( $# == 2 ))
+then
+  for var in "$@"
+  do
+    if ! [[ -r "$var" ]]
+    then
+      echo "Error: "$var" is not readable!"
+      exit 1
+    fi
+  done
+fi
+
+firstmatrix_cols=$(cat $1 | head -1 | grep -o ' ' | wc -l)
+(( firstmatrix_cols += 1 ))
+secondmatrix_rows=$(wc -l $2 | cut -d ' ' -f 1)
+
+#firstmatrix_cols=$(wc -l $1 | cut -d ' ' -f 1)
+#secondmatrix_rows=$(cat $2 | head -1 | grep -o ' ' | wc -l)
+
+if (( $firstmatrix_cols != $secondmatrix_rows ))
+then
+  echo "Error: incompatible matrix dimensions!"
+  exit 1
+fi
+
+# READING IN MATRICES
+
+matrix1=()
+matrix2=()
+
+while read -a m1
+do
+  for (( I = 0; I < ${#m1[*]}; I++ ))
+    do
+      matrix1+=(${m1[I]})
+    done
+done < $1
+
+while read -a m2
+do
+  for (( I = 0; I < ${#m2[*]}; I++ ))
+    do
+      matrix2+=(${m2[I]})
+    done
+done < $2
+m1size=${#matrix1[@]}
+m2size=${#matrix2[@]}
+
+m1col=$firstmatrix_cols
+m1row=$((m1size / $m1col))
+m2row=$secondmatrix_rows
+m2col=$((m2size / $m2row))
+
+# CALCULATE THE NEW MATRIX
+
+newmatrix=()
+
+rowstart=0
+for (( I = 0; I < $m1row; I++ ))
+do
+  colstart=0
+  for (( J = 0; J < $m2col; J++ ))
+    do
+      col_index=$colstart
+      sum=0
+      for (( K = $rowstart; K < $rowstart+$m1col; K++ ))
+      do
+	sum=$(( sum + (matrix1[K] * matrix2[col_index]) ))
+        (( col_index += $m2col ))
+      done
+      (( colstart++ ))
+      newmatrix+=($sum)
+    done
+  (( rowstart+=$m1col ))
+done
+
+# PRINT OUT THE NEW MATRIX
+
+index=1
+for i in "${newmatrix[@]}"
+do
+  if (( $index % $m2col == 0 ))
+  then
+    echo $i
+    (( index++ ))
+  else
+    echo -n $i" "
+    (( index++ ))
+  fi
+done
+
+exit 0

@@ -1,0 +1,21 @@
+The following output is an example of the result of doing request.print() after parsing a request.
+
+Note that this text IS whitespace sensitive!
+
+\\==////REQ\\\\==////
+Method: {GET}
+Request URI: {/}
+Query string: {}
+HTTP Version: {HTTP/1.1}
+Headers:
+field-name: Accept; field-value: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+field-name: Accept-Encoding; field-value: gzip, deflate
+field-name: Accept-Language; field-value: en-US,en;q=0.9
+field-name: Authorization; field-value: Basic Y3MyNTI6Z3VzdGF2bw==
+field-name: Connection; field-value: keep-alive
+field-name: Host; field-value: data.cs.purdue.edu:50041
+field-name: Upgrade-Insecure-Requests; field-value: 1
+field-name: User-Agent; field-value: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+Message body length: 0
+
+//==\\\\REQ////==\\

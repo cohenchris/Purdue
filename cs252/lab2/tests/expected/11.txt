@@ -1,0 +1,38 @@
+
+[
+	addr: 3872
+	size: 192
+	left_size: 3840
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+BREAK
+[
+	addr: 7728
+	size: 432
+	left_size: 3840
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+BREAK
+[
+	addr: 12164
+	size: 192
+	left_size: 3840
+	allocated: false
+	prev: NULLPTR
+	next: 7728
+]
+
+[
+	addr: 7728
+	size: 432
+	left_size: 3840
+	allocated: false
+	prev: 12164
+	next: NULLPTR
+]

@@ -1,0 +1,20 @@
+
+(nil)
+[
+	addr: 0080
+	size: 4000
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+(nil)
+[
+	addr: 0008
+	size: 4072
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]

@@ -1,0 +1,31 @@
+#! /bin/bash
+
+echo -e "\e[34m----------------------------------------------------------\033[0m"
+
+echo -e "\e[33mtest_part1_count:\033[0m"
+
+./test_cases/test_part1_count
+
+echo
+echo -e "\e[34m----------------------------------------------------------\033[0m"
+
+echo -e "\e[33mtest_part1_order:\033[0m"
+
+./test_cases/test_part1_order
+
+echo
+echo -e "\e[34m----------------------------------------------------------\033[0m"
+
+echo -e "\e[33mtest_part2_count:\033[0m"
+
+./test_cases/test_part2_count
+
+echo
+echo -e "\e[34m----------------------------------------------------------\033[0m"
+
+echo -e "\e[33mtest_part2_nondeterminism:\033[0m"
+
+./test_cases/test_part2_nondeterminism
+
+echo
+echo -e "\e[34m----------------------------------------------------------\033[0m"

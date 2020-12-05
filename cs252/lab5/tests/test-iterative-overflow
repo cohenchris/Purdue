@@ -1,0 +1,23 @@
+#! /bin/bash
+
+../myhttpd 0 > /dev/null 2>&1 &
+PID=$!
+
+prlimit --nproc=50 --cpu=600 --rss=4000000 -p $PID
+
+#PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+PORT=$(netstat -ntlp 2> /dev/null | awk 'split($7, a, "/"); split($4, b, ":"); {print b[2]" "a[1]}' | awk -v pid="$PID" '$2==pid {print $1}')
+USERSTRING=$(cat ../auth.txt)
+sleep 1
+
+
+~cs252/bin/ab -q -r -A $USERSTRING -n 128 -c 8 "http://127.0.0.1:$PORT/$(tr -dc '[:graph:]' < /dev/urandom | tr -d \''\\'\` | head -c 32KB)"
+if kill -0 $PID 2> /dev/null; then
+    printf "\033[0;32m$(basename "$0") Passed.\033[0m\n"
+    kill -15 $PID
+    exit 0
+fi
+printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+kill -15 $PID
+exit 0
+

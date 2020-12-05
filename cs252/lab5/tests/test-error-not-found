@@ -1,0 +1,23 @@
+#! /bin/bash
+
+../myhttpd 0 > /dev/null 2>&1 &
+PID=$!
+
+# Set Limits
+prlimit --nproc=50 --cpu=600 --rss=4000000 -p $PID
+
+rm ./http-root-dir/htdocs/noexistfile.html > /dev/null 2>&1 
+
+sleep 1
+#PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+PORT=$(netstat -ntlp 2> /dev/null | awk 'split($7, a, "/"); split($4, b, ":"); {print b[2]" "a[1]}' | awk -v pid="$PID" '$2==pid {print $1}')
+USERSTRING=$(cat ../auth.txt)
+CODE=$(curl -i -s -u $USERSTRING "127.0.0.1:$PORT/noexistfile.html" | head -n 1 | cut -d " " -f2)
+kill -15 $PID
+if [[ $CODE != 404 ]]; then
+  printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+  exit 1
+else
+  printf "\033[0;32m$(basename "$0") Passed.\033[0m\n"
+  exit 0
+fi

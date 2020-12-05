@@ -1,0 +1,27 @@
+#!/bin/bash
+# If there aren't enough parameters, give user instructions on how to use program
+if (( $# != 2 ))
+then
+  echo 'Usage: hailstone <start> <limit>'
+  exit 1
+fi
+
+n=$1
+limit=$2
+
+echo -n $n
+
+for (( limit; limit > 1; limit-- ))
+do
+  if (( n % 2 == 0 )) # n is even
+  then
+    n=$(( n / 2 ))
+    echo -n ' '$n
+  else  # n is odd
+    n=$(( n * 3 + 1 ))
+    echo -n ' '$n
+  fi
+done
+
+echo
+exit 0

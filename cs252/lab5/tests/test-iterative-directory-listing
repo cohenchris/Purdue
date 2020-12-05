@@ -1,0 +1,22 @@
+#! /bin/bash
+
+../myhttpd 0 > /dev/null 2>&1 &
+PID=$!
+sleep 1
+#PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+PORT=$(netstat -ntlp 2> /dev/null | awk 'split($7, a, "/"); split($4, b, ":"); {print b[2]" "a[1]}' | awk -v pid="$PID" '$2==pid {print $1}')
+#FILES=$(ls -1 ./http-root-dir/htdocs/)
+USERSTRING=$(cat ../auth.txt)
+curl -L -s -u $USERSTRING "127.0.0.1:$PORT/directory" | grep -i -E "href" | grep -v -E "C=N|C=M|C=S" | grep -v -i "parent" > ./tmp/test-iterative-directory-listing
+#curl -L -s endor.cs.purdue.edu/~cs252/browse/directory/ | grep -i -E "href" | grep -v -E "C=N|C=M|C=S" | grep -v -i "parent" > ./tmp/test-iterative-directory-listing
+diff -wy <(LC_COLLATE="C" ls -p1 ./http-root-dir/htdocs/directory/) <(python3 htmlsearch.py ./tmp/test-iterative-directory-listing)
+if [[ $? != 0 ]]; then
+    printf "\033[0;31m$(basename "$0")  Failed.\033[0m\n"
+    rm -rf ./tmp/*
+    kill -15 $PID
+    exit 1
+fi
+printf "\033[0;32m$(basename "$0")  Passed.\033[0m\n"
+rm -f ./tmp/*
+kill -15 $PID
+exit 0

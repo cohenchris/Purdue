@@ -1,0 +1,63 @@
+CS252 SHELL PROJECT
+Chris Cohen, Fall 2019
+-------------------
+
+FEATURES THAT WORK:
+- Parsing commands
+- Executing commands
+- Accepting more complex commands
+- Single command process creation and execution
+- File redirection
+- Piping
+- isatty()
+- ctrl-C
+- Exit
+- Zombie elimination
+- Quotes
+- Escaping
+- Builtin functions
+  - printenv
+  - setenv
+  - unsetenv
+  - source
+  - cd
+- .shellrc
+- Subshells
+- Environment variable expansion
+- Tilde expansion
+- Wildcarding
+- Edit mode
+  - Left arrow
+  - Right arrow
+  - Delete (delete key and ctrl-D)
+  - Backspace (backspace key and ctrl-H)
+  - Home (home key and ctrl-A)
+  - End (end key and ctrl-E)
+  - Command history
+  - ctrl-R
+
+FEATURES THAT DO NOT WORK:
+- Process substitution (extra credit)
+- Path completion      (extra credit)
+- Aliases              (extra credit)
+- Jobs                 (extra credit)
+
+
+
+--------------------------------------------------
+User:  cohen50, CS252: Lab 3 - All Tests
+--------------------------------------------------
+IO Redirection:                  10.0 of 10.0
+Pipes:                           8.0 of 8.0
+Background Processes:            2.0 of 2.0
+Zombie Processes:                1.0 of 1.0
+Extended Parsing:                5.0 of 5.0
+Bulitin Functions:               4.0 of 4.0
+cd:                              2.0 of 2.0
+Subshell:                        10.0 of 10.0
+Environment Variable Expansion:  7.0 of 7.0
+Wildcarding:                     9.0 of 9.0
+Tilde Expansion:                 2.0 of 2.0
+Robustness:                      10.0 of 10.0
+---------------------------------------------------
+Testall Total:                   70.0 of 70.0

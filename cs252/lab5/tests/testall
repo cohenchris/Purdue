@@ -1,0 +1,9 @@
+#! /bin/bash
+
+ITERATIVE_TESTS=( test-iterative-cgi-bin test-iterative-cgi-bin-args test-iterative-cgi-bin-mod test-iterative-cgi-bin-mod-args test-iterative-directory-listing test-iterative-directory-listing-slash test-iterative-directory-sorting )
+
+echo "--------PART 1  TESTS--------"
+./test-part1
+echo "--------PART 2  TESTS--------"
+./test-part2
+pkill -f myhttpd

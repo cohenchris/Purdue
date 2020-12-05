@@ -1,0 +1,24 @@
+#! /bin/bash
+
+../myhttpsd 0 > /dev/null 2>&1 &
+PID=$!
+chmod +x ./http-root-dir/cgi-bin/*
+sleep 1
+PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+USERSTRING=$(cat ../auth.txt)
+diff -wq <(curl -k --max-time 5 -s -u $USERSTRING "127.0.0.1:$PORT/cgi-bin/date.so" | head -n +2) <(date) > /dev/null 2>&1
+CODE=$?
+kill -0 $PID 2> /dev/null
+if [[ $? != 0 ]]; then
+  printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+  exit 1
+fi
+
+kill -15 $PID
+if [[ $CODE != 0 ]]; then
+  printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+  exit 1
+else
+  printf "\033[0;32m$(basename "$0") Passed.\033[0m\n"
+  exit 0
+fi

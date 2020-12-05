@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo Content-type: text/plain
+echo
+
+echo CGI/1.0 test script report:
+echo
+
+echo QUERY_STRING = "$QUERY_STRING"
+

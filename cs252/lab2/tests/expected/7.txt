@@ -1,0 +1,37 @@
+
+[
+	addr: 0096
+	size: 3968
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+[
+	addr: 0176
+	size: 3888
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+[
+	addr: 0256
+	size: 3808
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+[
+	addr: 0336
+	size: 3728
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
