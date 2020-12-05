@@ -31,6 +31,10 @@ Repositories from my undergraduate at Purdue University
 - Spring 2020
 - Taught under Kihong Park
 
+## CS422 - Computer Networks
+- Spring 2020
+- Taught under He Wang
+
 ## CS355 - Intro To Cryptography
 - Fall 2020
 - Taught under Hemanta Maji
@@ -38,7 +42,3 @@ Repositories from my undergraduate at Purdue University
 ## CS408 - Software Testing
 - Fall 2020
 - Taught under Pedro Jose Sousa Da Fonseca
-
-## CS422 - Computer Networks
-- Spring 2020
-- Taught under He Wang
