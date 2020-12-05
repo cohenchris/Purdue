@@ -1,0 +1,34 @@
+Reasons for not 100% coverage:
+
+- void stacktrace()
+    Lines 141-142 not executed sometimes because they're there to catch errors that we can't predict (libunwind error).
+    If we exclude this, and libunwind throws an error, it would crash the program.
+    These are not guaranteed to execute always.
+
+- void pthread_exit()
+    The final curly brace is never covered because, on the line before, the original pthread_exit() function is called, which does not return.
+
+
+
+*** LOOK AT COMMENTS IN EACH TEST SOURCE FILE FOR COVERAGE.PDF ***
+
+
+NOT BUGGY
+=========
+pthread_cond_broadcast_test.c
+pthread_cond_wait_signal_test.c
+pthread_create_test.c
+pthread_mutex_lock_unlock_test.c
+pthread_yield_test.c
+order_test.c
+atomicity_test.c
+pthread_mutex_trylock_test.c
+
+
+BUGGY
+=====
+deadlock_buggy_test.c
+atomicity_buggy_test.c
+order_buggy_test.c
+pthread_mutex_lock_unlock_buggy_test.c
+pthread_create_buggy_test.c
