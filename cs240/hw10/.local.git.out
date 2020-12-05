@@ -1,0 +1,548 @@
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 3fe36a0] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 59 insertions(+), 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 3719c0f] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 993deed] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 060a9a7] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 42 insertions(+), 6 deletions(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	hw10.o
+	hw10_main
+	hw10_main.o
+	hw10_test
+	hw10_test.o
+
+nothing added to commit but untracked files present
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master a09bf84] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master ca035e5] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 26 insertions(+)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	hw10.o
+	hw10_main
+	hw10_main.o
+	hw10_test
+	hw10_test.o
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+[master 3ae677f] Submission for homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 7d800c8] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master c561cdc] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 2f0111c] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 6487dbe] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	hw10.o
+	hw10_main
+	hw10_main.o
+	hw10_test
+	hw10_test.o
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+[master 851c316] Submission for homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 8bd6e6e] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 777d740] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 30a846c] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master b912829] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master d7155e9] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	hw10.o
+	hw10_main
+	hw10_main.o
+	hw10_test
+	hw10_test.o
+
+nothing added to commit but untracked files present
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master f4ac5b0] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master ce0642c] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master b431e3c] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 341b4dd] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master f309791] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 3 insertions(+), 9 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master 756ef94] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master a8496f1] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master bd5c5d3] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 25 insertions(+), 2 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master a081954] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+M	hw10.c
+Your branch is up to date with 'origin/master'.
+[master ea3ebd2] Commit homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Your branch is up to date with 'origin/master'.
+[master 92cb8c1] Submission for homework hw10
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	hw10.o
+	hw10_main
+	hw10_main.o
+	hw10_test
+	hw10_test.o
+
+nothing added to commit but untracked files present
+Your branch is up to date with 'origin/master'.
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+	.local.git.out
+	hw10.o
+	hw10_main
+	hw10_main.o
+	hw10_test
+	hw10_test.o
+
+nothing added to commit but untracked files present
