@@ -1,0 +1,12 @@
+.nfs000000000*
+stdio2.h.gcov
+testlib.c.gcov
+testlib.gcda
+testlib.gcno
+testlib.o
+testlib.so
+tests/.nfs000000000*
+unwind-test*
+utils.gcda
+utils.gcno
+utils.o
