@@ -1,0 +1,3 @@
+/* mymotd.h */
+
+void mymotd();

@@ -1,0 +1,28 @@
+cohen50
+
+ Grade for lab5 
+
+
+Problem 3 - test cases: 80/80
+Graded by Hyunchai Jeong (jeong3@purdue.edu) and Rashidedin Jahandideh (rjahandi@purdue.edu) 
+
+Problem 3 - source code (clkdisp): 40/40
+Graded by  Hyunchai Jeong (jeong3@purdue.edu) and Rashidedin Jahandideh (rjahandi@purdue.edu)
+
+Problem 3 - source code (send): 40/40
+Graded by Hyunchai Jeong (jeong3@purdue.edu) and Rashidedin Jahandideh (rjahandi@purdue.edu)
+
+Problem Problem 3 - source code (sleepms): 40/40
+Graded by Hyunchai Jeong (jeong3@purdue.edu) and Rashidedin Jahandideh (rjahandi@purdue.edu)
+
+Problem 4: 110/120
+Comment: explicit kill(pid) doesn't do proper garbage collection for process begin killed (-10) because freemem clears list for currpid
+Graded by Shushan Ashutosh  (sashutos@purdue.edu)
+
+Bonus: 13/20
+Comment: Creative, but may not be enough.   Few methods provided by linux/gcc/windows/llvm:   Code-pointer integrity/seperation;  Address space layout randomization;  EncodeSystemPointer;  Control-flow integrity.  Relocation read-only;  Note Data Execution Prevention or Instruction-Set Randomization may not be enough
+Graded by Muqi Zou (zou116@purdue.edu)
+
+Total: 323/320
+
+Total (with early submission credit): 339.1/320

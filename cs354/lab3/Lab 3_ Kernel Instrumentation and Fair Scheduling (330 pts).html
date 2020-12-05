@@ -1,0 +1,615 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0052)https://www.cs.purdue.edu/homes/cs354/lab3/lab3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  
+  
+  <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.17 i686) [Netscape]">
+<title>Lab 3: Kernel Instrumentation and Fair Scheduling (330 pts)</title>
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+<body>
+<center>
+<h2>CS 354 Spring 2020</h2>
+</center>
+<center>
+<h2>Lab 3: Kernel Instrumentation and Fair Scheduling (315 pts)</h2>
+</center>
+<center>
+<h2>Due: 03/05/2020 (Thu.), 11:59 PM</h2>
+</center>
+<h2>1. Objectives</h2>
+The objectives of this lab are to instrument XINU to monitor system performance
+and implement a simplified version of Linux CFS in XINU.
+<hr width="100%">
+<h2>2. Readings</h2>
+<ul>
+  <li>Chapter 5 from the XINU textbook.</li>
+</ul>
+
+<hr width="100%">
+<h2>3. Kernel instrumentation: monitoring process aging and CPU usage [105 pts]</h2>
+
+<h3>3.1 Millisecond resolution system uptime [15 pts]</h3>
+
+<p>
+XINU measures in unit of second the time elapsed since a backend was bootloaded (i.e.,
+system uptime). It does so by
+updating the global variable clktime in clkhandler(), keeping in mind that clock interrupt handling
+in XINU's lower half runs every 1 millisecond. Declare a new global variable, uint32 clktimemilli,
+in clkinit.c and relevant header files in include/. 
+Modify clkhandler() so that it increments clktimemilli
+each time a system timer interrupt is processed. Discuss in Lab3Answers.pdf
+how long (in days and hours) clktimemilli can keep time after bootloading until
+the counter overflows. Truncate fractional hours.
+For how long can a 64-bit millisecond counter keep time?
+</p>
+
+<h3>3.2 Process birthday and lifetime [15 pts]</h3>
+
+<p>
+Add a new process table field, uint32 prbirth, that specifies the time in unit of millisecond
+when a process was created using create(). Update create() accordingly. Create a new
+system call, uint32 procbirth(pid32 pid), which returns the birthday of a process given by
+argument pid. procbirth() returns SYSERR if pid is invalid. Follow the default convention
+of XINU system calls where interrupts are disabled upon entry and restored prior to return.
+Place the code in procbirth.c under system/. Create a system call,
+uint32 proclifetime(pid32 pid), which returns the lifetime of a process (in unit of millisecond)
+since its creation. proclifetime() follows XINU's default system call convention.
+Place the code in proclifetime.c under system/.
+</p>
+
+<h3>3.3 Process gross CPU usage [25 pts]</h3>
+
+<p>
+For a number of reasons including scheduling and accounting, it is important for a kernel to
+monitor how much CPU time a process has consumed during its lifetime. Add a new process
+table field, uint32 prgrosscpu, initialized to 0 when a process is created that tracks its 
+gross CPU usage. By gross CPU usage, we mean the time (in unit of millisecond) that a
+process spends as the current process. 
+In XINU, interrupt handling always borrows the
+context of the current process irrespective of whether a task performed by
+interrupt handling is related to the current process or not. Hence the term gross CPU
+usage. Net CPU usage refers to gross CPU usage minus the time a process's context
+is borrowed for interrupt handling.
+</p>
+
+<p>
+A process becomes current when it is context switched
+in. It ceases to be current when it is context switched out. Insert code in XINU's
+process scheduler resched() after it calls ctxsw() (i.e., when ctxsw() returns) to
+start a millisecond counter, uint32 currentgrosscpu, that is initialized to clktimemilli, to 
+track the gross CPU time consumed by the new process until it is context switched out.
+Insert code just before calling ctxsw() to update the current process's prgrosscpu field 
+in the process table by adding clktimemilli - currentgrosscpu. In case
+clktimemilli = currentgrosscpu (the current process has consumed less than 1 millisecond of
+CPU time before context-switching out), round up and add 1 msec to prgrosscpu.
+Add a new system call, uint32 procgrosscpu(pid32 pid), in system/procgrosscpu.c that
+returns a process's gross CPU usage.
+</p>
+
+<h3>3.4 Rationale behind method for estimating gross CPU usage [25 pts]</h3>
+
+<p>
+Explain in Lab3Answers.pdf why adding instrumentation code before and after calling
+ctxsw() in resched() is a viable method for estimating a process's gross CPU usage.
+Consider three scenarios. One, the current process makes a sleepms() system call which
+context-switches out the current process and context-switches in a new (i.e., different)
+process. Two, while the current process is executing, a clock interrupt is raised
+which causes the current process's time slice to be decremented by clkhandler(). If the
+remaining time slice becomes 0, resched() is called which may, or may not, trigger a
+context-switch depending on the priority of the process at the front of XINU's ready 
+list. Three, while the current process is executing, a clock interrupt is raised
+which causes a previously sleeping process to be woken up and placed into the ready
+list. If the newly awoken process has priority greater or equal than the current process,
+a context-switch ensues. Describe the sequence of XINU kernel function calls that are
+evoked in the three scenarios. Explain why the 3.3 method will perform correct gross CPU
+usage tracking in the three scenarios.
+</p>
+
+<p>
+<i>
+Note: In all three scenarios, a common issue that must be considered is that the newly
+context-switched in process may be a process that was created but never executed. That is,
+after resume() which puts a process spawned using create() into ready state, the
+newly created process after becoming current executes for the first time meaning that 
+it was never context-switched out. This, in turn, implies that the process never called
+resched() which calls ctxsw(). XINU makes it appear that a newly created process has
+called ctxsw() by pushing ebp, eflags, and 8 general-purpose registers onto the process's
+stack during creation in create(). Before pushing ebp, the first argument of create(),
+a function pointer, is pushed so that when ctxsw() returns a jump to the code to be
+be executed by the newly created process begins execution. In Problem 3.3 and 3.5
+where we perform CPU usage measurement by taking a time stamp when a process becomes
+current, we must ensure that the newly created process does so as well. The measurement
+code inserted after ctxsw() in resched() will not be reached by the newly created process
+since executing ret from ctxsw() jumps directly to the function to be executed by
+create() (i.e., application code). For the newly created process, we need to ensure
+that a detour is made to kernel code where CPU usage measurement is commenced. 
+</i>
+</p>
+
+<p>
+<i>
+A detour can
+be implemented in multiple ways. As discussed in class, a common programming technique is 
+to use prologue code.
+For example, in create() the stack is set up so that ctxsw() "returns"
+(i.e., jumps) to a prologue function where time stamps for starting CPU usage measurement are
+taken. The prologue function, upon completion, returns to the function specified
+by the function pointer of the
+first argument of create(). You are free to implement your own solution as long as
+measurements are performed by the kernel before executing application code.
+Describe your approach in Lab3Answers.pdf.
+</i>
+</p>
+
+<h3>3.5 Improving accuracy of gross CPU usage estimation [25 pts]</h3>
+
+<p>
+A drawback of method 3.3 is that time is tallied in unit of millisecond. In operating
+environments that demand high precision, millisecond granularity may be insufficient.
+Computing systems provide myriad hardware clocks that facilitate fine granular, high
+precision time keeping. We will discuss its details when studying clock management
+later in the course. For lab3, the following abstraction of
+x86's timestamp counter hardware support will suffice. 
+x86 provides a high resolution hardware clock
+that tallies the CPU's clock tick. In our galileo x86 backends whose CPU operates at 400 MHz
+(million cycles, events, or ticks per second), x86 exports a 64-bit time stamp counter (TSC) 
+that keeps track
+of the number of CPU ticks (400 million per second) elapsed since the CPU was powered 
+on. For example, a value of 400000000 would mean that 400 million CPU ticks had occurred
+which, in unit of time, would mean 1 second had elapsed.
+A value of 40000000 would imply that 100 milliseconds had elapsed.
+Hence to convert TSC tick values into time, we have to apply a normalization by multiplying
+the number of ticks by 2.5 which yields time in unit of nanosecond.
+The current value of TSC can be queried by executing the x86 instruction rdtsc which
+places the CPU's 64-bit tick value into registers EAX and EDX. We can use
+inline assembly to query TSC from C functions. An example is provided in the code of getticks() in
+system/getticks.c.
+</p>
+
+<p>
+Extend 3.3 so that fine granular gross CPU usage tracking is supported using TSC.
+Add a new process table field, uint64 prgrosscputick, initialized to 0 when a process is created 
+that tracks gross CPU usage in unit of CPU ticks.
+Add a CPU tick counter, uint64 currentgrosscputick, whose update logic follows that of
+currentgrosscpu in 3.3. The sanity check, clktimemilli = currentgrosscpu, does not apply
+to currentgrosscputick. Use inline assembly to query TSC from within resched().
+Add a new system call, uint32 procgrosscpumicro(pid32 pid), in system/procgrosscpumicro.c
+that returns the value of prgrosscputick in unit of microsecond. That is, use
+the 2.5 factor normalization to convert ticks into nanosecond and truncate the nanosecond
+digits to return CPU usage in unit of microsecond.
+In practice, nanosecond granularity is rarely needed in systems software.
+Perform benchmark runs and compare the values returned by procgrosscpumicro() against
+those returned by procgrosscpu(). Discuss your findings in Lab3Answers.pdf.
+</p>
+
+
+<hr width="100%">
+<h2>4. Dynamic priority scheduling [130 pts]</h2>
+
+<h3>4.1 Objective of fair scheduling</h3>
+
+<p>
+The default XINU scheduler is a static (or fixed) priority scheduler that uses
+priorities specified in the create() system call and never changes them.
+XINU's process scheduler, resched(), when invoked, picks a highest priority ready
+process to run next. If there is a tie, round-robin scheduling is implemented
+among the group of highest priority processes.
+In computing systems where multiple processes share CPU resources, "fair"
+allocation of CPU cycles is a widely accepted goal. Giving an app
+programmer direct control over process priority through create() cannot be allowed.
+The underlying substrate of a scheduler -- picking a highest priority ready process 
+and breaking ties in a round-robin matter -- remains unchanged. What does change 
+is that a process's priority becomes dynamic, i.e., changes over time, so as to 
+facilitate equitable sharing of CPU cycles.
+</p>
+
+<p>
+Linux's scheduler was completely revamped several years back to implement a form
+of "fair" scheduling that was more characteristic of packet scheduling at routers in
+computer networks and its underlying theory. Instead of the previous approach,
+still followed by UNIX and Windows operating systems, Linux adopted process CPU usage
+as a prime metric for deciding which ready process should run next.
+The basic idea is to allocate CPU cycles to a ready process that has received the 
+least CPU usage -- a form of load balancing -- so that CPU usage across processes over
+time evens out. To do so, process CPU usage is monitored (Problem 3.3) and when a
+scheduler is invoked by a kernel's upper (system call) or lower half (interrupt),
+a process of least CPU usage is selected to become current. Equivalently, a process's
+CPU usage is interpreted as its priority with smaller numbers (i.e., smaller CPU
+usage) meaning higher priority.
+</p>
+
+<h3>4.2 XINU compatibility</h3>
+
+<p>
+To implement fair scheduling in XINU where CPU usage is viewed as priority, we
+will modify XINU's ready list so that it sorts ready processes in ascending (more
+precisely, non-decreasing) order of priority. Using insert() in system/insert.c 
+as a template, add a modified kernel function rinsert() in system/rinsert.c with
+the same function definition as insert() with the difference that rinsert() inserts
+processes in ascending order of priority into XINU's ready list. Additional
+code modifications to XINU, albeit not many, are needed to impose a new world order
+in XINU with respect to priority where a smaller integer value means higher
+priority. Specify in Lab3Answers.pdf what these changes are and implement them
+in XINU. This includes how you handle XINU's null process.
+We will continue to use XINU's priority queue which has linear insert
+overhead over heaps that have logarithmic overhead for three reasons. One, 
+since you will know from data structures how to
+code heaps and balanced search trees, we will omit its implementation
+for simplicity; two, we will not be testing with hundreds and thousands
+of processes where difference in overhead will surface in a pronounced manner;
+and three, kernel support for dynamic memory allocation which is needed
+for managing heaps will be discussed under memory management later in the
+course.
+</p>
+
+<h3>4.3 Linux CFS scheduler</h3>
+
+<p>
+Linux's current scheduler, CFS (completely fair scheduler), was introduced in 2007 and 
+implements a specific form of fair scheduling. Fair scheduling based on process CPU usage
+as outlined above cannot be used in real-world operating environments where processes
+come and go. For example, suppose a process is newly created (hence CPU usage is 0),
+however, processes that were created an hour ago are still running which have accrued
+significant CPU usage. For an existing process with 30 minutes of CPU usage, a newly created
+process would use at least 30 minutes of CPU time to catch up during which
+the older process (e.g., web browser or mail client) would be starved of CPU cycles.
+In real-world environments, this would be unacceptable.
+Another important real-world consideration is the need to provide
+interactive applications with fast response times. For example, applications with
+user interfaces (UIs) that perform frequent I/O operations (e.g., shells, chat apps,
+some gaming apps) may not consume significant CPU time but require fast response
+times. An interactive process that is blocking on
+a message from a server or peer to arrive -- hence is not consuming CPU
+cycles while waiting -- should be assigned high priority when a message arrives
+and the process becomes ready to facilitate timely handling and responsiveness.
+</p>
+
+<p>
+Linux CFS addresses the
+first concern by (i) setting the initial CPU usage of a newly created process not to 0 but
+the maximum CPU usage across all ready processes. That is, a newly created process
+is assigned the lowest priority. If the ready list is empty (i.e., XINU's null process is
+occupying the CPU), set initial CPU usage to that of the null process. The null process
+must be treated as a special case so that its CPU usage is strictly greater than all other
+processes. This implies that the null process, when not current, is always at the end of
+the ready list. Explain in Lab3Answers.pdf how you ensure that this is the case.
+The second concern is addressed by (ii) assigning an interactive
+process that becomes ready a new CPU usage value that is the minimum CPU usage across
+all ready processes. That is, an interactive process that was blocked and just became
+unblocked (i.e., ready) is assigned highest priority.
+To do so, the kernel needs to distinguish I/O-bound
+and CPU-bound processes. Linux uses the criterion that a process
+that blocks, i.e., makes a blocking system call, is considered I/O-bound.
+Linux -- and similarly UNIX and Windows -- does not consider a process's entire history to assess 
+whether it is I/O- or CPU-bound. A
+process's last action, i.e., did it make a blocking system call and voluntarily
+relinquish the CPU, or was it involuntarily context-switched out
+by the kernel because it depleted its time slice, is the
+criterion. Since we have not yet discussed blocking
+system calls in XINU stemming from inter-process communication and device I/O, we will consider
+sleepms() as the sole system call through which apps block, i.e., voluntarily relinquish
+the CPU despite having time left in preempt.
+</p>
+
+<p>
+When implementing mechanisms (i) and (ii) in XINU, we cannot use the process CPU usage time
+field, prgrosscpu or prgrosscputick, from Problem 3 since the two mechanism change the values
+of prgrosscpu (similarly for prgrosscputick). That is, prgrosscpu (or prgrosscputick) would 
+cease to accurately measure a process's cumulative CPU usage.
+We will introduce a second process table field, uint32 prvgrosscpu, which undergoes the
+same updates as prgrosscpu to measure CPU usage and, in addition, is modified by (i) to set
+initial priority when a process is created and (ii) when a blocked process becomes ready.
+Thus these values are virtual (or fake) as they are utilized as metrics for implementing fair
+scheduling, not as pure measures of CPU usage.
+</p>
+
+<h3>4.4 XINU fair scheduler implementation</h3>
+
+<p>
+Following 4.1, 4.2 and 4.3,
+implement fair scheduling in XINU that dynamically adjusts process priority
+so as to provide equitable sharing of CPU cycles while promoting responsiveness of
+I/O-bound applications. Set the time slice parameter QUANTUM to 30 msec
+which serves as a minimum time budget when preemption by unblocked
+higher priority processes does not occur. In
+fair scheduling a fixed time slice is not needed. For example, if the highest priority
+process has CPU usage 100 msec and the second highest process has CPU usage 180 msec, then
+for scheduling purposes a time slice of 80 msec will suffice since that amount of
+time is required for the highest priority process to catch up to the second highest
+priority process. There is no need to call
+the scheduler earlier than that from the clock interrupt handler (unless an even higher
+priority process wakes up) which adds unnecessary overhead.
+A minimum time slice is useful to reduce scheduling overhead. For example,
+if the highest priority process has CPU usage 100 msec and the second highest 101 msec,
+context-switching after 1 or 2 msec when the second highest priority process
+becomes the highest priority process is inefficient leading to a ping-pong effect.
+Setting QUANTUM to 30 msec allows the highest priority process to accrue CPU usage
+of 130 msec before being context-switched out in favor of the process with CPU
+usage 101 msec.
+</p>
+
+<p>
+When a new process is spawned using create(), ignore the third argument specifying the
+process priority and follow mechanism (i) to set the process's initial priority. XINU's 
+null process (PID 0) must be treated separately so that its priority is always
+strictly less than the priority of all other processes in the system.
+Explain in Lab3Answers.pdf how you
+go about assuring that.
+When coding your XINU fair scheduler, make sure to
+clearly specify where in your code you have made changes (note your
+initial) along with brief comments on what and why. Code that is inadequately annotated will result
+in point deductions.
+You may use lab1 or lab2 code as the basis for implementing lab3. In the latter, note that
+any bugs in lab2, even though unrelated to lab3, will carry over.
+</p>
+
+
+<hr width="100%">
+<h2>5. Evaluation of XINU fair scheduler [80 pts]</h2>
+
+<p>
+Coding and testing individual components in Problem 4 needs to be augmented by system-wide
+testing and performance evaluation to gauge correctness of your implementation.
+</p>
+
+<h3>5.1 Test applications</h3>
+
+<p>
+Code a test application, void testcpu(void), that serves as a CPU-bound app and a program,
+void testio(void), that acts as an I/O-bound app. The code of testcpu() (place in system/testcpu.c)
+works as follows:
+<br><br>
+int x, y;
+<br>
+x = 0;
+<br>
+y = clktimemilli;
+<br>
+while(clktimemilli - y &lt; 8000)    // until wall clock time of 8 sec is reached do
+<br>
+&nbsp;&nbsp; x++; 
+<br>
+kprintf("cpu: %d %d %d %d\n", currpid, x, proctab[currpid].prgrosscpu, 
+procgrosscpumicro(currpid));
+<br><br>
+Since clktimemilli is updated by XINU's clock interrupt handler, testcpu()
+keeps performing ALU operations until 8 seconds have elapsed at which time it prints its
+PID, counter x, gross CPU usage, microsecond gross CPU usage, and terminates.
+</p>
+
+
+<p>
+The I/O-bound application, testio() (in system/testio.c), works as follows:
+<br><br>
+int x, y, i;
+<br>
+x = 0;
+<br>
+y = clktimemilli;
+<br>
+while(clktimemilli - y &lt; 8000)    // until wall clock time of 8 sec is reached do
+<br>
+&nbsp;&nbsp; x++; 
+<br>
+&nbsp;&nbsp; for(i=0; i&lt;10000; i++) ;   // consume some CPU cycles before blocking
+<br>
+&nbsp;&nbsp; sleepms(50);
+<br>
+}
+<br>
+kprintf("io: %d %d %d %d\n", currpid, x, proctab[currpid].prgrosscpu, 
+procgrosscpumicro(currpid));
+<br><br>
+We expect the value of x and CPU usage of testio() to be significantly smaller than testcpu().
+</p>
+
+<p>
+<i>
+Note:
+From a C programming perspective, y is assigned clktimemilli which is a global
+variable that is asynchronously updated by the clock interrupt handler every 1 msec (unless
+interrupts are disabled).
+gcc, by default, performs a number of optimizations so that the machine code generated is
+efficient. Sometimes gcc tries too hard which can lead to code that is problematic,
+in some cases, gcc's optimizations producing run-time bugs. One example
+is a C variable that is asynchronously updated by interrupt handlers. The 
+type qualifier <i>volatile</i>
+can be used to inform gcc not to engage in certain register optimizations that 
+can result in incorrect execution. Carefully consider if this is required in the test applications
+or any other code in lab3 where clktimemilli comes into play. gcc is but a tool. It is
+up to you to ensure that it does what you want it to do.
+</i>
+</p>
+
+<h3>5.2 Test scenario A [20 pts]</h3>
+
+<p>
+Create 4 CPU-bound processes from main()
+back-to-back. If your scheduler is implemented correctly, we would
+expect to see the 4 processes printing similar CPU usage and x values. 
+Repeat the benchmark test one more
+time and inspect your results. Discuss your findings in Lab3Answers.pdf.
+</p>
+
+<h3>5.3 Test scenario B [20 pts]</h3>
+
+<p>
+Create 4 I/O-bound processes from main() and perform the same benchmark tests as
+5.2. Discuss your findings in Lab3Answers.pdf.
+</p>
+
+<h3>5.4 Test scenario C [20 pts]</h3>
+
+<p>
+Create 4 CPU-bound processes and 4 I/O-bound processes. We would expect the 4 CPU-bound processes
+to output similar x values and CPU usage
+with respect to each other, and the same goes for the 4 I/O-bound
+processes within the group of I/O-bound processes. 
+Across the two groups, we would expect CPU-bound processes to receive
+significantly more CPU time than I/O-bound processes. Discuss your findings in Lab3Answers.pdf.
+</p>
+
+<h3>5.5 Test scenario D [20 pts]</h3>
+
+<p>
+A variant of test scenario A, create 4 CPU-bound processes in sequence with 500 msec delays
+(by calling sleepms()) added between successive create() (nested with resume()) system calls. Estimate
+how much CPU time the first process should receive. The same goes for the other 3 processes.
+Compare your calculations with the actual performance results from
+testing. Discuss your findings in Lab3Answers.pdf.
+</p>
+
+<p></p>
+<hr width="100%">
+<h2><b>Bonus problem</b> [20 pts]</h2>
+
+<p>
+Methods (i) and (ii) are heuristics aimed at addressing the concerns pointed out in 
+4.3. What is a potential weakness of method (i)? How would you improve on (i)? Describe
+your solution in Lab3Answers.pdf. Do the same for method (ii).
+What other issue does Linux CFS have compared to scheduling methods used in
+UNIX and Windows? Is this a big concern? Explain your reasoning.
+</p>
+
+<p>
+<i>
+Note: The bonus problem provides an opportunity to earn extra credits that
+count toward the lab component of the course. It is purely optional.
+</i>
+</p>
+
+<p></p>
+
+
+<hr width="100%">
+<h2><b>Turn-in instructions</b></h2>
+
+<p>
+General instructions:
+</p>
+
+<p>
+When implementing code in the labs, please
+maintain separate versions/copies of code so that mistakes such
+as unintentional overwriting or deletion of code is prevented. 
+This is in addition to the efficiency that such organization provides.
+You may use any number of version control systems
+such as GIT and RCS. Please make sure that your code is protected from public access. 
+For example, when using GIT, use git that manages code locally instead of its
+on-line counterpart github. If you prefer
+not to use version control tools, you may
+just use manual copy to keep track of different versions required for development
+and testing. More vigilance and discipline may be required when doing so.
+</p>
+
+<p>
+The TAs, when evaluating your code, will use their own test code (principally main())
+to drive your XINU code. The code you put inside main() is for your own testing and will,
+in general, not be considered during evaluation.
+</p>
+
+<p>
+If you are unsure what you need to submit in what format, consult the
+<a href="https://www.cs.purdue.edu/homes/sashutos/ta-notes.html">TA Notes</a> link.
+If it doesn't answer your question, send email to all four GTAs.
+</p>
+
+<p>
+Specific instructions:
+</p>
+
+<p>
+1. Format for submitting written lab answers and kprintf() added for 
+testing and debugging purposes in kernel code:
+</p><ul>
+<li>
+Provide your answers to the questions below in Lab3Answers.pdf and
+place the file in lab3/. You may use any document editing software
+but your final output must be exported and submitted as a pdf file.
+</li>
+<li>
+For problems where you are asked to print values using kprintf(), use
+conditional compilation (C preprocessor directives #define combined with #if and #endif)
+with macro XINUTEST (in include/process.h) to effect
+print/no print depending on if
+XINUTEST is defined or not. For your debug statements, do the same with macro XINUDEBUG.
+</li>
+</ul>
+
+<p>
+2. Before submitting your work, make sure to double-check the
+<a href="http://www.cs.purdue.edu/homes/sashutos//ta-notes.html">TA Notes</a>
+to ensure that additional requirements and instructions have been followed.
+</p>
+
+<p>3. Electronic turn-in instructions:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i) Go to the xinu-spring2020/compile
+directory and run "make clean".</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii) Go to the directory where lab3 (containing
+xinu-spring2020/ and Lab3Answers.pdf) is a subdirectory. 
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For example, if /homes/alice/cs354/lab3/xinu-spring2020 is your directory structure, go to 
+/homes/alice/cs354
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii) Type the following command
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+turnin -c cs354 -p lab3 lab3</p>
+<p></p>
+<p>
+You can check/list the submitted files using
+<br><br>
+turnin -c cs354 -p lab3 -v
+</p>
+
+
+<p>
+<i>Please make sure to disable all debugging output before submitting your code.</i>
+</p>
+
+<hr><a href="https://www.cs.purdue.edu/homes/cs354/index.html">Back to the CS 354 web page</a><br>
+
+
+</body></html>

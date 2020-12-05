@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0052)https://www.cs.purdue.edu/homes/cs354/lab1/lab1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  
+  
+  <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.17 i686) [Netscape]">
+  <title>Lab 1: Getting Acquainted with XINU</title>
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+<body>
+<center>
+<h2>CS 354 Spring 2020</h2>
+</center>
+<center>
+<h2>Lab 1: Getting Acquainted with XINU (165 pts)</h2>
+</center>
+<center>
+<h2>Due: 02/06/2020 (Thu.), 11:59 PM</h2>
+</center>
+<h2>1. Objectives</h2>
+The objectives of this introductory lab are to familiarize you with the steps
+involved in compiling and running XINU in our lab.
+<hr width="100%">
+<h2>2. Readings</h2>
+<ol>
+  <li>    <a href="http://www.cs.purdue.edu/homes/cs354/xinu/xinu-setup.html">XINU set-up</a></li>
+  <li>Chapters 1 and 2 from the XINU textbook.</li>
+</ol>
+
+<hr width="100%">
+<h2>3. Inspecting XINU's run-time environment [165 pts]</h2>
+
+<p>
+Follow the instructions in the
+<a href="http://www.cs.purdue.edu/homes/cs354/xinu/xinu-setup.html">XINU set-up</a>
+which compiles the XINU source code on a frontend machine (Linux PC)
+in the XINU Lab, grabs an unused x86 Galileo backend machine,
+loads and bootstraps the compiled XINU image. Note that the frontend
+PC's terminal acts as a (remote) console of the dedicated
+backend Galileo x86 machine. If XINU bootstraps successfully,
+it will print a greeting message and start a simple shell
+called xsh. The <i>help</i> command will list the set of commands
+supported by xsh. Run some commands on the shell and follow
+the disconnect procedure so that the backend is released.
+<b>Do not hold onto a backend: it is a shared resource.</b>
+</p>
+
+<h3>Problem 3.1 (45 pts)</h3>
+
+<p>
+(a) Inside the system/ subdirectory, you will find the bulk of relevant
+XINU source code. The file start.S contains assembly code
+that is executed after XINU loads on a backend. After
+performing bootstrap/initialization chores (the details are
+not relevant at this time), a call to function nulluser()
+in initialize.c is made. At some point, nulluser() calls
+sysinit() (also in initialize.c). Jump to the code of sysinit()
+where updates to the data structure proctab[] are made which
+represents XINU's process table. In XINU, as well as in Linux/UNIX
+and Windows, a process table is one of the key data structures
+of an operating system where bookkeeping of all created
+processes is performed. In our Galileo x86 backend which has
+a single CPU, only one process can occupy the CPU at a time.
+In a x86 machine with 4 CPUs (i.e.,
+quad-core) up to 4 processes may be running concurrently.
+Most of XINU's kernel code can be found in system/ and include/ (header files).
+Some configuration related parameters can be found in config/.
+The total number of processes supported in XINU is defined by the
+constant NPROC. Do some detective work to locate the places where
+NPROC is defined. Based on what you find, determine how many processes
+can exist in XINU.
+</p>
+<p>
+(b) When a backend machine bootstraps and performs initialization,
+there is as yet no notion of a "process." That is, the hardware 
+just executes a sequence of machine instructions compiled by
+gcc on a frontend Linux PC for our target backend x86 CPU (i.e.,
+the binary xinu.xbin). This
+includes machine code translated from initialize.c. nulluser()
+in initialize.c calls sysinit() which
+sets up the process table data structure proctab[] which keeps
+track of relevant information about created processes that have
+not terminated. When a process terminates, its entry is freed
+in proctab[]. After allocating the proctab[] data structure to
+hold up to NPROC processes, sysinit() creates the first process,
+called the NULL (or idle) process. This NULL process which exists
+not only in XINU but also in Linux/UNIX and Windows is the
+ancestor of all other processes in the system. It is the only
+process that is not created by the system call create() but is
+"handcrafted" during system initialization.
+Locate where the constant NULLPROC is defined and determine its value.
+One of the properties of a process is its priority. In XINU, the
+larger the priority value (an integer) the higher preference a process is
+given during scheduling when the kernel decides which process to
+allocate a CPU next. Using detective work, determine the C type of
+of the priority field in the process table of XINU. Do not just
+provide the final answer but describe the procedure you followed to
+arrive at the answer. Specify the maximum and minimum priority values,
+at least in principle, that a XINU process may take.
+Where in this range does the priority of the NULL process fall?
+</p>
+<p>
+(c) At some point, nulluser() calls create() where the first
+argument, <i>startup</i>, is a function pointer to startup() whose code
+is contained in
+initialize.c. System call create() finds a free entry in proctab[] and
+creates a new process. In XINU, all processes created using create()
+start off in a suspended state which means they are not assigned to the CPU.
+The system call resume() changes the state of a newly created process
+to a ready state which allows it to compete with other ready processes
+for CPU cycle allocation. In our version of XINU, the only task
+performed by startup() is to create (and resume) a process running the
+function main() whose code is in main.c. Since creating a process running
+startup() adds overhead, create a process that runs main() from
+nulluser() directly. This will be your first modification of XINU which
+changes the source code in initialize.c. 
+When making changes to source
+code, it is good practice, even if changes are minor, to annotate the
+code using comments what was done, by whom, when. Follow this practice
+when making mods to XINU. After making the change to nulluser(), verify
+that it works correctly. Any time changes to XINU or application processes
+running under XINU are made, XINU must be rebuilt on a front-end
+machine and reloaded on a backend machine. The process running main()
+prints a number of messages using kprintf() and then creates a process
+running a shell app using create(). Except in lab1, we will have no
+use for the shell app (it is just an application and not part of the
+kernel) nor the kprintf() messages at the start of main().
+</p>
+
+<h3>Problem 3.2 (20 pts)</h3>
+
+<p>
+Remove the
+"Hello World!" welcome message that is output on console by main().
+Instead, write a function, void mymotd(void), in mymotd.c under system/ which
+outputs using kprintf() a hello message containing your user name and name.
+Make a call to mymotd() from nulluser() just before it creates a process
+running main().
+Since now you have added code residing in a new file, mymotd.c, under system/, the question
+arises as to whether changes need to be made to Makefile in compile/.
+In earlier versions of Makefile, new code files needed to be explicitly specified. In
+the current version, all files in system/ are automatically
+compiled and linked during a build. Verify that the mod works correctly.
+In lab assignments where new functionalities are added
+to XINU, this will entail adding files containing C and assembly code to system/
+and header files to include/.
+</p>
+
+<h3>Problem 3.3 (40 pts)</h3>
+
+<p>
+(a) In Linux/UNIX, to create a new process that runs an
+executable binary, say, /bin/ls, we first use the system call fork() to create a child
+process and then call the system call execve() with /bin/ls (or a.out) as an argument.
+As noted in Problem 3.1(c),
+in XINU a newly created process is put in a suspended state after
+it is created using create(). That is, the child process exists as an entry in the process table
+but it is marked as suspended (constant PR_SUSP in include/process.h). 
+Being in suspended state has the consequence that XINU will not assign CPU
+cycles to the process until its state is changed to ready (PR_READY) by calling resume().
+Two steps are needed to put a process into ready state so that XINU (i.e., its scheduler)
+eventually allocates CPU cycles to the process. The first step is to set the state of the
+process to PR_READY. The second step is to insert the process into a data structure called
+a ready list where other ready
+processes who are waiting to receive CPU cycles are kept. Both steps are performed by the kernel
+function ready(). ready() is not a system call but
+a kernel function that is called by system calls and other
+kernel functions.
+</p>
+<p>
+Inspecting the code of resume() will show that it calls ready() after performing
+sanity checks to verify that the PID of the process to be resumed is valid and that
+the process in question is indeed in suspended state. Otherwise, an error status
+(value SYSERR) is returned. If resume() does not encounter a problem, it returns the
+priority of the readied process.
+The code of ready() shows that it changes the process state to
+PR_READY, calls kernel function insert() to add the newly readied process
+into XINU's ready list, and calls the kernel function
+resched() which determines if the CPU should be assigned to a different ready
+process. For example, if the just readied process has a higher priority
+than the current process occupying the CPU, then by the preference rule noted
+in Problem 3.1(b), the higher priority process is assigned the CPU and the
+current occupant is removed. That is, a context-switch is performed.
+</p>
+
+<p>
+Code a modified version of create(), pid32 rcreate(), with the same arguments as
+create() which puts the newly created process in ready state. To do so, at the end
+of create() just before calling restore(mask) (we will discuss the role of
+restore() separately), make a call to ready(). Do not call
+resume() from create(). Put the function rcreate() in
+rcreate.c under system/. Check that rcreate() works correctly.
+For example, instead of nulluser() calling 
+<br><br>
+resume(create((void *)main, INITSTK, INITPRIO, "Main process", 0, NULL));
+<br><br>
+it should suffice to call
+<br><br>
+rcreate((void *)main, INITSTK, INITPRIO, "Main process", 0, NULL);
+<br><br>
+rcreate() changes the flavor of XINU process creation to resemble the approach followed
+by Linux/UNIX and Windows where newly created processes are not suspended.
+</p>
+
+<p>
+(b) In Linux where a child process is created using fork(), the question arises as to
+who runs first: child or parent? Experimentally gauge an answer to the question
+by writing and running test code on a front-end Linux machine in the XINU Lab where 
+the parent process forks a child process. Make them perform tasks after fork() such
+as writing to terminal (file descriptor 1) using the write() system call.
+Output the priority of the parent and child processes by calling
+getpriority(). This helps gauge how Linux sets the priority of a child process. 
+Keep in mind that a number of properties of the parent are inherited or shared by
+child processes.
+Also note that in Linux smaller integers mean higher priority.
+Do not try to find an authoritative answer from books or other formal sources.
+The point of this exercise is for you to experiment. For this task, it does not matter if
+your experiments lead to an incorrect conclusion.
+Put your test code, parentchild.c, in lab1/.
+In the rcreate() version of create() in XINU, which process will run first after
+rcreate() is called when the process running main() is created in 3.3(a)?
+Use detective work to find the definitive answer without relying on experimental
+evidence alone. This is different from the Linux exercise.
+Keep in mind the rule: if two processes are ready, the kernel
+picks one with higher priority. The case when priorities are
+equal will be discussed separately.
+</p>
+
+
+<h3>Problem 3.4 (30 pts)</h3>
+
+<p>
+When your XINU code running on a backend machine triggers a hardware interrupt, x86 is
+programmed by XINU to call interrupt handlers, mostly coded in assembly, in intr.S. For example,
+a divide-by-zero arithmetic operation is detected by the hardware as interrupt number 0
+(interrupts are numbered 0, 1, 2, ..., 255) and x86 proceeds to consult a table
+called IDT (interrupt descriptor table) set up by XINU 
+during initialization which specifies which interrupt handler to run.
+The same goes for Linux/UNIX and Windows.
+Interrupts that are generated as a result of the running program such as dividing by zero
+are called synchronous interrupts. "Synchronous" means that the currently running program
+caused the interrupt. In many cases, interrupts are asynchronous in the sense that their
+cause lies elsewhere such as a clock ringing, a message arriving, among other events.
+Intel uses the jargon "exception" or "fault"
+to denote the first 32 interrupts which are all of synchronous type. They include the familiar
+segmentation violation/fault which maps to interrupt, i.e., exception (or fault) number 13 that is 
+triggered when a running program tries to reference memory that it does not have access 
+to. The interrupt is synchronous to the instruction executed by the current process which
+caused it. Exception 13 is also called General Protection Fault.
+</p>
+
+<p>
+Interrupt handling code for interrupt number 0 (i.e., divide-by-zero) is located
+at label _Xint0 in intr.S. The interrupt handling code for exception number
+0 is just 7 lines of assembly code. 
+The last instruction, jmp Xtrap, is an unconditional
+jump/branch to Xtrap which contains 2 lines of code. The first instruction, call trap,
+is a function call from assembly code intr.S to C function trap() in evec.c.
+Thus the initial part of interrupt handling is coded in assembly and the latter
+part in C. Inspect the trap() function code in evec.c. When doing lab assignments,
+you will become enemy, and then friends, with code in intr.S and evec.c.
+In particular, a bug in your XINU code is likely
+to eventually end up as a call to trap(). 
+The code in trap() 
+prints select system state information that may help you track down bugs.
+trap() is passed two arguments by its caller Xtrap with help from
+assembly code at _Xint0 in intr.S. Explain how passing of the two arguments
+is accomplished following (i.e., being consistent with) the CDECL convention.
+Note that code in evec.c is translated in machine code by gcc. The code
+in intr.S that is translated into machine code by the assembler. They must
+interface correctly to work correctly. Modify trap() to print your user name,
+name, and the XINU system variable clktime which is a global variable that
+keeps track of the number of seconds that have passed since you bootstrapped
+XINU on a backend machine. 
+Trigger interrupt 0 by performing divide by zero
+at the beginning of main(). Confirm that the system reaches the code in trap().
+The last operation that trap() performs is to call the kernel function
+panic(). Based on the code your find in panic(), explain what happens to
+XINU at the end dividing by zero in an app generates interrupt 0.
+</p>
+
+
+<h3>Problem 3.5 (30 pts)</h3>
+
+<p>
+In Problem 3.4, we considered what happens to a process and XINU as a system
+when interrupt 0 is generated in x86 by executing a divide by zero instruction.
+In this problem we will consider what happens if a process does not generate
+a synchronous interrupt and terminates by completing its last instruction. Informally
+we would say that a process terminates normally. For
+example, in the case of a process created using create() and running function
+main(), we are interested in determining what happens after main() returns. In
+XINU, there is nothing special about main() -- it is just another function --
+and a process can be created to run any function. We are interested in 
+determining what happens when this arbitrary function returns as a result of
+completing the last instruction to be executed by the process. Keep in mind
+that XINU is compiled using gcc and follows the CDECL function call convention.
+</p>
+
+<p>
+To answer this question, we have to look at how the create() system call creates a
+new process which entails myriad tasks. When looking at create(), in the example
+where the function pointer of main() is passed as first argument of create(), we find 
+that XINU creates the illusion that main() was called by another function
+by pushing the function pointer (i.e., address) of this virtual calling
+function onto the stack of the process running main() as the return address of main().
+Looking at the code of create() where content is pushed onto the run-time stack of
+a process when it is created, determine the name of the function that XINU sets up
+as the function that called main(). Inspect the code of this virtual caller in
+system/ and determine what it does. In the special case where the process that terminates
+is the last process outside the NULL process, determine what happens by continuing
+to follow XINU's source code. In the chain of functions being called starting with
+the virtual function to which main() returns, what is the last function that is
+called, where is its source code, and what does it do? In environments where power
+consumption is an important issue -- e.g., battery powered mobile devices, or cloud
+computing servers where overheating must be prevented -- is XINU's approach to
+"shutting down" after the last process has terminated a good solution? What might be
+a better solution? Explain your reasoning.
+</p>
+
+<p>
+<i>
+Important: For the written components of Problems 3.1 - 3.5, write your answers in a file,
+Lab1Answers.pdf, and put it under lab1/. You may use any number of word processing
+software as long as they are able to export content as pdf files using standard
+fonts. Written answers in any other format will not be accepted.
+</i>
+</p>
+
+<p></p>
+<hr width="100%">
+<h2><b>Bonus problem</b> [15 pts]</h2>
+
+<p>
+In Linux/UNIX system programming, we say that the fork() is special in that it
+is the only system call that "returns twice." What does that mean? Why does this
+feature of fork() not apply to XINU's create()? We say that Linux/UNIX's execve()
+system call is special in that it is the only system call that does not return
+when it succeeds. What does this mean? Why does this not apply to XINU's create()?
+</p>
+
+<p>
+<i>
+Note: The bonus problem provides an opportunity to earn extra credits that
+count toward the lab component of the course. It is purely optional.
+</i>
+</p>
+
+<p></p>
+
+
+<hr width="100%">
+<h2><b>Turn-in instructions</b></h2>
+
+<p>
+General instructions:
+</p>
+
+<p>
+When implementing code in the labs, please
+maintain separate versions/copies of code so that mistakes such
+as unintentional overwriting or deletion of code is prevented. 
+This is in addition to the efficiency that such organization provides.
+You may use any number of version control systems
+such as GIT and RCS. Please make sure that your code is protected from public access. 
+For example, when using GIT, use git that manages code locally instead of its
+on-line counterpart github. If you prefer
+not to use version control tools, you may
+just use manual copy to keep track of different versions required for development
+and testing. More vigilance and discipline may be required when doing so.
+</p>
+
+<p>
+The TAs, when evaluating your code, will use their own test code (principally main())
+to drive your XINU code. The code you put inside main() is for your own testing and will,
+in general, not be considered during evaluation.
+</p>
+
+<p>
+If you are unsure what you need to submit in what format, consult the
+<a href="https://www.cs.purdue.edu/homes/sashutos/ta-notes.html">TA Notes</a> link.
+If it doesn't answer your question, send email to all four GTAs.
+</p>
+
+<p>
+Specific instructions:
+</p>
+
+<p>
+1. Format for submitting written lab answers and kprintf() added for 
+testing and debugging purposes in kernel code:
+</p><ul>
+<li>
+Provide your answers to the questions below in Lab1Answers.pdf and
+place the file in lab1/. You may use any document editing software
+but your final output must be exported and submitted as a pdf file.
+</li>
+<li>
+For problems where you are asked to print values using kprintf(), use
+conditional compilation (C preprocessor directives #define combined with #if and #endif)
+with macro XINUTEST (in include/process.h) to effect
+print/no print depending on if
+XINUTEST is defined or not. For your debug statements, do the same with macro XINUDEBUG.
+</li>
+</ul>
+
+<p>
+2. Before submitting your work, make sure to double-check the
+<a href="http://www.cs.purdue.edu/homes/sashutos//ta-notes.html">TA Notes</a>
+to ensure that additional requirements and instructions have been followed.
+</p>
+
+<p>3. Electronic turn-in instructions:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i) Go to the xinu-spring2020/compile
+directory and run "make clean".</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii) Go to the directory where lab1 (containing
+xinu-spring2020/ and Lab1Answers.pdf) is a subdirectory. 
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For example, if /homes/alice/cs354/lab1/xinu-spring2020 is your directory structure, go to 
+/homes/alice/cs354
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii) Type the following command
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+turnin -c cs354 -p lab1 lab1</p>
+<p></p>
+<p>
+You can check/list the submitted files using
+<br><br>
+turnin -c cs354 -p lab1 -v
+</p>
+
+
+<p>
+<i>Please make sure to disable all debugging output before submitting your code.</i>
+</p>
+
+<hr><a href="https://www.cs.purdue.edu/homes/cs354/index.html">Back to the CS 354 web page</a><br>
+
+
+</body></html>
