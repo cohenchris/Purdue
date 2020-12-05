@@ -1,0 +1,19 @@
+2
+17
+insert 20
+insert 22
+insert 8
+insert 12
+insert 4
+insert 10
+insert 14
+height 10
+height 22
+height 20
+height 12
+delete 10
+delete 15
+search 14
+search 15
+range 1 22
+range 11 17

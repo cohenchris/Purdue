@@ -1,0 +1,18 @@
+2
+16
+postorder
+levelorder
+insert 10
+insert 6
+insert 14
+insert 8
+insert 9
+postorder
+levelorder
+insert 12
+insert 13
+insert 16
+insert 7
+insert 5
+postorder
+levelorder

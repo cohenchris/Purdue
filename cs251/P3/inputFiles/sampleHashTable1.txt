@@ -1,0 +1,11 @@
+1
+9
+p key1 5
+g key1
+g key2
+r key2 7
+r key1 7
+s
+c key1
+c key2
+p key1 6

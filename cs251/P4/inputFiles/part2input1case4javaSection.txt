@@ -1,0 +1,15 @@
+2
+13
+insertRB 1
+insertRB 2
+insertRB 3
+insertRB 4
+insertRB 5
+insertRB 6
+insertRB 7
+insertRB 8
+insertRB 9
+insertRB 10
+Bheight 1
+Bheight 4
+levelorder

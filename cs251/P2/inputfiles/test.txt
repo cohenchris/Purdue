@@ -1,0 +1,9 @@
+2
+6 6
+O O O X X X
+O D O X X X
+O O T T H X
+X T C T H X
+O T O R X X
+H W R X X X
+DOCTORWHO

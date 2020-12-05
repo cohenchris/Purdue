@@ -1,0 +1,10 @@
+3
+1
+0
+2
+deleted
+deletion failed
+found
+not found
+80
+26

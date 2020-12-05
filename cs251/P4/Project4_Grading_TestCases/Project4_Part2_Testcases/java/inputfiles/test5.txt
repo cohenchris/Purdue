@@ -1,0 +1,24 @@
+2
+22
+insert 1
+insert 2
+insert 3
+insert 4
+insert 5
+delete 2
+delete 4
+insert 2
+insert 4
+delete 6
+delete 1
+insert 1
+insert 6
+insert 10
+insert 8
+height 1
+height 3
+height 8
+search 10
+search 7
+range 2 20
+range 7 9

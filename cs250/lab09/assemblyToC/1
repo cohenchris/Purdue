@@ -1,0 +1,58 @@
+.data
+in_string: .asciz "%s"	//stores input string
+start_index: .string "%d" //stores index to start sub_string
+end_index: .string "%d" //stores index to stop sub_string
+
+q1: .asciz "Enter a string: "
+q2: .asciz "Enter the start index: "
+q3: .asciz "Enter the end index: "
+output: .asciz "The substring of the given string is '%s'" //final output string
+
+input: .skip 100
+
+.text
+.global main
+main:
+push {r4-r10, fp, lr}
+mov fp, sp
+//mov r0, #400		//to allocate 400 bytes
+//bl malloc		//mallocs 400 bytes of space
+//mov r4, r0		//moves malloced space for input_string to r4
+//1st scanf section
+ldr r0, =q1		//loads r0 for printf to output the first question
+bl printf		//prints the first question
+ldr r0, =in_string	//loads r0 with the in_string scanf format
+ldr r1, =input
+bl scanf		//asks the user for in_string
+
+//2nd scanf section
+ldr r0, =q2		//loads r0 for printf to output the second question
+bl printf		//prints the second question
+
+sub sp, #8		//allocate space for 2 variables (start_index, end_index)
+
+ldr r0, =start_index	//loads r0 with the start_index scanf format
+ldr r1, [fp,#-4]
+bl scanf		//asks the user for start_index
+/*
+//3rd scanf section
+ldr r0, =q3		//loads r0 for printf to output the third question
+bl printf		//prints the third question
+ldr r0, =end_index	//loads r0 with the end_index scanf format
+ldr r1, [r6]
+bl scanf		//asks the user for end_index
+
+//sub_string
+mov r0, r4		//loads r0 with the in_string
+mov r1, r5		//loads r1 with the start_index
+mov r2, r6		//loads r2 with the end_index
+bl sub_string		//call sub_string (c code)
+mov r7, r0		//loads r7 with the output of sub_string
+
+//final print output
+ldr r0, =output		//prints final output string
+mov r1, r7		//loads r1 with the sub_string (will replace %s in output string)
+bl printf		//prints the output string
+*/
+mov sp, fp
+pop {r4-r10, fp, pc}
