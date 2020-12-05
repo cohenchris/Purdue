@@ -1,0 +1,143 @@
+/*
+ * Name, hw3.c, CS 24000, Fall 2018
+ * Last updated September 13, 2018
+ */
+
+#include "hw3.h"
+#include "math.h"
+/*
+struct complex_struct {
+  double x;
+  double y;
+}
+typedef struct complex_struct complex;
+*/
+
+/* This function will add the corresponding fields of two complex variables
+ * together and will return a complex value that represents the sum.
+ */
+
+complex complex_add(complex complex_one, complex complex_two) {
+  double x_value = 0.0;
+  double y_value = 0.0;
+
+  x_value = complex_one.x + complex_two.x;
+  y_value = complex_one.y + complex_two.y;
+
+  complex final_complex = {x_value, y_value};
+  return final_complex;
+  
+} /* complex_add() */
+
+/* This function will return the negative form of the given complex number
+ * (argument 1).
+ */
+
+complex complex_neg(complex complex_num) {
+  double x_value = 0.0;
+  double y_value = 0.0;
+
+  x_value = complex_num.x * -1;
+  y_value = complex_num.y * -1;
+
+  complex final_complex = {x_value, y_value};
+  return final_complex;
+} /* complex_neg() */
+
+/* This function will subtract the second complex number (argument 2) from
+ * the first (argument 1)
+ */
+
+complex complex_sub(complex complex_one, complex complex_two) {
+  double x_value = 0.0;
+  double y_value = 0.0;
+  
+  x_value = complex_one.x - complex_two.x;
+  y_value = complex_one.y - complex_two.y;
+
+  complex final_complex = {x_value, y_value};
+  return final_complex;
+} /* complex_sub() */
+
+/* This function will return the dot product of the complex arguments.
+ */
+
+double complex_dot(complex complex_one, complex complex_two) {
+  double multiplied_x_values = 0.0;
+  double multiplied_y_values = 0.0;
+
+  multiplied_x_values = complex_one.x * complex_two.x;
+  multiplied_y_values = complex_one.y * complex_two.y;
+
+  return multiplied_x_values + multiplied_y_values;
+}/* complex_dot() */
+
+/* This function will return the reciprocal of the argument.
+ */
+
+complex complex_inv(complex complex_num) {
+  double x_value = 0.0;
+  double y_value = 0.0;
+  
+  double square_x = complex_num.x * complex_num.x;
+  double square_y = complex_num.y * complex_num.y;
+  double magnitude_squared = square_x + square_y;
+
+  x_value = complex_num.x / magnitude_squared;
+  y_value = (complex_num.y / magnitude_squared) * -1;
+
+  complex final_complex = {x_value, y_value};
+  return final_complex;
+}/* complex_inv() */
+
+/* This function returns the complex product of the two complex arguments.
+ */
+
+complex complex_mul(complex complex_one, complex complex_two) {
+  double x_value = 0.0;
+  double y_value = 0.0;
+  
+  x_value = (complex_one.x * complex_two.x) - (complex_one.y * complex_two.y);
+  y_value = (complex_one.x * complex_two.y) + (complex_one.y * complex_two.x);
+
+  complex final_complex = {x_value, y_value};
+  return final_complex;
+} /* complex_nul() */
+
+/* This function will return the complex division of the first argument
+ * by the second. Uses the complex_mul and complex_inv functions.
+ */
+
+complex complex_div(complex complex_one, complex complex_two) {
+  return complex_mul(complex_one, complex_inv(complex_two));
+} /* complex_div() */
+
+/* This function computes the complex exponential function e^n where the
+ * argument is complex.
+ */
+
+complex complex_exp(complex complex_num) {
+  double x_value = 0.0;
+  double y_value = 0.0;
+  
+  x_value = exp(complex_num.x) * cos(complex_num.y);
+  y_value = exp(complex_num.x) * sin(complex_num.y);
+
+  complex final_complex = {x_value, y_value};
+  return final_complex;
+} /* complex_exp() */
+
+int mandelbrot(complex complex_num) {
+  
+  #define MAX_MANDLEBROT (255)
+
+  complex Z = {0.0, 0.0};
+  int num_calculations = 0;
+
+  while ((sqrt(complex_dot(Z,Z)) < 2.0) || num_calculations <= MAX_MANDLEBROT) {
+    Z = complex_add(complex_mul(Z,Z), complex_num);
+    num_calculations++;
+  }
+
+  return num_calculations;
+} /* mandelbrot() */

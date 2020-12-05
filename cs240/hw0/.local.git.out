@@ -1,0 +1,36 @@
+Your branch is up to date with 'origin/master'.
+[master b438158] Commit homework hw0
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 154 insertions(+)
+ create mode 100644 hw0.c
+ create mode 100644 hw0.h
+ create mode 100644 hw0_main.c
+M	hw0.c
+Your branch is up to date with 'origin/master'.
+[master 3644db0] Commit homework hw0
+ Committer: Christopher Ryan Cohen <cohen50@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 33 insertions(+), 17 deletions(-)
