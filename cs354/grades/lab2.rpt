@@ -1,0 +1,65 @@
+cohen50
+
+Grades for lab2 
+
+
+Problem 3.2(a-e): 45/45
+Graded by: Muqi Zou (zou116@purdue.edu)
+
+Problem 3.2(f): 15/15
+Graded by Shushan Ashutosh (sashutos@purdue.edu)
+
+Problem 4(a): 20/20
+Graded by Shushan Ashutosh  (sashutos@purdue.edu)
+
+Problem 4(b): 20/20
+Graded by  Shushan Ashutosh  (sashutos@purdue.edu)
+
+Problem 5: 118/120
+Comment: clobbered registers are not specified properly in the wrapper (eax,ebx can be potentially used by the translated code of inline assembly (int 33 part)
+Graded by Rashidedin Jahandideh (rjahandi@purdue.edu) and Hyunchai Jeong (jeong3@purdue.edu)
+
+Bonus: 20/20
+Graded by Rashidedin Jahandideh (rjahandi@purdue.edu) and Hyunchai Jeong (jeong3@purdue.edu)
+
+Remaining late days: 3
+
+Total: 218/220
+
+Total (with early submission credit): 228.9/220
+
+Correction for final total grades: 
+
+
+Total: 238/220
+
+Total (with early submission credit): 249.9/220
+
+
+ Regrade for lab2 
+
+
+Problem 3.2(a-e): 45/45
+Graded by: Muqi Zou (zou116@purdue.edu)
+
+Problem 3.2(f): 15/15
+Graded by Shushan Ashutosh (sashutos@purdue.edu)
+
+Problem 4(a): 20/20
+Graded by Shushan Ashutosh  (sashutos@purdue.edu)
+
+Problem 4(b): 20/20
+Graded by  Shushan Ashutosh  (sashutos@purdue.edu)
+
+Problem 5: 118/120
+Comment: clobbered registers are not specified properly in the wrapper (eax,ebx can be potentially used by the translated code of inline assembly (int 33 part)
+Graded by Rashidedin Jahandideh (rjahandi@purdue.edu) and Hyunchai Jeong (jeong3@purdue.edu)
+
+Bonus: 20/20
+Graded by Rashidedin Jahandideh (rjahandi@purdue.edu) and Hyunchai Jeong (jeong3@purdue.edu)
+
+Remaining late days: 3
+
+Total: 238/220
+
+Total (with early submission credit): 249.9/220

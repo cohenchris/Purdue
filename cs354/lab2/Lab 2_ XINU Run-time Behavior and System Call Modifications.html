@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0052)https://www.cs.purdue.edu/homes/cs354/lab2/lab2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  
+  
+  <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.17 i686) [Netscape]">
+  <title>Lab 2: 
+XINU Run-time Behavior and System Call Modifications
+</title>
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+<body>
+<center>
+<h2>CS 354 Spring 2020</h2>
+</center>
+<center>
+<h2>Lab 2: 
+XINU Run-time Behavior and System Call Modifications (220 pts)
+</h2>
+</center>
+<center>
+<h2>Due: 02/20/2020 (Thu.), 11:59 PM</h2>
+</center>
+<h2>1. Objectives</h2>
+The objectives of this lab are to understand XINU's run-time behavior and
+use ABI programming to make system call modifications.
+<hr width="100%">
+<h2>2. Readings</h2>
+<ol>
+  <li>    <a href="http://www.cs.purdue.edu/homes/cs354/xinu/xinu-setup.html">XINU set-up</a></li>
+  <li>Chapters 3 and 4 from the XINU textbook.</li>
+</ol>
+
+<hr width="100%">
+<h2>3. Dynamical behavior of XINU's process scheduler [60 pts]</h2>
+
+<h3>3.1 Background</h3>
+
+<p>
+We noted in class that XINU's scheduler picks a highest ready process to allocate CPU cycles
+next. If there is a tie, the highest priority ready 
+processes are serviced in a round-robin manner with
+each process getting a fixed time budget, called time slice or quantum, to execute.
+The kernel enforces the time budget by utilizing one of our x86 backend's clocks as its 
+system timer to generate periodic interrupts every 1 msec.
+The clock interrupt is mapped to interrupt number 32 in XINU through kernel initialization
+functions set_evec() in clkinit() in system/.
+The address of the clock interrupt handling code, clkdisp() in clkdisp.S, is installed
+in IDT (Interrupt Descriptor Table) at its 33 entry (i.e., row) as noted in class.
+The clock interrupt handling function clkdisp() to which the CPU jumps to after executing
+the current instruction performs three tasks: (i) save the state of the current process
+such as the values in some registers and the return address to jump to when interrupt handling
+(which borrows the current process context), (ii) issue an EOI (end-of-interrupt) command
+to PIC (Programmable Interrupt Controller) which assists the CPU with interrupt managing chores
+to allow new clock interrupts to be generated, and (iii)
+call clkhandler() in clkhandler.c which performs the main chores associated with
+clock interrupt handling. That is (i) and (ii), although essential, are routine bookkeeping
+tasks that must be performed so that the main tasks of (iii) can be
+performed. Task (i) also includes disabling/enabling interrupts through cli/sti which
+is noted in Section 5.4.
+</p>
+
+<p>
+One of the tasks performed by clkhandler() is to determine if the current process 
+has exceeded its time budget. If so, a call to XINU's process scheduler, resched() in resched.c,
+is made to determine if the current process should continue to occupy the CPU after
+clock interrupt handling is completed. By the scheduling rule discussed in class, if the
+priority of the current process is strictly higher than that of all other ready processes, then
+it continues to run. Otherwise, it will be context-switched out and a different process
+becomes current, i.e., occupies the CPU.
+When a ready process is selected to run next, the global variable <em>preempt</em> is
+initialized to the constant QUANTUM which represents the time budget. Since XINU's clock interrupt is
+configured to trigger every 1 msec and QUANTUM (in unit of msec) may be configured to
+be greater than 1 msec, clkhandler() decrements preempt and calls resched()
+when preempt reaches 0. That is, the current process has depleted its time budget.
+</p>
+
+<h3>3.2 Experiments</h3>
+
+<p>
+Find where the time budget QUANTUM is defined, note its value (put in comment the previous value 
+out so that you keep a history), and change 
+QUANTUM to 30 msec for the experiments below. When making changes to kernel code, annote the
+code by specifying who (use your username), when (date), and why (be brief but try to be
+informative). Make your lab1 XINU code that includes minor modifications to XINU
+your baseline code for lab2. That includes creating a process to execute main()
+from nulluser() directly using rcreate() without creating a process running 
+startup(). Perform the following tasks and experiments:
+</p>
+
+<p>
+(a) Remove the legacy code of main(). Change main() so that the example
+code from Presentation-1.pdf, main() creating/resuming two processing running sndch()
+printing 'A' and 'B', respectively,
+are added. Replace putc() with kprintf().
+Change their priorities from 20 to 10.
+Check what the constant INITPRIO is which determines the
+priority of the process executing main(). Compile, load, and run XINU
+on a backend. What output to CONSOLE do you observe? Discuss your finding
+in Lab2Answers.pdf in lab2/.
+</p>
+
+<p>
+(b) Rerun experiment (a) with
+QUANTUM set to 5 msec. Discuss your finding.
+</p>
+
+<p>
+(c) Go back to the set-up of experiment (a) and change the priority of the process printing
+'B' to 15. Discuss your finding.
+</p>
+
+<p>
+(d) Go back to the set-up of experiment (a) and change the priority of the process printing
+'A' to 25. Discuss your finding.
+</p>
+
+<p>
+(e) Go back to the set-up of experiment (a) and change the priority of the process printing
+'A' to 20. Discuss your finding. Explain the difference between (d) and (e).
+</p>
+
+<p>
+(f) The system call create() does not allow creating a process whose
+priority value is 0 or negative (verify the source code create.c). For example, if -3 is
+given as the third argument, create() will return SYSERR. To varying extent all 
+operating systems have vulnerabilities and XINU is no exception. Although create()
+prevents 0 or negative priority values, after a process has been created with a positive
+priority value the system call chprio() can be used to bypass this protection.
+chprio() has two arguments: the first specifies a PID and the second a priority value
+to change PID's priority to. Although chprio() checks that the first argument is a
+valid process ID, it does not check whether the second argument is positive.
+Modify XINU's chprio() so that it returns SYSERR when 0 or a negative priority value is
+passed as argument. Test that the modified chprio() works correctly and make
+it the default version for lab2 and future labs. Explain why this modification is
+necessary to preserve an important property of the NULL process (or IDLE process
+in Linux/UNIX and Windows) in today's operating systems.
+</p>
+
+<p>
+Each experiment need only be run for a few seconds to gauge what is going on. Use
+control-spacebar to return the backend to command-mode followed by power cycle and quit
+(see <a href="https://www.cs.purdue.edu/homes/cs354/xinu/xinu-setup.html">XINU setup</a>) to release it.
+</p>
+
+<hr width="100%">
+<h2>4. Kernel mod: adding new system calls [40 pts]</h2>
+
+<p>
+(a) Create a new system call, pid32 getppid(pid32), that allows a process to 
+query the PID of the parent of the process given by the argument. When inspecting
+system call create(), we find that the parent's PID of the new process to be spawned
+is stored in the process table field prparent.
+Follow the sanity check of chprio() to verify that the PID passed in the argument
+is valid. If not, return SYSERR. Place the code of getppid() in getppid.c under
+system/. Always start XINU system calls by
+disabling interrupts by calling disable() and restoring interrupts
+by calling restore(). 
+Perform tests to check that getppid() works correctly.
+</p>
+
+<p>
+(b) Create a new system call, uint32 gettmslice(void), that allows a process to 
+check how much time (in unit of msec) remains in its time slice. Put the code of
+gettmslice() in gettmslice.c under system/. Follow the same general convention as
+getppid() in Problem 4(a) when coding XINU system calls. Check that your
+system call works correctly.
+</p>
+
+<hr width="100%">
+<h2>5. Trapped XINU system calls [120 pts]</h2>
+
+<p>
+In XINU, system calls are just regular C function calls that do not trap to kernel code
+using a special trap instruction. In traditional x86 system call implementation 
+in Linux/UNIX and Windows using <i>int</i> as the trap instruction, the convention has
+been to provide the interrupt number as the operand of opcode int. For example, Linux
+uses interrupt number 128 and Windows uses 46. The interrupt handling code that resides
+at the specified interrupt number is called system call dispatcher code whose job 
+is to make a jump to the kernel code that performs the tasks of the invoked system
+call. When executing int,
+we use register EAX to specify which system call should be invoked by the dispatcher.
+Hence we need to store an integer, called system call number, in EAX before executing int.
+The system calls getpid() and getprio() return the PID of the current process and the
+priority of the process specified in the argument, respectively.
+We will re-implement the two system calls so that they are not plain C function calls
+as in legacy XINU, but use x86's software interrupt mechanism to trap to kernel code 
+similar to how system calls are implemented in Linux/UNIX and Windows. 
+</p>
+
+<h3>5.1 System call dispatcher code </h3>
+
+<p>
+We will use the address already installed by XINU in IDT at interrupt number 
+(i.e., table entry) 33, _Xint33, as the system call dispatch entry.
+Thus the operand of instruction int when used for system call trap
+will be always be 33. We choose 33 since 0-31 are reserved in x86 for specific synchronous 
+interrupts called exceptions or faults, and XINU uses interrupt number 32 to handle clock (i.e.,
+system timer) interrupts. XINU chooses to install 48 function pointers in IDT during
+initialization by calling initevec() from sysinit() in initialize.c. XINU installs
+the clock interrupt handler, clkdisp(),
+in clkinit() by calling set_evec() with the first argument (interrupt number) set to
+32 (constant IRQBASE). Hence we use the next available interrupt number, 33, as
+the IDT entry for the system call dispatcher _Xint33. You will modify the assembly code
+at _Xint33 in intr.S which is tantamount to implementing the system call dispatcher.
+We will assign system call number 4 to system call getpid() and
+5 to getprio() which is communicated to _Xint33 through register EAX.
+That is, before executing int with operand 33, we will store 4 or 5 in EAX to
+specify which of the two system calls has been invoked by a process. All
+other system call numbers will be invalid and must return -1 to indicate an error
+has occurred. _Xint33 will inspect the value of EAX and conditionally call
+getpid() or getprio().
+</p>
+
+<h3>5.2 System call wrapper function </h3>
+
+<p>
+In x86 Linux, a system call such as fork() is a wrapper function which contains a
+trap instruction to jump to the system call dispatcher code inside the kernel using
+the synchronous interrupt instruction int. The preferred option today is to use a
+special trap instruction sysenter which optimizes upon int to reduce overhead.
+In lab2, we will use the traditional method of trapping through int. We will implement
+a wrapper function for getpid(), pid32 wgetpid(void), which has the same function
+definition as getpid(). We will treat getpid() as an internal kernel function that
+_Xint33 calls to handle the actual task of finding out the PID of the current process.
+We will call the wrapper function of getprio(), syscall wgetprio(pid32), and follow
+the same design rules as for getpid() by treating getprio() as the internal kernel
+function that _Xint33 calls to change the priority of a process. Put the code of
+wgetpid() and wgetprio() in wgetpid.c and wgetprio.c, respectively, in system/ coded
+in C. Another option is to code the wrapper functions in assembly. We will avoid
+coding in assembly unless necessary. Even though we code the wrapper functions in C,
+we will need execute the int instruction with operand 33 and, before doing so,
+assign the system call number (4 for getpid() and 5 for getprio()) in EAX. These
+operations cannot be done using C. Instead, we will embed limited assembly code inside
+the C wrapper functions by employing in-line assembly asm(). For example, in lab1,
+Problem 3.4, to generate divide-by-zero interrupt which jumps to interrupt handling
+code at _Xint0, instead of using C code such as x = x / y where y is 0, we could
+have coded asm("int 0") which would have embedded assembly instruction "int 0" 
+to generate synchronous interrupt 0.
+</p>
+
+<h3>5.3 Extended inline assembly</h3>
+
+<p>
+When using inline assembly to embed assembly code within C code, but for very simple
+cases we require interface
+operations such as copying C variable values (including constants) into x86
+registers and copying register values into C variables. For example, we need to
+store the system call number in EAX before executing "int $33" ($33 follows AT&amp;T syntax). 
+Conversely,
+after instruction "int $33" which is a jump to kernel code _Xint33 via IDT and
+jumping back to the instruction following "int $33" after _Xint33 returns,
+the return value of getpid() must be communicated back to its wrapper function
+wgetpid(). Since CDECL in gcc puts the return value of a function in register
+EAX, we need to copy the value of EAX to a C variable after executing "int $33".
+Interfacing between C and embedded assembly code is facilitated by using extended
+inline assembly which follows the format
+<br><br>
+asm(assembler template
+<br>
+   : output operands
+<br>
+   : input operands
+<br>
+   : clobbered registers);
+<br><br>
+The assembler template may contain an instruction to copy a C variable containing
+the system call number into EAX, the
+int instruction with the interrupt number 33 as operand, and an instruction to copy EAX 
+containing the return value of a system call to a
+C variable. In the case of system calls such as getprio() which has
+an integer argument, we must communicate from wgetprio() to _Xint33 an integer value
+which _Xint33, in turn, must pass to getprio() when it is called. When passing
+an integer value from wgetprio() to _Xint33, you may do so by storing it in an unused
+register, say EBX, or push the value onto the run-time stack of the current process.
+Common practice is to use EBX if a system call has a single argument. Additional
+registers (e.g., ECX, EDX) may be used for system calls with multiple arguments.
+You are coding the extended inline assembly of wgetprio() and the assembly code
+_Xint33, hence you have full freedom to choose what to do. In lab2, follow the practice
+of using EBX to communicate a single system call argument.
+</p>
+
+<p>
+When _Xint33 calls getprio(),
+however, you must write assembly code at _Xint33 that is compatible with the CDECL
+assembly code produced by gcc when translating getprio() in C. 
+In our 32-bit x86 backend, gcc expects arguments to be
+pushed onto the stack. Hence your code at _Xint33 must push the argument of
+getprio() onto the stack before executing call getprio. When system calls have
+multiple arguments, multiple values must be pushed in the right-to-left order onto
+the stack (recall CDECL caller/callee convention review). 
+In lab2, you only need to support zero or one argument system calls.
+</p>
+
+<p>
+Last, but not least, registers EAX and EBX in the above examples are assumed to be
+unused which may not be the case. For example, the C code of wgetprio()
+preceding extended inline assembly when translated into assembly by gcc may be using
+EAX to store some value. If so, hijacking EAX to communicate the system call number
+to _Xint33 overwrites the previous value which may produce a run-time bug. 
+Similarly for EBX.
+Thus when interfacing between C and assembly code in extended inline assembly, it
+is imperative that conflicts in the form of unintended overwrite of register values
+are avoided. To do so, a list of potentially shared registers, called
+clobbered registers, must be specified so that gcc can use this information when
+generating assembly code to avoid conflicts.
+</p>
+
+<h3>5.4 What x86 int instruction does to the run-time stack </h3>
+
+<p>
+When we execute "int $33" through inline assembly in the wrapper function of a system
+call, x86 hardware pushes EFLAGS, CS, and EIP onto the current process's run-time stack.
+The content of EFLAGS is pushed so that it can be restored upon returning from interrupt handling.
+CS and EIP are pushed so that x86 knows where to jump to when the interrupt handling
+code executes iret to return from interrupt handling. Before iret is executed, the interrupt
+handling code must ensure that ESP points to where EIP was stored on the stack. It is your
+responsiblity to keep track of this information. iret then atomically
+pops the stored EIP, CS, EFLAGS from the stack and loads the EIP, CS, EFLAGS registers
+so that the interrupted process can resume where it left off. The entries of IDT can be
+configured to automatically disable interrupts by setting their type as interrupt gate. 
+In XINU, IDT entries are configured to not disable interrupts by setting their type
+as trap gate. Thus it is your responsibility in the
+code of _Xint33 to disable interrupts and ensure that while in the midst of performing
+interrupt handling a new interrupt does not interrupt the interrupt handler which may
+cause havoc by corrupting shared data structures. Good practice is to disable interrupts
+by executing cli upon entry into _Xint33 and enable interrupts by executing sti before
+executing iret to return from interrupt handling in _Xint33. The assembly code of the
+clock dispatcher, clkdisp.S, is a useful example to consider. The only assistance provided
+by x86 hardware support is atomic restoring of content in EFLAGS, CS, and EIP registers.
+All other state of the interrupted process that may be affected by kernel
+interrupt handling (i.e., _Xtrap33 and the kernel functions it calls) you must store
+and restore so that run-time bugs do not arise. For example, storing/restoring general 
+purpose registers using the pushal/popal is common practice. Unless you know for sure
+that interrupt handling will not change the values of general purpose registers,
+or that changing their values will not cause a problem. In general, this is not easy to
+determine and a conservative approach that favors caution is recommended.
+</p>
+
+<h3>5.5 Implementation of trapped versions of getpid() and getprio()</h3>
+
+<p>
+The preceding subsections 5.1 - 5.4 provides the logical and technical background for
+implementing the trapped versions of getpid(), getprio() systems through wrapper
+functions wgetpid(), wgetprio(), and system call dispatch code _Xint33. Wrapper code
+is C with extended inline assembly, and system call dispatch code is coded in assembly.
+The knowledge and skills needed to coordinate the various software components to correctly
+interface while utilizing underlying hardware support is referred to as 
+ABI (application binary interface) programming. This is in contrast to API programming
+which covers app programming and most of system programming, where making a computing system
+do what we want it to do is less direct and limited in what can be done.
+Implement the trapped versions of getpid(), getprio(), and verify that your modification of
+the XINU kernel works correctly through careful testing. What to test and how to test are
+part and parcel of software development. First look for the "low hanging fruit" which typically
+do not require significant effort to identify. Then identify more subtle test cases that may
+help reveal less obvious run-time bugs. Except in toy systems, there is, in general,
+no such thing as a completely bug free software system including kernel code. All we can do
+is build a system that works sufficiently reliably and efficiently for a target real-world
+environment. The TAs will evaluate your implementation using their own test cases augmented
+by checking your source code for content (i.e., technical approach such as disabling
+interrupts or not) and style
+(adequate comments including who/what/why annotation).
+</p>
+
+<p></p>
+<hr width="100%">
+<h2><b>Bonus problem</b> [20 pts]</h2>
+
+<p>
+Extend the trapped XINU system calls to include getppid() of Problem 4. Assign it the
+system call number 6. Put the code of wgetppid() in system/wgetppid.c.
+</p>
+
+<p>
+<i>
+Note: The bonus problem provides an opportunity to earn extra credits that
+count toward the lab component of the course. It is purely optional.
+</i>
+</p>
+
+<p></p>
+
+
+<hr width="100%">
+<h2><b>Turn-in instructions</b></h2>
+
+<p>
+General instructions:
+</p>
+
+<p>
+When implementing code in the labs, please
+maintain separate versions/copies of code so that mistakes such
+as unintentional overwriting or deletion of code is prevented. 
+This is in addition to the efficiency that such organization provides.
+You may use any number of version control systems
+such as GIT and RCS. Please make sure that your code is protected from public access. 
+For example, when using GIT, use git that manages code locally instead of its
+on-line counterpart github. If you prefer
+not to use version control tools, you may
+just use manual copy to keep track of different versions required for development
+and testing. More vigilance and discipline may be required when doing so.
+</p>
+
+<p>
+The TAs, when evaluating your code, will use their own test code (principally main())
+to drive your XINU code. The code you put inside main() is for your own testing and will,
+in general, not be considered during evaluation.
+</p>
+
+<p>
+If you are unsure what you need to submit in what format, consult the
+<a href="https://www.cs.purdue.edu/homes/sashutos/ta-notes.html">TA Notes</a> link.
+If it doesn't answer your question, send email to all four GTAs.
+</p>
+
+<p>
+Specific instructions:
+</p>
+
+<p>
+1. Format for submitting written lab answers and kprintf() added for 
+testing and debugging purposes in kernel code:
+</p><ul>
+<li>
+Provide your answers to the questions below in Lab2Answers.pdf and
+place the file in lab2/. You may use any document editing software
+but your final output must be exported and submitted as a pdf file.
+</li>
+<li>
+For problems where you are asked to print values using kprintf(), use
+conditional compilation (C preprocessor directives #define combined with #if and #endif)
+with macro XINUTEST (in include/process.h) to effect
+print/no print depending on if
+XINUTEST is defined or not. For your debug statements, do the same with macro XINUDEBUG.
+</li>
+</ul>
+
+<p>
+2. Before submitting your work, make sure to double-check the
+<a href="http://www.cs.purdue.edu/homes/sashutos//ta-notes.html">TA Notes</a>
+to ensure that additional requirements and instructions have been followed.
+</p>
+
+<p>3. Electronic turn-in instructions:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i) Go to the xinu-spring2020/compile
+directory and run "make clean".</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ii) Go to the directory where lab2 (containing
+xinu-spring2020/ and Lab2Answers.pdf) is a subdirectory. 
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For example, if /homes/alice/cs354/lab2/xinu-spring2020 is your directory structure, go to 
+/homes/alice/cs354
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iii) Type the following command
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+turnin -c cs354 -p lab2 lab2</p>
+<p></p>
+<p>
+You can check/list the submitted files using
+<br><br>
+turnin -c cs354 -p lab2 -v
+</p>
+
+
+<p>
+<i>Please make sure to disable all debugging output before submitting your code.</i>
+</p>
+
+<hr><a href="https://www.cs.purdue.edu/homes/cs354/index.html">Back to the CS 354 web page</a><br>
+
+
+</body></html>

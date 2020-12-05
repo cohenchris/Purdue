@@ -1,0 +1,74 @@
+cohen50
+
+
+
+ Grade for lab4 
+
+
+Problem 3 - test cases: 59/60
+Comment: receiver does not receive the message that was sent by a blocked sender
+Graded by Hyunchai Jeong (jeong3@purdue.edu) 
+
+Problem 3 - source code: 40/50
+Comment: receive() should not call resched() or any function (ready) that calls resched() while unblocking a sender
+Graded by Hyunchai Jeong (jeong3@purdue.edu)
+
+Problem 3 - pdf: 10/10
+Graded by Hyunchai Jeong (jeong3@purdue.edu)
+
+Problem 4.2: 60/60
+Graded by  Shushan Ashutosh  (sashutos@purdue.edu)
+
+Problem 4.3: 60/60
+Graded by Rashidedin Jahandideh (rjahandi@purdue.edu)
+
+Bonus: 10/20
+Comment: the way of returning SYSERR may not be correct
+Graded by Muqi Zou (zou116@purdue.edu)
+
+Remaining late days: 3
+
+Total: 239/240
+
+Total (with early submission credit): 250.9/240
+
+!Note for regrading! 
+
+ please contact  Rashidedin Jahandideh (rjahandi@purdue.edu) for part 4.2 regrading rather than Shushan Ashutosh  (sashutos@purdue.edu). 
+ 
+
+ please contact Shushan Ashutosh  (sashutos@purdue.edu) for part 4.3 regrading rather than Rashidedin Jahandideh (rjahandi@purdue.edu).
+ 
+
+
+
+
+ Regrade for lab4 
+
+
+Problem 3 - test cases: 59/60
+Comment: receiver does not receive the message that was sent by a blocked sender
+Graded by Hyunchai Jeong (jeong3@purdue.edu) 
+
+Problem 3 - source code: 40/50
+Comment: receive() should not call resched() or any function (ready) that calls resched() while unblocking a sender
+Graded by Hyunchai Jeong (jeong3@purdue.edu)
+
+Problem 3 - pdf: 10/10
+Graded by Hyunchai Jeong (jeong3@purdue.edu)
+
+Problem 4.2: 60/60
+Graded by Rashidedin Jahandideh (rjahandi@purdue.edu)
+
+Problem 4.3: 60/60
+Graded by Shushan Ashutosh  (sashutos@purdue.edu)
+
+Bonus: 10/20
+Comment: the way of returning SYSERR may not be correct
+Graded by Muqi Zou (zou116@purdue.edu)
+
+Remaining late days: 3
+
+Total: 239/240
+
+Total (with early submission credit): 250.9/240
