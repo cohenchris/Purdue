@@ -1,0 +1,9 @@
+u_divide_by_10:
+   /* r0 contains the argument to be divided by 10 */
+   ldr r1, .Lu_magic_number_10 /* r1 ← magic_number */
+   umull r1, r2, r1, r0   /* r1 ← Lower32Bits(r1*r0). r2 ← Upper32Bits(r1*r0) */
+   mov r0, r2, LSR #3     /* r0 ← r2 >> 3 */
+   bx lr                  /* leave function */
+   .align 4
+   .Lu_magic_number_10: .word 0xcccccccd
+

@@ -1,0 +1,15 @@
+2
+13
+m 0
+g one
+p one 1
+g one
+r oneone 11
+r one 11
+g one
+g eno
+p eno 1
+g eno
+r enoeno 11
+r eno 111
+g eno

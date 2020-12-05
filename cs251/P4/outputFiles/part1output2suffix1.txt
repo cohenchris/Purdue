@@ -1,0 +1,7 @@
+abbit -> [crabbit, rabbit]
+bbit -> [crabbit, rabbit]
+bit -> [crabbit, rabbit]
+it -> [crabbit, flashpit, rabbit, trampit]
+pit -> [flashpit, trampit]
+rabbit -> [crabbit, rabbit]
+t -> [crabbit, flashpit, rabbit, trampit]

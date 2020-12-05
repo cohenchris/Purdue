@@ -1,0 +1,2 @@
+it -> [crabbit, flashpit, rabbit, trampit]
+t -> [crabbit, flashpit, rabbit, trampit]

@@ -1,0 +1,21 @@
+2
+19
+insert 20
+insert 22
+insert 8
+insert 12
+insert 4
+insert 10
+insert 14
+lca 4 10
+lca 20 14
+lca 11 20
+ceil 21
+ceil 22
+ceil 23
+floor 5
+floor 4
+floor 3
+dist 10 22
+dist 4 14
+dist 1 0

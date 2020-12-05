@@ -1,0 +1,11 @@
+2
+9
+postorder
+levelorder
+insert 20
+insert 22
+insert 8
+insert 12
+insert 4
+postorder
+levelorder

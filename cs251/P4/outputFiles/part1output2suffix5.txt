@@ -1,0 +1,7 @@
+a -> [bulgaria, bulimia, glaucoma, impala]
+e -> [admittance, biodegradable, enhanceable, inevitable]
+ity -> [ability, fatality, prodigality, unpredictability]
+lity -> [ability, fatality, prodigality, unpredictability]
+s -> [bursaries, electrics, leans, metrics, thespians]
+ty -> [ability, fatality, prodigality, unpredictability]
+y -> [ability, fatality, friendly, lucky, murky, prodigality, rapidly, unpredictability]

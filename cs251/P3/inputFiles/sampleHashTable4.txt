@@ -1,0 +1,18 @@
+2
+16
+m 0
+s
+c name
+r name 1
+p name 1
+c name
+s
+r name 2
+c mean
+p mean 1
+c mean
+p mean 2
+r mean 1
+s
+d mean
+s
