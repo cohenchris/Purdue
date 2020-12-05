@@ -1,0 +1,1546 @@
+
+EVENT time: 18.705740,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaa
+- Sending Message:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- Started timer for packet 0
+
+EVENT time: 24.170835,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- In-order packet received (seq# 0)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 0).
+- Updating receiver buffer window.
+  Now expecting packet 1
+- B side sending ACK for packet 0:		ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 29.402449,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 0	seq# = 999999
+- A side received corrupt packet :(
+
+EVENT time: 35.124840,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbb
+- Sending Message:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+- Started timer for packet 1
+
+EVENT time: 37.680447,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ccccccccccccccccccc
+- Sending Message:				ccccccccccccccccccc	ack# = 2	seq# = 2
+          TOLAYER3: packet being corrupted
+- Started timer for packet 2
+
+EVENT time: 38.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 0) - timer restarted
+  packet 0 resent:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+
+EVENT time: 42.147713,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zcccccccccccccccccc	ack# = 2	seq# = 2
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 46.394402,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ddddddddddddddddddd
+- Sending Message:				ddddddddddddddddddd	ack# = 3	seq# = 3
+- Started timer for packet 3
+
+EVENT time: 51.666630,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ddddddddddddddddddd	ack# = 3	seq# = 3
+- Out-of-order packet received (seq# 3).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 3:		ACK			ack# = 3	seq# = 3
+
+EVENT time: 54.979748,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	eeeeeeeeeeeeeeeeeee
+- Sending Message:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+          TOLAYER3: packet being lost.
+- Started timer for packet 4
+
+EVENT time: 55.124840,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 55.869270,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 3	seq# = 3
+- A side received valid packet.
+- New ACK received (packet 3) - STOPPED TIMER
+** 0 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+
+EVENT time: 57.680447,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 2) - timer restarted
+  packet 2 resent:				ccccccccccccccccccc	ack# = 2	seq# = 2
+          TOLAYER3: packet being corrupted
+
+EVENT time: 58.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 0) - timer restarted
+  packet 0 resent:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+
+EVENT time: 59.188442,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 60.972366,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ccccccccccccccccccc	ack# = 999999	seq# = 2
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 65.130951,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 0:		ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+
+EVENT time: 72.798996,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	fffffffffffffffffff
+- Sending Message:				fffffffffffffffffff	ack# = 5	seq# = 5
+- Started timer for packet 5
+
+EVENT time: 74.979752,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 4) - timer restarted
+  packet 4 resent:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+
+EVENT time: 75.124840,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 75.429649,  type: 2, fromlayer3  entity: 1
+- B side received packet:			fffffffffffffffffff	ack# = 5	seq# = 5
+- Out-of-order packet received (seq# 5).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 5:		ACK			ack# = 5	seq# = 5
+
+EVENT time: 76.736038,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 5	seq# = 5
+- A side received valid packet.
+- New ACK received (packet 5) - STOPPED TIMER
+** 0 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+
+EVENT time: 77.304840,  type: 2, fromlayer3  entity: 1
+- B side received packet:			eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+- Out-of-order packet received (seq# 4).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 4:		ACK			ack# = 4	seq# = 4
+          TOLAYER3: packet being corrupted
+
+EVENT time: 77.680450,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 2) - timer restarted
+  packet 2 resent:				ccccccccccccccccccc	ack# = 2	seq# = 2
+          TOLAYER3: packet being corrupted
+
+EVENT time: 78.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 0) - timer restarted
+  packet 0 resent:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+
+EVENT time: 82.443901,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ggggggggggggggggggg
+- Sending Message:				ggggggggggggggggggg	ack# = 6	seq# = 6
+- Started timer for packet 6
+
+EVENT time: 82.883453,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ZCK			ack# = 4	seq# = 4
+- A side received corrupt packet :(
+
+EVENT time: 83.930389,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zcccccccccccccccccc	ack# = 2	seq# = 2
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 88.749672,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 0:		ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 92.411438,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ggggggggggggggggggg	ack# = 6	seq# = 6
+- Out-of-order packet received (seq# 6).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 6:		ACK			ack# = 6	seq# = 6
+          TOLAYER3: packet being corrupted
+
+EVENT time: 94.260300,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	hhhhhhhhhhhhhhhhhhh
+- Sending Message:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+          TOLAYER3: packet being lost.
+- Started timer for packet 7
+
+EVENT time: 94.979752,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 4) - timer restarted
+  packet 4 resent:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+          TOLAYER3: packet being corrupted
+
+EVENT time: 95.124840,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 96.434456,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	iiiiiiiiiiiiiiiiiii
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 96.786087,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 97.660454,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ZCK			ack# = 0	seq# = 0
+- A side received corrupt packet :(
+
+EVENT time: 97.680450,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 2) - timer restarted
+  packet 2 resent:				ccccccccccccccccccc	ack# = 2	seq# = 2
+
+EVENT time: 98.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 0) - timer restarted
+  packet 0 resent:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 102.443901,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 6) - timer restarted
+  packet 6 resent:				ggggggggggggggggggg	ack# = 6	seq# = 6
+
+EVENT time: 103.278122,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ZCK			ack# = 6	seq# = 6
+- A side received corrupt packet :(
+
+EVENT time: 104.371796,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ccccccccccccccccccc	ack# = 2	seq# = 2
+- Out-of-order packet received (seq# 2).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 2:		ACK			ack# = 2	seq# = 2
+
+EVENT time: 106.076035,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 2	seq# = 2
+- A side received valid packet.
+- New ACK received (packet 2) - STOPPED TIMER
+** 0 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+
+EVENT time: 107.572578,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	jjjjjjjjjjjjjjjjjjj
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 108.736366,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	kkkkkkkkkkkkkkkkkkk
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 109.844398,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 114.260300,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 7) - timer restarted
+  packet 7 resent:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+
+EVENT time: 114.979752,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 4) - timer restarted
+  packet 4 resent:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+
+EVENT time: 115.124840,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+
+EVENT time: 115.231255,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ggggggggggggggggggg	ack# = 6	seq# = 6
+- Out-of-order packet received (seq# 6).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 6:		ACK			ack# = 6	seq# = 6
+
+EVENT time: 117.976494,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 6	seq# = 6
+- A side received valid packet.
+- New ACK received (packet 6) - STOPPED TIMER
+** 0 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+
+EVENT time: 118.705742,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 0) - timer restarted
+  packet 0 resent:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+
+EVENT time: 123.898842,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	lllllllllllllllllll
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 124.665741,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- Out-of-order packet received (seq# 7).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 7:		ACK			ack# = 7	seq# = 7
+          TOLAYER3: packet being lost.
+
+EVENT time: 130.119476,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	mmmmmmmmmmmmmmmmmmm
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 133.491638,  type: 2, fromlayer3  entity: 1
+- B side received packet:			eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+- Out-of-order packet received (seq# 4).
+  Expecting seq# 1. Buffering for later...
+- B side sending ACK for packet 4:		ACK			ack# = 4	seq# = 4
+
+EVENT time: 134.260300,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 7) - timer restarted
+  packet 7 resent:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+          TOLAYER3: packet being lost.
+
+EVENT time: 134.979752,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 4) - timer restarted
+  packet 4 resent:				eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+          TOLAYER3: packet being lost.
+
+EVENT time: 135.124847,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 135.246201,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	nnnnnnnnnnnnnnnnnnn
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 138.705750,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 0) - timer restarted
+  packet 0 resent:				aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+
+EVENT time: 139.750916,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 4	seq# = 4
+- A side received valid packet.
+- New ACK received (packet 4) - STOPPED TIMER
+** 0 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+
+EVENT time: 143.339615,  type: 2, fromlayer3  entity: 1
+- B side received packet:			bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- In-order packet received (seq# 1)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 1).
+	- B side sending packet to upper
+	  layer (seq# 2).
+	- B side sending packet to upper
+	  layer (seq# 3).
+	- B side sending packet to upper
+	  layer (seq# 4).
+	- B side sending packet to upper
+	  layer (seq# 5).
+	- B side sending packet to upper
+	  layer (seq# 6).
+	- B side sending packet to upper
+	  layer (seq# 7).
+- Updating receiver buffer window.
+  Now expecting packet 8
+- B side sending ACK for packet 1:		ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 144.923477,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ZCK			ack# = 1	seq# = 1
+- A side received corrupt packet :(
+
+EVENT time: 147.702179,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ooooooooooooooooooo
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 152.827789,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 0:		ACK			ack# = 0	seq# = 0
+
+EVENT time: 154.260300,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 7) - timer restarted
+  packet 7 resent:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+          TOLAYER3: packet being corrupted
+
+EVENT time: 155.124847,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 158.666260,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 0	seq# = 0
+- A side received valid packet.
+- New ACK received (packet 0) - STOPPED TIMER
+** 1 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Sending NEW buffered message:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- Started timer for packet 8
+          TOLAYER3: packet being corrupted
+
+EVENT time: 158.728745,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 160.878128,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 0:		ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+
+EVENT time: 163.413452,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 164.904617,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 166.390564,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ppppppppppppppppppp
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 168.274017,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 999999
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 170.096252,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	qqqqqqqqqqqqqqqqqqq
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 174.260300,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 7) - timer restarted
+  packet 7 resent:				hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+
+EVENT time: 175.124847,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+
+EVENT time: 178.666260,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 8) - timer restarted
+  packet 8 resent:				iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+
+EVENT time: 181.828812,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 7:		ACK			ack# = 7	seq# = 7
+
+EVENT time: 186.002518,  type: 2, fromlayer3  entity: 1
+- B side received packet:			bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 1:		ACK			ack# = 1	seq# = 1
+
+EVENT time: 187.928848,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	rrrrrrrrrrrrrrrrrrr
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 190.959702,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 7	seq# = 7
+- A side received valid packet.
+- New ACK received (packet 7) - STOPPED TIMER
+** 1 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+	- Message in window, already sent:		ccccccccccccccccccc	ack# = 2	seq# = 2
+	- Message in window, already sent:		ddddddddddddddddddd	ack# = 3	seq# = 3
+	- Message in window, already sent:		eeeeeeeeeeeeeeeeeee	ack# = 4	seq# = 4
+	- Message in window, already sent:		fffffffffffffffffff	ack# = 5	seq# = 5
+	- Message in window, already sent:		ggggggggggggggggggg	ack# = 6	seq# = 6
+	- Message in window, already sent:		hhhhhhhhhhhhhhhhhhh	ack# = 7	seq# = 7
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+
+EVENT time: 193.604523,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+- In-order packet received (seq# 8)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 8).
+- Updating receiver buffer window.
+  Now expecting packet 9
+- B side sending ACK for packet 8:		ACK			ack# = 8	seq# = 8
+
+EVENT time: 195.124847,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 1) - timer restarted
+  packet 1 resent:				bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+
+EVENT time: 195.337723,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 1	seq# = 1
+- A side received valid packet.
+- New ACK received (packet 1) - STOPPED TIMER
+** 8 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		iiiiiiiiiiiiiiiiiii	ack# = 8	seq# = 8
+	- Sending NEW buffered message:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- Started timer for packet 9
+	- Sending NEW buffered message:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- Started timer for packet 10
+	- Sending NEW buffered message:			lllllllllllllllllll	ack# = 11	seq# = 11
+- Started timer for packet 11
+	- Sending NEW buffered message:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- Started timer for packet 12
+	- Sending NEW buffered message:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- Started timer for packet 13
+          TOLAYER3: packet being corrupted
+	- Sending NEW buffered message:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- Started timer for packet 14
+	- Sending NEW buffered message:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- Started timer for packet 15
+
+EVENT time: 196.682648,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	sssssssssssssssssss
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 196.721329,  type: 2, fromlayer3  entity: 1
+- B side received packet:			bbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 1:		ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 197.611755,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 8	seq# = 8
+- A side received valid packet.
+- New ACK received (packet 8) - STOPPED TIMER
+** 9 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Sending NEW buffered message:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- Started timer for packet 16
+          TOLAYER3: packet being corrupted
+
+EVENT time: 200.439545,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjj	ack# = 9	seq# = 9
+- In-order packet received (seq# 9)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 9).
+- Updating receiver buffer window.
+  Now expecting packet 10
+- B side sending ACK for packet 9:		ACK			ack# = 9	seq# = 9
+
+EVENT time: 203.454391,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 9	seq# = 9
+- A side received valid packet.
+- New ACK received (packet 9) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Sending NEW buffered message:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- Started timer for packet 17
+
+EVENT time: 205.311218,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- In-order packet received (seq# 10)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 10).
+- Updating receiver buffer window.
+  Now expecting packet 11
+- B side sending ACK for packet 10:		ACK			ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+
+EVENT time: 210.887939,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ttttttttttttttttttt
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 211.850449,  type: 2, fromlayer3  entity: 1
+- B side received packet:			lllllllllllllllllll	ack# = 11	seq# = 11
+- In-order packet received (seq# 11)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 11).
+- Updating receiver buffer window.
+  Now expecting packet 12
+- B side sending ACK for packet 11:		ACK			ack# = 11	seq# = 11
+
+EVENT time: 213.713379,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 11	seq# = 11
+- A side received valid packet.
+- New ACK received (packet 11) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 215.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 15) - timer restarted
+  packet 15 resent:				ppppppppppppppppppp	ack# = 15	seq# = 15
+
+EVENT time: 215.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 14) - timer restarted
+  packet 14 resent:				ooooooooooooooooooo	ack# = 14	seq# = 14
+
+EVENT time: 215.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being corrupted
+
+EVENT time: 215.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 12) - timer restarted
+  packet 12 resent:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being corrupted
+
+EVENT time: 215.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+
+EVENT time: 215.958191,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- In-order packet received (seq# 12)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 12).
+- Updating receiver buffer window.
+  Now expecting packet 13
+- B side sending ACK for packet 12:		ACK			ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+
+EVENT time: 217.611755,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 16) - timer restarted
+  packet 16 resent:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+
+EVENT time: 223.239639,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Znnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 223.454391,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 17) - timer restarted
+  packet 17 resent:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being lost.
+
+EVENT time: 229.745026,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- Out-of-order packet received (seq# 14).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 14:		ACK			ack# = 14	seq# = 14
+          TOLAYER3: packet being corrupted
+
+EVENT time: 230.009552,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	uuuuuuuuuuuuuuuuuuu
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 230.930359,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	vvvvvvvvvvvvvvvvvvv
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 231.150650,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- Out-of-order packet received (seq# 15).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 15:		ACK			ack# = 15	seq# = 15
+          TOLAYER3: packet being lost.
+
+EVENT time: 235.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+
+EVENT time: 235.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 12) - timer restarted
+  packet 12 resent:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+
+EVENT time: 235.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being lost.
+
+EVENT time: 235.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 14) - timer restarted
+  packet 14 resent:				ooooooooooooooooooo	ack# = 14	seq# = 14
+
+EVENT time: 235.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 15) - timer restarted
+  packet 15 resent:				ppppppppppppppppppp	ack# = 15	seq# = 15
+
+EVENT time: 235.426331,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 999999	seq# = 14
+- A side received corrupt packet :(
+
+EVENT time: 237.611755,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 16) - timer restarted
+  packet 16 resent:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+          TOLAYER3: packet being lost.
+
+EVENT time: 240.864792,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 243.454391,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 17) - timer restarted
+  packet 17 resent:				rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+          TOLAYER3: packet being corrupted
+
+EVENT time: 244.843124,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	wwwwwwwwwwwwwwwwwww
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 246.597839,  type: 2, fromlayer3  entity: 1
+- B side received packet:			rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- Out-of-order packet received (seq# 17).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 17:		ACK			ack# = 17	seq# = 17
+
+EVENT time: 250.722809,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- Out-of-order packet received (seq# 15).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 15:		ACK			ack# = 15	seq# = 15
+
+EVENT time: 254.720230,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 17	seq# = 17
+- A side received valid packet.
+- New ACK received (packet 17) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 255.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 15) - timer restarted
+  packet 15 resent:				ppppppppppppppppppp	ack# = 15	seq# = 15
+
+EVENT time: 255.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 14) - timer restarted
+  packet 14 resent:				ooooooooooooooooooo	ack# = 14	seq# = 14
+
+EVENT time: 255.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+
+EVENT time: 255.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 12) - timer restarted
+  packet 12 resent:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+
+EVENT time: 255.337723,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 256.727448,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	xxxxxxxxxxxxxxxxxxx
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 257.611755,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 16) - timer restarted
+  packet 16 resent:				qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+
+EVENT time: 258.732880,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	yyyyyyyyyyyyyyyyyyy
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 260.648254,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- Out-of-order packet received (seq# 14).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 14:		ACK			ack# = 14	seq# = 14
+          TOLAYER3: packet being lost.
+
+EVENT time: 263.061981,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Znnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 264.090729,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+- New ACK received (packet 15) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 267.492981,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 269.030487,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- Out-of-order packet received (seq# 16).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 16:		ACK			ack# = 16	seq# = 16
+
+EVENT time: 271.072449,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+- New ACK received (packet 16) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 275.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 275.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 12) - timer restarted
+  packet 12 resent:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+
+EVENT time: 275.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+
+EVENT time: 275.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 14) - timer restarted
+  packet 14 resent:				ooooooooooooooooooo	ack# = 14	seq# = 14
+          TOLAYER3: packet being lost.
+
+EVENT time: 277.743988,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- Out-of-order packet received (seq# 14).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 14:		ACK			ack# = 14	seq# = 14
+
+EVENT time: 278.016022,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	zzzzzzzzzzzzzzzzzzz
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 279.871674,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- Out-of-order packet received (seq# 15).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 15:		ACK			ack# = 15	seq# = 15
+
+EVENT time: 282.917542,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 14	seq# = 14
+- A side received valid packet.
+- New ACK received (packet 14) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 287.045929,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 288.267487,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 15	seq# = 15
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...14
+
+EVENT time: 289.792328,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaa
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 290.082886,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ppppppppppppppppppp	ack# = 15	seq# = 15
+- Out-of-order packet received (seq# 15).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 15:		ACK			ack# = 15	seq# = 15
+          TOLAYER3: packet being lost.
+
+EVENT time: 290.809875,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbb
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 295.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+
+EVENT time: 295.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 12) - timer restarted
+  packet 12 resent:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+
+EVENT time: 295.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 297.801147,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ooooooooooooooooooo	ack# = 14	seq# = 14
+- Out-of-order packet received (seq# 14).
+  Expecting seq# 13. Buffering for later...
+- B side sending ACK for packet 14:		ACK			ack# = 14	seq# = 14
+
+EVENT time: 301.307526,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ccccccccccccccccccc
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 301.438660,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ddddddddddddddddddd
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 305.773438,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 14	seq# = 14
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...13
+
+EVENT time: 305.933777,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- In-order packet received (seq# 13)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 13).
+	- B side sending packet to upper
+	  layer (seq# 14).
+	- B side sending packet to upper
+	  layer (seq# 15).
+	- B side sending packet to upper
+	  layer (seq# 16).
+	- B side sending packet to upper
+	  layer (seq# 17).
+- Updating receiver buffer window.
+  Now expecting packet 18
+- B side sending ACK for packet 13:		ACK			ack# = 13	seq# = 13
+          TOLAYER3: packet being lost.
+
+EVENT time: 308.150024,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	eeeeeeeeeeeeeeeeeee
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 313.739777,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	fffffffffffffffffff
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 314.085480,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 12:		ACK			ack# = 12	seq# = 12
+
+EVENT time: 315.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+          TOLAYER3: packet being corrupted
+
+EVENT time: 315.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 12) - timer restarted
+  packet 12 resent:				mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+          TOLAYER3: packet being lost.
+
+EVENT time: 315.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being corrupted
+
+EVENT time: 317.213654,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 12	seq# = 12
+- A side received valid packet.
+- New ACK received (packet 12) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 318.400238,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 10:		ACK			ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+
+EVENT time: 323.986572,  type: 2, fromlayer3  entity: 1
+- B side received packet:			qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 16:		ACK			ack# = 16	seq# = 16
+
+EVENT time: 330.269623,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ggggggggggggggggggg
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 330.824066,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 10:		ACK			ack# = 10	seq# = 10
+          TOLAYER3: packet being lost.
+
+EVENT time: 331.590546,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 16	seq# = 16
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...15
+
+EVENT time: 334.280457,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 12:		ACK			ack# = 12	seq# = 12
+
+EVENT time: 335.211243,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	hhhhhhhhhhhhhhhhhhh
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 335.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 13) - timer restarted
+  packet 13 resent:				nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+          TOLAYER3: packet being lost.
+
+EVENT time: 335.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 339.793549,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 12	seq# = 12
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...11
+
+EVENT time: 343.820709,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	iiiiiiiiiiiiiiiiiii
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 343.893250,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 13:		ACK			ack# = 13	seq# = 13
+
+EVENT time: 348.446960,  type: 2, fromlayer3  entity: 1
+- B side received packet:			nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 13:		ACK			ack# = 13	seq# = 13
+          TOLAYER3: packet being corrupted
+
+EVENT time: 351.304718,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 13	seq# = 13
+- A side received valid packet.
+- New ACK received (packet 13) - STOPPED TIMER
+** 10 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+	- Message in window, already sent:		lllllllllllllllllll	ack# = 11	seq# = 11
+	- Message in window, already sent:		mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+	- Message in window, already sent:		nnnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+	- Message in window, already sent:		ooooooooooooooooooo	ack# = 14	seq# = 14
+	- Message in window, already sent:		ppppppppppppppppppp	ack# = 15	seq# = 15
+	- Message in window, already sent:		qqqqqqqqqqqqqqqqqqq	ack# = 16	seq# = 16
+	- Message in window, already sent:		rrrrrrrrrrrrrrrrrrr	ack# = 17	seq# = 17
+
+EVENT time: 354.283325,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 999999	seq# = 13
+- A side received corrupt packet :(
+
+EVENT time: 355.337708,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 10) - timer restarted
+  packet 10 resent:				kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+
+EVENT time: 356.190094,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	jjjjjjjjjjjjjjjjjjj
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 357.587006,  type: 2, fromlayer3  entity: 1
+- B side received packet:			mmmmmmmmmmmmmmmmmmm	ack# = 12	seq# = 12
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 12:		ACK			ack# = 12	seq# = 12
+
+EVENT time: 358.633850,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 10:		ACK			ack# = 10	seq# = 10
+
+EVENT time: 360.226501,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 12	seq# = 12
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...11
+
+EVENT time: 364.551331,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 365.697327,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+- New ACK received (packet 10) - STOPPED TIMER
+** 18 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Sending NEW buffered message:			sssssssssssssssssss	ack# = 18	seq# = 18
+- Started timer for packet 18
+	- Sending NEW buffered message:			ttttttttttttttttttt	ack# = 19	seq# = 19
+- Started timer for packet 19
+	- Sending NEW buffered message:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- Started timer for packet 20
+          TOLAYER3: packet being corrupted
+	- Sending NEW buffered message:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- Started timer for packet 21
+          TOLAYER3: packet being lost.
+	- Sending NEW buffered message:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- Started timer for packet 22
+	- Sending NEW buffered message:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- Started timer for packet 23
+	- Sending NEW buffered message:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- Started timer for packet 24
+	- Sending NEW buffered message:			zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+- Started timer for packet 25
+          TOLAYER3: packet being lost.
+
+EVENT time: 366.454498,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	kkkkkkkkkkkkkkkkkkk
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 366.589905,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Znnnnnnnnnnnnnnnnnn	ack# = 13	seq# = 13
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 369.436462,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 10:		ACK			ack# = 10	seq# = 10
+
+EVENT time: 371.099884,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...9
+
+EVENT time: 376.563751,  type: 2, fromlayer3  entity: 1
+- B side received packet:			kkkkkkkkkkkkkkkkkkk	ack# = 10	seq# = 10
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 10:		ACK			ack# = 10	seq# = 10
+
+EVENT time: 379.638580,  type: 2, fromlayer3  entity: 1
+- B side received packet:			sssssssssssssssssss	ack# = 18	seq# = 18
+- In-order packet received (seq# 18)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 18).
+- Updating receiver buffer window.
+  Now expecting packet 19
+- B side sending ACK for packet 18:		ACK			ack# = 18	seq# = 18
+          TOLAYER3: packet being lost.
+
+EVENT time: 379.866669,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 10	seq# = 10
+- A side received valid packet.
+- Received duplicate ACK for packet. Ignoring...9
+
+EVENT time: 380.817200,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	lllllllllllllllllll
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 382.819519,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ttttttttttttttttttt	ack# = 19	seq# = 19
+- In-order packet received (seq# 19)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 19).
+- Updating receiver buffer window.
+  Now expecting packet 20
+- B side sending ACK for packet 19:		ACK			ack# = 19	seq# = 19
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 25) - timer restarted
+  packet 25 resent:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 24) - timer restarted
+  packet 24 resent:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 23) - timer restarted
+  packet 23 resent:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 22) - timer restarted
+  packet 22 resent:				wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+          TOLAYER3: packet being lost.
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 21) - timer restarted
+  packet 21 resent:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being lost.
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 20) - timer restarted
+  packet 20 resent:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 19) - timer restarted
+  packet 19 resent:				ttttttttttttttttttt	ack# = 19	seq# = 19
+          TOLAYER3: packet being lost.
+
+EVENT time: 385.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 18) - timer restarted
+  packet 18 resent:				sssssssssssssssssss	ack# = 18	seq# = 18
+          TOLAYER3: packet being lost.
+
+EVENT time: 388.286163,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- B side received corrupt packet. Ignoring...
+
+EVENT time: 390.154846,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 19	seq# = 19
+- A side received valid packet.
+- New ACK received (packet 19) - STOPPED TIMER
+** 18 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+
+EVENT time: 395.869995,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	mmmmmmmmmmmmmmmmmmm
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 397.428986,  type: 2, fromlayer3  entity: 1
+- B side received packet:			wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+- Out-of-order packet received (seq# 22).
+  Expecting seq# 20. Buffering for later...
+- B side sending ACK for packet 22:		ACK			ack# = 22	seq# = 22
+
+EVENT time: 401.440765,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 22	seq# = 22
+- A side received valid packet.
+- New ACK received (packet 22) - STOPPED TIMER
+** 18 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+
+EVENT time: 403.983276,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- Out-of-order packet received (seq# 23).
+  Expecting seq# 20. Buffering for later...
+- B side sending ACK for packet 23:		ACK			ack# = 23	seq# = 23
+
+EVENT time: 405.529999,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	nnnnnnnnnnnnnnnnnnn
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 405.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 18) - timer restarted
+  packet 18 resent:				sssssssssssssssssss	ack# = 18	seq# = 18
+
+EVENT time: 405.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 20) - timer restarted
+  packet 20 resent:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+
+EVENT time: 405.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 21) - timer restarted
+  packet 21 resent:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+
+EVENT time: 405.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 23) - timer restarted
+  packet 23 resent:				xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+
+EVENT time: 405.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 24) - timer restarted
+  packet 24 resent:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 405.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 25) - timer restarted
+  packet 25 resent:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+          TOLAYER3: packet being lost.
+
+EVENT time: 408.658447,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 23	seq# = 23
+- A side received valid packet.
+- New ACK received (packet 23) - STOPPED TIMER
+** 18 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		sssssssssssssssssss	ack# = 18	seq# = 18
+	- Message in window, already sent:		ttttttttttttttttttt	ack# = 19	seq# = 19
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+
+EVENT time: 412.516144,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- Out-of-order packet received (seq# 24).
+  Expecting seq# 20. Buffering for later...
+- B side sending ACK for packet 24:		ACK			ack# = 24	seq# = 24
+          TOLAYER3: packet being lost.
+
+EVENT time: 417.890076,  type: 2, fromlayer3  entity: 1
+- B side received packet:			zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+- Out-of-order packet received (seq# 25).
+  Expecting seq# 20. Buffering for later...
+- B side sending ACK for packet 25:		ACK			ack# = 25	seq# = 25
+          TOLAYER3: packet being corrupted
+
+EVENT time: 418.252289,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ooooooooooooooooooo
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 425.496277,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ZCK			ack# = 25	seq# = 25
+- A side received corrupt packet :(
+
+EVENT time: 425.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 25) - timer restarted
+  packet 25 resent:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+
+EVENT time: 425.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 24) - timer restarted
+  packet 24 resent:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+
+EVENT time: 425.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 21) - timer restarted
+  packet 21 resent:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+          TOLAYER3: packet being lost.
+
+EVENT time: 425.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 20) - timer restarted
+  packet 20 resent:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+
+EVENT time: 425.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 18) - timer restarted
+  packet 18 resent:				sssssssssssssssssss	ack# = 18	seq# = 18
+          TOLAYER3: packet being corrupted
+
+EVENT time: 425.815735,  type: 2, fromlayer3  entity: 1
+- B side received packet:			yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+- Out-of-order packet received (seq# 24).
+  Expecting seq# 20. Buffering for later...
+- B side sending ACK for packet 24:		ACK			ack# = 24	seq# = 24
+          TOLAYER3: packet being lost.
+
+EVENT time: 427.932770,  type: 2, fromlayer3  entity: 1
+- B side received packet:			xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+- Out-of-order packet received (seq# 23).
+  Expecting seq# 20. Buffering for later...
+- B side sending ACK for packet 23:		ACK			ack# = 23	seq# = 23
+          TOLAYER3: packet being corrupted
+
+EVENT time: 435.021881,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ZCK			ack# = 23	seq# = 23
+- A side received corrupt packet :(
+
+EVENT time: 436.558899,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ppppppppppppppppppp
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 437.348694,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- In-order packet received (seq# 20)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 20).
+- Updating receiver buffer window.
+  Now expecting packet 21
+- B side sending ACK for packet 20:		ACK			ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+
+EVENT time: 437.841797,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	qqqqqqqqqqqqqqqqqqq
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 440.980865,  type: 2, fromlayer3  entity: 1
+- B side received packet:			sssssssssssssssssss	ack# = 18	seq# = 18
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 18:		ACK			ack# = 18	seq# = 18
+
+EVENT time: 442.658813,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 20	seq# = 999999
+- A side received corrupt packet :(
+
+EVENT time: 445.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 18) - timer restarted
+  packet 18 resent:				sssssssssssssssssss	ack# = 18	seq# = 18
+
+EVENT time: 445.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 20) - timer restarted
+  packet 20 resent:				uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+          TOLAYER3: packet being corrupted
+
+EVENT time: 445.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 21) - timer restarted
+  packet 21 resent:				vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+
+EVENT time: 445.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 24) - timer restarted
+  packet 24 resent:				yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+          TOLAYER3: packet being corrupted
+
+EVENT time: 445.697327,  type: 0, timerinterrupt   entity: 0
+- TIMEOUT (packet 25) - timer restarted
+  packet 25 resent:				zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+          TOLAYER3: packet being corrupted
+
+EVENT time: 450.144012,  type: 2, fromlayer3  entity: 1
+- B side received packet:			uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+- Previously ACKed packet received. Re-ACKing...
+- B side sending ACK for packet 20:		ACK			ack# = 20	seq# = 20
+
+EVENT time: 450.423462,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 18	seq# = 18
+- A side received valid packet.
+- New ACK received (packet 18) - STOPPED TIMER
+** 20 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		uuuuuuuuuuuuuuuuuuu	ack# = 20	seq# = 20
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Sending NEW buffered message:			aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+- Started timer for packet 26
+	- Sending NEW buffered message:			bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+- Started timer for packet 27
+          TOLAYER3: packet being corrupted
+
+EVENT time: 450.966705,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	rrrrrrrrrrrrrrrrrrr
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 458.316711,  type: 2, fromlayer3  entity: 1
+- B side received packet:			vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+- In-order packet received (seq# 21)!
+  Sending all buffered packets in the window.
+	- B side sending packet to upper
+	  layer (seq# 21).
+	- B side sending packet to upper
+	  layer (seq# 22).
+	- B side sending packet to upper
+	  layer (seq# 23).
+	- B side sending packet to upper
+	  layer (seq# 24).
+	- B side sending packet to upper
+	  layer (seq# 25).
+- Updating receiver buffer window.
+  Now expecting packet 26
+- B side sending ACK for packet 21:		ACK			ack# = 21	seq# = 21
+
+EVENT time: 458.786407,  type: 2, fromlayer3  entity: 0
+- A side received from lower layer:		ACK			ack# = 20	seq# = 20
+- A side received valid packet.
+- New ACK received (packet 20) - STOPPED TIMER
+** 21 MESSAGES HAVE BEEN SENT SUCCESSFULLY **
+- Updating sending window...
+- Making sure all packets in the sending
+  window have been sent.
+	- Message in window, already sent:		vvvvvvvvvvvvvvvvvvv	ack# = 21	seq# = 21
+	- Message in window, already sent:		wwwwwwwwwwwwwwwwwww	ack# = 22	seq# = 22
+	- Message in window, already sent:		xxxxxxxxxxxxxxxxxxx	ack# = 23	seq# = 23
+	- Message in window, already sent:		yyyyyyyyyyyyyyyyyyy	ack# = 24	seq# = 24
+	- Message in window, already sent:		zzzzzzzzzzzzzzzzzzz	ack# = 25	seq# = 25
+	- Message in window, already sent:		aaaaaaaaaaaaaaaaaaa	ack# = 26	seq# = 26
+	- Message in window, already sent:		bbbbbbbbbbbbbbbbbbb	ack# = 27	seq# = 27
+	- Sending NEW buffered message:			ccccccccccccccccccc	ack# = 28	seq# = 28
+- Started timer for packet 28
+          TOLAYER3: packet being lost.
+
+EVENT time: 458.897980,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	sssssssssssssssssss
+- Too many packets in-flight. Buffering to send later...
+
+EVENT time: 462.707520,  type: 2, fromlayer3  entity: 0

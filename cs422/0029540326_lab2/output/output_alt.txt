@@ -1,0 +1,416 @@
+
+EVENT time: 1870.573975,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	aaaaaaaaaaaaaaaaaaaaý
+- TIMER STARTED
+- Sending Message:				aaaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 1876.039062,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zaaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 1950.573975,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		aaaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+
+EVENT time: 1952.755615,  type: 2, fromlayer3  entity: 1
+- B side received packet:			aaaaaaaaaaaaaaaaaaaa	ack# = 0	seq# = 0
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+
+EVENT time: 1954.776123,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 0	seq# = 0
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 3512.483887,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	bbbbbbbbbbbbbbbbbbbbý
+- TIMER STARTED
+- Sending Message:				bbbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+
+EVENT time: 3513.783203,  type: 2, fromlayer3  entity: 1
+- B side received packet:			bbbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 3592.483887,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		bbbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+
+EVENT time: 3601.912354,  type: 2, fromlayer3  entity: 1
+- B side received packet:			bbbbbbbbbbbbbbbbbbbb	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+
+EVENT time: 3609.375244,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 1	seq# = 1
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 5344.603516,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ccccccccccccccccccccý
+- TIMER STARTED
+- Sending Message:				cccccccccccccccccccc	ack# = 0	seq# = 0
+
+EVENT time: 5347.333984,  type: 2, fromlayer3  entity: 1
+- B side received packet:			cccccccccccccccccccc	ack# = 0	seq# = 0
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 5349.700195,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ZCK			ack# = 0	seq# = 0
+- A Side received corrupted packet from
+  B Side - resending:				cccccccccccccccccccc	ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+
+EVENT time: 5424.603516,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		cccccccccccccccccccc	ack# = 0	seq# = 0
+          TOLAYER3: packet being lost.
+
+EVENT time: 5504.603516,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		cccccccccccccccccccc	ack# = 0	seq# = 0
+
+EVENT time: 5510.852539,  type: 2, fromlayer3  entity: 1
+- B side received packet:			cccccccccccccccccccc	ack# = 0	seq# = 0
+- B side expected seq 1, got seq 0
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+
+EVENT time: 5512.333008,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 0	seq# = 0
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 6462.303711,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ddddddddddddddddddddý
+- TIMER STARTED
+- Sending Message:				dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 6468.664551,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 6542.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 6543.362305,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 6622.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 6627.577637,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 6702.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 6711.084961,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 6782.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+          TOLAYER3: packet being lost.
+
+EVENT time: 6862.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 6867.123047,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zddddddddddddddddddd	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 6942.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 6945.965332,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 6954.875977,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ZCK			ack# = 1	seq# = 1
+- A Side received corrupted packet from
+  B Side - resending:				dddddddddddddddddddd	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 6960.493652,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zddddddddddddddddddd	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 7022.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 7024.335449,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zddddddddddddddddddd	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 7102.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 7110.046875,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zddddddddddddddddddd	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 7182.303711,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 7188.995117,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 7194.467773,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ZCK			ack# = 1	seq# = 1
+- A Side received corrupted packet from
+  B Side - resending:				dddddddddddddddddddd	ack# = 1	seq# = 1
+
+EVENT time: 7199.854492,  type: 2, fromlayer3  entity: 1
+- B side received packet:			dddddddddddddddddddd	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+
+EVENT time: 7201.558594,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 1	seq# = 1
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 7537.408203,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	eeeeeeeeeeeeeeeeeeeeý
+- TIMER STARTED
+- Sending Message:				eeeeeeeeeeeeeeeeeeee	ack# = 0	seq# = 0
+
+EVENT time: 7545.366211,  type: 2, fromlayer3  entity: 1
+- B side received packet:			eeeeeeeeeeeeeeeeeeee	ack# = 0	seq# = 0
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+
+EVENT time: 7549.758789,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 0	seq# = 0
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 7653.787109,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ffffffffffffffffffffý
+- TIMER STARTED
+- Sending Message:				ffffffffffffffffffff	ack# = 1	seq# = 1
+
+EVENT time: 7663.635254,  type: 2, fromlayer3  entity: 1
+- B side received packet:			ffffffffffffffffffff	ack# = 1	seq# = 1
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+
+EVENT time: 7666.380371,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 1	seq# = 1
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 8257.841797,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	ggggggggggggggggggggý
+- TIMER STARTED
+- Sending Message:				gggggggggggggggggggg	ack# = 0	seq# = 0
+
+EVENT time: 8264.457031,  type: 2, fromlayer3  entity: 1
+- B side received packet:			gggggggggggggggggggg	ack# = 0	seq# = 0
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+
+EVENT time: 8267.763672,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 0	seq# = 0
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 9766.092773,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	hhhhhhhhhhhhhhhhhhhhý
+- TIMER STARTED
+- Sending Message:				hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 9767.606445,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 9846.092773,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 9847.190430,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 9926.092773,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+
+EVENT time: 9928.242188,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 9929.826172,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ZCK			ack# = 1	seq# = 1
+- A Side received corrupted packet from
+  B Side - resending:				hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+
+EVENT time: 9935.073242,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 9944.016602,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ZCK			ack# = 1	seq# = 1
+- A Side received corrupted packet from
+  B Side - resending:				hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 9953.338867,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 10006.092773,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 10009.088867,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 10086.092773,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 10087.242188,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhhh	ack# = 999999	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 10166.092773,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+
+EVENT time: 10173.661133,  type: 2, fromlayer3  entity: 1
+- B side received packet:			hhhhhhhhhhhhhhhhhhhh	ack# = 1	seq# = 1
+- B side expected seq 0, got seq 1
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+
+EVENT time: 10177.834961,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 1	seq# = 1
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 10934.820312,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	iiiiiiiiiiiiiiiiiiiiý
+- TIMER STARTED
+- Sending Message:				iiiiiiiiiiiiiiiiiiii	ack# = 0	seq# = 0
+
+EVENT time: 10939.546875,  type: 2, fromlayer3  entity: 1
+- B side received packet:			iiiiiiiiiiiiiiiiiiii	ack# = 0	seq# = 0
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 0	seq# = 0
+
+EVENT time: 10944.447266,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 0	seq# = 0
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 11976.557617,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	jjjjjjjjjjjjjjjjjjjjý
+- TIMER STARTED
+- Sending Message:				jjjjjjjjjjjjjjjjjjjj	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 11981.497070,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zjjjjjjjjjjjjjjjjjjj	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 12056.557617,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		jjjjjjjjjjjjjjjjjjjj	ack# = 1	seq# = 1
+          TOLAYER3: packet being corrupted
+
+EVENT time: 12063.326172,  type: 2, fromlayer3  entity: 1
+- B side received packet:			Zjjjjjjjjjjjjjjjjjjj	ack# = 1	seq# = 1
+- B side received corrupted packet. Ignoring...
+
+EVENT time: 12136.557617,  type: 0, timerinterrupt   entity: 0
+- TIMER INTERRUPT (Packet Lost) -
+  Retransmitting & Restarting Timer:		jjjjjjjjjjjjjjjjjjjj	ack# = 1	seq# = 1
+
+EVENT time: 12140.275391,  type: 2, fromlayer3  entity: 1
+- B side received packet:			jjjjjjjjjjjjjjjjjjjj	ack# = 1	seq# = 1
+- B side received correct packet
+- Sending message to layer 5...
+- B side sent ACK:				ACK			ack# = 1	seq# = 1
+
+EVENT time: 12145.147461,  type: 2, fromlayer3  entity: 0
+- A Side Received from Lower Layer:		ACK			ack# = 1	seq# = 1
+- TIMER STOPPED
+- A Side received correct packet
+
+
+
+EVENT time: 12727.228516,  type: 1, fromlayer5  entity: 0
+- A side received message from upper layer:	kkkkkkkkkkkkkkkkkkkký
+- TIMER STARTED
+- Sending Message:				kkkkkkkkkkkkkkkkkkkk	ack# = 0	seq# = 0
+          TOLAYER3: packet being corrupted
+
+EVENT time: 12732.938477,  type: 2, fromlayer3  entity: 1
