@@ -1,0 +1,21 @@
+import java.util.*;
+import java.text.*;
+public class DNAReconstructor
+{
+  public static void main(String args[])
+  {
+    Scanner s = new Scanner(System.in);
+    String yourDNA = "";
+    System.out.println("Input DNA fragments one line at a time.\nWe start with no DNA:\n");
+    System.out.println("Your DNA (1): \""+yourDNA+"\"");
+    System.out.print("Initial Sequence: ");
+    String initial = s.nextLine();
+    initial = initial.toLowerCase();
+    System.out.println("\nYour DNA (2): \""+yourDNA+"\"");
+    System.out.print("Sequencer: ");
+    String sequencer = s.nextLine();
+    sequencer = sequencer.toLowerCase();
+    String newSequence = initial + sequencer.substring(3);
+    System.out.print("New Sequence: "+newSequence);   
+  }
+}

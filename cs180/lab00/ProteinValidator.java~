@@ -1,0 +1,15 @@
+import java.util.*;
+import java.text*;
+public class ProteinValidator 
+{
+  public static void main(String args[])
+  {
+    Scanner s = new Scanner(System.in);
+    boolean isProtein;
+    System.out.print("Input the DNA fragment to be validated: ");
+    String validate = s.nextLine();
+    if(!validate.substring(validate.length()-3).equals("atg"))
+      isProtein = false;
+         
+  }
+}
