@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sripath.lab11.MainActivity">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_adddoc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="mishra.sripath.wecareforuclient.Adddoc">
+
+
+        <Button
+            android:id="@+id/countButton"
+            android:layout_width="88dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="400dp"
+            android:text="Count" />
+
+        <Button
+            android:id="@+id/setButton"
+            android:layout_width="88dp"
+            android:layout_height="48dp"
+            android:text="Set"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="100dp"/>
+
+        <EditText
+            android:id="@+id/valueEditText"
+            android:layout_width="215dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="230dp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

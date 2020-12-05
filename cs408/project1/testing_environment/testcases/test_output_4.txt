@@ -1,0 +1,21 @@
+220 bftpd 5.6 at 127.0.0.1 ready.
+331 Password please.
+230 User logged in.
+257 "/<<cwd>>" is the current working directory.
+451 Error: No such file or directory.
+257 "test" has been created.
+451 Error: File exists.
+451 Error: Permission denied.
+250 OK
+257 "/<<cwd>>" is the current working directory.
+257 "test2" has been created.
+250 OK
+257 "/<<cwd>>" is the current working directory.
+550 test: Directory not empty
+250 OK
+250 OK
+250 OK
+250 OK
+213 14
+350 Restarting at offset 10.
+221 See you later...

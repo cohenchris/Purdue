@@ -1,0 +1,19 @@
+220 bftpd 5.6 at 127.0.0.1 ready.
+550 The command 'USER' is disabled.
+550 The command 'PASS' is disabled.
+550 The command 'PWD' is disabled.
+550 The command 'CWD' is disabled.
+550 The command 'CDUP' is disabled.
+550 The command 'MKD' is disabled.
+550 The command 'RMD' is disabled.
+550 The command 'PASV' is disabled.
+550 The command 'NLST' is disabled.
+550 The command 'LIST' is disabled.
+550 The command 'SIZE' is disabled.
+550 The command 'STAT' is disabled.
+550 The command 'STOR' is disabled.
+550 The command 'RETR' is disabled.
+550 The command 'REST' is disabled.
+500 Unknown command: "thisshouldntwork"
+550 The command 'DELE' is disabled.
+550 The command 'QUIT' is disabled.
