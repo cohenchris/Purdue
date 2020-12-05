@@ -1,0 +1,43 @@
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #EEEEEE;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+.title {
+    text-align: center;
+    color: #98700D;
+    padding-bottom: 2%;
+}
+
+h2 {
+    color: #98700D;
+}
+
+.section {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.section:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.section {
+    padding: 2px 16px;
+    width: 500px;
+    height: 500px;
+    margin: 10px;
+}
+
+.flex {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section img {
+    display:block;
+    margin:auto;
+}

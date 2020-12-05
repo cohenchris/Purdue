@@ -1,0 +1,27 @@
+#! /bin/bash
+
+../myhttpd -p5 0 > /dev/null 2>&1 &
+PID=$!
+
+prlimit --nproc=50 --cpu=600 --rss=4000000 -p $PID
+
+#PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+PORT=$(netstat -ntlp 2> /dev/null | awk 'split($7, a, "/"); split($4, b, ":"); {print b[2]" "a[1]}' | awk -v pid="$PID" '$2==pid {print $1}')
+USERSTRING=$(cat ../auth.txt)
+REQUESTS=( index.html complex.html logs.html simple.html style.css belltower.gif boilermaker-special-vii.jpg cs-logo.svg PurdueSeal.png block-p.gif carsen.gif JohnPurdue.jpg img/2048.gif img/android.png img/apple.png img/chat.gif img/constitution img/cubes2.gif img/dogespace.gif img/empty img/hail_purdue img/logo.svg img/lorem img/pokemon img/subdir img/Tux.png img/volume1.gif img/windows.png )
+sleep 1
+
+for REQUEST in ${REQUESTS[@]}; do
+  ~cs252/bin/ab -q -r -A $USERSTRING -n 128 -c 8 "http://127.0.0.1:$PORT/$REQUEST" > /dev/null 2>&1 &
+  TPID=$!
+  while kill -0 $TPID 2> /dev/null; do
+    if [[ $(ps huH p $PID | wc -l) > 6 ]]; then
+      printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+      kill -15 $PID
+      exit 1
+    fi
+  done
+done
+printf "\033[0;32m$(basename "$0") Passed.\033[0m\n"
+kill -15 $PID
+exit 0

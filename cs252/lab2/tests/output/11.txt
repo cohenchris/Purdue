@@ -1,0 +1,44 @@
+0x55d16248bf20
+(nil)
+[
+	addr: 3872
+	size: 192
+	left_size: 3840
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+BREAK
+0x55d16248ce30
+(nil)
+[
+	addr: 7728
+	size: 432
+	left_size: 3840
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+BREAK
+0x55d16248df84
+0x55d16248ce30
+[
+	addr: 12164
+	size: 192
+	left_size: 3840
+	allocated: false
+	prev: NULLPTR
+	next: 7728
+]
+
+[
+	addr: 7728
+	size: 432
+	left_size: 3840
+	allocated: false
+	prev: 12164
+	next: NULLPTR
+]
+

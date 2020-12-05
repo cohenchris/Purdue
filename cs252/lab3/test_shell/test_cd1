@@ -1,0 +1,5 @@
+#!/bin/bash
+
+input_str=$'cd /etc\n/bin/pwd'
+cat <(/bin/sh <<< "$input_str" 2>&1)
+exit $?

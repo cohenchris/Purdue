@@ -1,0 +1,93 @@
+#!/bin/bash
+
+O_COUNT=1000
+N_COUNT=1000
+timeout 1 stdbuf -oL ./part2 $O_COUNT $N_COUNT > p2out.txt
+
+O2_STR="Two atoms of oxygen combined to produce one molecule of O2."
+N2_STR="Two atoms of nitrogen combined to produce one molecule of N2."
+O3_STR="Three molecules of O2 combined to produce two molecules of O3."
+NO2_STR="One molecule of N2 and two molecules of O2 combined to produce two molecules of NO2."
+
+O2_COUNT=`cat p2out.txt | grep "${O2_STR}" | wc -l`
+
+if (( `echo 2\*$O2_COUNT | bc` > $O_COUNT )); then
+    echo "Too many O2 ($O2_COUNT), not enough O ($O_COUNT)"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi
+O_COUNT=$((O_COUNT - 2*O2_COUNT))
+
+N2_COUNT=`cat p2out.txt | grep "${N2_STR}" | wc -l`
+
+if (( `echo 2\*$N2_COUNT | bc` > $N_COUNT )); then
+    echo "Too many N2 ($N2_COUNT), not enough N ($N_COUNT)"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi
+N_COUNT=$((N_COUNT - 2*N2_COUNT))
+
+
+O3_COUNT=`cat p2out.txt | grep "${O3_STR}" | wc -l`
+O2_COUNT=`echo "$O2_COUNT - 3*$O3_COUNT" | bc`
+
+if (( $O2_COUNT < 0 )); then
+    echo "Too many O3, not enough O2"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+#The O3 reaction yields 2 O3, so we double the number of O3
+O3_COUNT=$((2 * O3_COUNT))
+
+NO2_COUNT=`cat p2out.txt | grep "${NO2_STR}" | wc -l`
+
+N2_COUNT=$((N2_COUNT - NO2_COUNT))
+
+O2_COUNT=$((O2_COUNT - 2*NO2_COUNT))
+
+#The NO2 reaction yields 2 NO2, so we double the number of NO2
+NO2_COUNT=$((2 * NO2_COUNT))
+
+if (( $O2_COUNT < 0 )); then
+    echo "Too many NO2, not enough O2"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+if (( $N2_COUNT < 0 )); then
+    echo "Too many NO2, not enough N2"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+#N2_COUNT=0
+#O2_COUNT=3
+if (( $N2_COUNT > 0 )) && (( $O2_COUNT > 1 )); then
+    echo "Another NO2 reaction is still possible"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+if (( $O2_COUNT > 2)); then
+    echo "Another O3 reaction is still possible"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+if (( $O_COUNT > 1 )); then
+    echo "Another O2 reaction is still possible"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+if (( $N_COUNT > 1 )); then
+    echo "Another N2 reaction is still possible"
+    echo -e "\e[31mtest_part2_count failed.\e[0m"
+    exit 1
+fi;
+
+rm -rf p2out.txt
+
+echo -e "\e[32mtest_part2_count passed.\e[0m"
+

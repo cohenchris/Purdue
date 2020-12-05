@@ -1,0 +1,37 @@
+#! /bin/bash
+
+ERROR_TESTS=( test-error-forbidden test-error-malformed-request test-error-method test-error-not-found test-error-unauthorized test-error-version )
+ITERATIVE_TESTS=( test-iterative-auth-accept test-iterative-complex-embeds test-iterative-complex-html test-iterative-index test-iterative-mime-types test-iterative-simple )
+FORK_TESTS=( test-fork-zombie test-fork-robustness )
+POOL_TESTS=( test-pool-count test-pool-load test-pool-robustness )
+THREAD_TESTS=( test-thread-cleanup test-thread-load test-thread-robustness )
+
+SCORE=0
+#echo "--------ERROR TESTS--------"
+for TEST in ${ERROR_TESTS[@]}; do
+  timeout --preserve-status 30 ./$TEST
+  SCORE=$(($SCORE+$?))
+done
+#echo "------ITERATIVE TESTS------"
+for TEST in ${ITERATIVE_TESTS[@]}; do
+  timeout --preserve-status 30 ./$TEST
+  SCORE=$(($SCORE+$?))
+done
+#echo "---------FORK TESTS--------"
+for TEST in ${FORK_TESTS[@]}; do
+  timeout --preserve-status 30 ./$TEST
+  SCORE=$(($SCORE+$?))
+  ./$TEST
+done
+#echo "--------THREAD TESTS-------"
+for TEST in ${THREAD_TESTS[@]}; do
+  timeout --preserve-status 30 ./$TEST
+  SCORE=$(($SCORE+$?))
+done
+#echo "---------POOL TESTS--------"
+for TEST in ${POOL_TESTS[@]}; do
+  timeout --preserve-status 30 ./$TEST
+  SCORE=$(($SCORE+$?))
+done
+pkill -f myhttpd
+printf "$SCORE"

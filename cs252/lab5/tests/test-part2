@@ -1,0 +1,18 @@
+#! /bin/bash
+
+ITERATIVE_TESTS=( test-iterative-cgi-bin test-iterative-cgi-bin-args test-iterative-directory-listing test-iterative-directory-listing-slash test-iterative-directory-sorting )
+TLS_TESTS=( test-error-forbidden-tls test-error-method-tls test-error-not-found-tls test-error-unauthorized-tls test-iterative-auth-accept-tls test-iterative-cgi-bin-args-tls test-iterative-cgi-bin-tls test-iterative-complex-embeds-tls test-iterative-complex-html-tls test-iterative-directory-listing-slash-tls test-iterative-directory-listing-tls test-iterative-directory-sorting-tls test-iterative-index-tls test-iterative-mime-types-tls test-iterative-simple-tls ) 
+SECURITY_TESTS=( test-iterative-overflow )
+echo "--------PART 2  TESTS--------"
+for TEST in ${ITERATIVE_TESTS[@]}; do
+  ./$TEST
+done
+echo "----------TLS TESTS----------"
+for TEST in ${TLS_TESTS[@]}; do
+  ./$TEST
+done
+echo "----------SEC TESTS----------"
+for TEST in ${SECURITY_TESTS[@]}; do
+  ./$TEST
+done
+pkill -f myhttpd

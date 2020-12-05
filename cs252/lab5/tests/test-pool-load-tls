@@ -1,0 +1,37 @@
+#! /bin/bash
+
+../myhttpsd -p5 0 > /dev/null 2>&1 &
+PID=$!
+prlimit --nproc=50 --cpu=600 --rss=4000000 -p $PID
+
+PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+USERSTRING=$(cat ../auth.txt)
+sleep 1
+nc -q -1 127.0.0.1 $PORT &
+NCPID=$!
+CODE=$(curl --max-time 3 -s -u $USERSTRING "127.0.0.1:$PORT/simple.html")
+CODEA=$?
+kill -9 $NCPID
+for i in {0..4}; do
+  nc -q -1 127.0.0.1 $PORT &
+  P=$!
+  disown
+  PIDS="$PIDS $P"
+done
+CODE=$(curl --max-time 3 -s -u $USERSTRING "127.0.0.1:$PORT/simple.html")
+CODEB=$?
+for P in $PIDS; do
+  if kill -9 $P 2> /dev/null; then
+    kill -9 $P 2> /dev/null
+  fi
+done
+if kill -0 $PID 2> /dev/null; then
+  if [[ $CODEB == 28 ]] && [[ $CODEA == 0 ]]; then
+    printf "\033[0;32m$(basename "$0") Passed.\033[0m\n"
+    kill -15 $PID 2> /dev/null
+    exit 0
+  fi
+fi
+printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+kill -15 $PID
+exit 1

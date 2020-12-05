@@ -1,0 +1,24 @@
+#! /bin/bash
+
+../myhttpd 0 > /dev/null 2>&1 &
+PID=$!
+
+prlimit --nproc=50 --cpu=600 --rss=4000000 -p $PID
+
+rm -rf ./tmp/* > /dev/null 2>&1 
+sleep 1
+#PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+PORT=$(netstat -ntlp 2> /dev/null | awk 'split($7, a, "/"); split($4, b, ":"); {print b[2]" "a[1]}' | awk -v pid="$PID" '$2==pid {print $1}')
+USERSTRING=$(cat ../auth.txt)
+wget -q -nH -r -np 127.0.0.1:$PORT/complex.html --http-user=$(echo $USERSTRING | cut -d":" -f1) --http-password=$(echo $USERSTRING | cut -d":" -f2) --directory-prefix=./tmp
+diff -qrNw ./tmp/ ./test-files/test-iterative-complex-embeds/
+CODE=$?
+#rm -rf ./tmp/* > /dev/null 2>&1 
+kill -15 $PID
+if [[ $CODE != 0 ]]; then
+  printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+  exit 1
+else
+  printf "\033[0;32m$(basename "$0") Passed.\033[0m\n"
+  exit 0
+fi

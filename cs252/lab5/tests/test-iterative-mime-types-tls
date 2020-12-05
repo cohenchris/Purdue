@@ -1,0 +1,23 @@
+#! /bin/bash
+
+../myhttpsd 0 > /dev/null 2>&1 &
+PID=$!
+
+prlimit --nproc=50 --cpu=600 --rss=4000000 -p $PID
+
+sleep 1
+#PORT=$(ss -l -p -n | grep $PID | awk '{print $5}' | cut -d ":" -f2)
+PORT=$(netstat -ntlp 2> /dev/null | awk 'split($7, a, "/"); split($4, b, ":"); {print b[2]" "a[1]}' | awk -v pid="$PID" '$2==pid {print $1}')
+USERSTRING=$(cat ../auth.txt)
+FILES=( index.html:text/html style.css:text/css img/belltower.gif:image/gif img/JohnPurdue.jpg:image/jpeg img/PurdueSeal.png:image/png img/cs-logo.svg:image/svg+xml )
+for FILE in ${FILES[@]}; do
+  curl -k -s -i -u $USERSTRING "https://127.0.0.1:$PORT/$(printf $FILE | cut -d ":" -f1)" | grep -a "Content-Type:" | cut -d " " -f2 | grep $(printf $FILE | cut -d ":" -f2)
+  if [[ $? != 0 ]]; then
+    printf "\033[0;31m$(basename "$0") Failed.\033[0m\n"
+    kill -15 $PID
+    exit 1
+  fi
+done
+printf "\033[0;32m$(basename "$0") passed.\033[0m\n"
+kill -15 $PID
+exit 0

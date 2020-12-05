@@ -1,0 +1,6 @@
+-rw-r-----+ 1 cohen50 cohen50 14404 Oct 13 18:20 command.c
+-rw-r-----  1 cohen50 cohen50   648 Oct 13 15:16 command.h
+-rw-r-----  1 cohen50 cohen50 22112 Oct 13 18:20 command.o
+-rw-r-----+ 1 cohen50 cohen50  4854 Oct 13 17:46 single_command.c
+-rw-r-----  1 cohen50 cohen50   368 Oct 13 15:16 single_command.h
+-rw-r-----  1 cohen50 cohen50 11592 Oct 13 17:49 single_command.o

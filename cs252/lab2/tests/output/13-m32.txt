@@ -1,0 +1,102 @@
+0x56e8f830
+0x56e8f9e8
+[
+	addr: 2096
+	size: 400
+	left_size: 24
+	allocated: false
+	prev: NULLPTR
+	next: 2536
+]
+
+[
+	addr: 2536
+	size: 40
+	left_size: 24
+	allocated: false
+	prev: 2096
+	next: 2616
+]
+
+[
+	addr: 2616
+	size: 1464
+	left_size: 24
+	allocated: false
+	prev: 2536
+	next: NULLPTR
+]
+
+BREAK
+0x56e8f008
+0x56e8f9e8
+[
+	addr: 0008
+	size: 2048
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: 2536
+]
+
+[
+	addr: 2536
+	size: 40
+	left_size: 24
+	allocated: false
+	prev: 0008
+	next: 2616
+]
+
+[
+	addr: 2616
+	size: 1464
+	left_size: 24
+	allocated: false
+	prev: 2536
+	next: NULLPTR
+]
+
+BREAK
+0x56e8f008
+0x56e8fa38
+[
+	addr: 0008
+	size: 2048
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: 2616
+]
+
+[
+	addr: 2616
+	size: 1464
+	left_size: 24
+	allocated: false
+	prev: 0008
+	next: NULLPTR
+]
+
+BREAK
+0x56e8fa68
+0x56e8f008
+[
+	addr: 2664
+	size: 1416
+	left_size: 40
+	allocated: false
+	prev: NULLPTR
+	next: 0008
+]
+
+[
+	addr: 0008
+	size: 2048
+	left_size: 0
+	allocated: false
+	prev: 2664
+	next: NULLPTR
+]
+
+BREAK

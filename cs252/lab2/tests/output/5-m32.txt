@@ -1,0 +1,23 @@
+0x565b2050
+(nil)
+[
+	addr: 0080
+	size: 4000
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+0x565b2008
+(nil)
+[
+	addr: 0008
+	size: 4072
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+test: ../my_malloc.c:651: my_free: Assertion `false' failed.

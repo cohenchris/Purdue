@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if (( $# != 0 ))
+then
+  echo "Usage: compile"
+  exit 1
+fi
+
+# Attempt to compile all files beginning with 'src' and ending with '.c'
+for file in $(ls);
+do
+  #if (( grep -c "^src" $file == 1 && grep -c "\.c$" $file == 1 ))
+  if [[ (( $file =~ ^src )) && (( $file =~ .c$ )) ]]
+  then
+    echo "C program: "$file
+    gcc -Wall -std=c99 $file
+    if (( $? == 0 ))  # gcc was successful
+    then
+      echo "Successfully compiled!"
+
+      for file in $(ls);
+      do
+        if [[ (( $file =~ ^input )) && (( $file =~ .data$ )) ]]
+        then
+          echo "Input file: "$file
+          a.out < $file
+	  if (( $? == 0 ))
+          then
+            echo "Run successful."
+	  else
+            echo "Run failed on "$file"."
+	  fi
+
+        fi
+      done
+    else
+      echo "Compilation of "$file" failed!"
+    fi
+  echo
+  fi
+done
+
+exit 0

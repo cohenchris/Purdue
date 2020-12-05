@@ -1,0 +1,38 @@
+#! /bin/bash
+
+rm -rf out.txt
+
+./part1 20 20 > out.txt
+
+consumed=`cat out.txt | grep consumed | cut -d ' ' -f 4`
+produced=`cat out.txt | grep produced | cut -d ' ' -f 4`
+
+if [ -z "$consumed" ]; then
+    echo -e "No output produced."
+    echo -e "\e[31mtest_part1_order failed.\e[0m"
+    exit 1
+fi
+
+if [ -z "$produced" ]; then
+    echo -e "No output produced."
+    echo -e "\e[31mtest_part1_order failed.\e[0m"
+    exit 1
+fi
+
+if [[ $* == -v ]]; then
+    diff <(echo $consumed) <(echo $produced)
+else
+    diff <(echo $consumed) <(echo $produced) >/dev/null    
+fi
+
+if [ $? -eq 0 ]; then
+    echo -e "\e[32mtest_part1_order passed.\e[0m"
+else
+    echo -e "Consumption order is not the same as production order."
+    echo -e "To see the difference when the test fails, use argument -v"
+    echo -e "\e[31mtest_part1_order failed.\e[0m"
+fi	
+
+rm -rf out.txt
+
+

@@ -1,0 +1,18 @@
+[
+	addr: 0096
+	size: 3968
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+[
+	addr: 0016
+	size: 4048
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+

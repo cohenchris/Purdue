@@ -1,0 +1,147 @@
+
+
+[
+	addr: 0712
+	size: 40
+	left_size: 40
+	allocated: false
+	prev: NULLPTR
+	next: 0240
+]
+
+[
+	addr: 0240
+	size: 400
+	left_size: 40
+	allocated: false
+	prev: 0712
+	next: 0128
+]
+
+[
+	addr: 0128
+	size: 40
+	left_size: 40
+	allocated: false
+	prev: 0240
+	next: 0016
+]
+
+[
+	addr: 0016
+	size: 40
+	left_size: 0
+	allocated: false
+	prev: 0128
+	next: 3952
+]
+
+[
+	addr: 3952
+	size: 112
+	left_size: 3168
+	allocated: false
+	prev: 0016
+	next: NULLPTR
+]
+
+BREAK
+
+
+[
+	addr: 0712
+	size: 40
+	left_size: 40
+	allocated: false
+	prev: NULLPTR
+	next: 0128
+]
+
+[
+	addr: 0128
+	size: 40
+	left_size: 40
+	allocated: false
+	prev: 0712
+	next: 0016
+]
+
+[
+	addr: 0016
+	size: 40
+	left_size: 0
+	allocated: false
+	prev: 0128
+	next: 3952
+]
+
+[
+	addr: 3952
+	size: 112
+	left_size: 3168
+	allocated: false
+	prev: 0016
+	next: NULLPTR
+]
+
+BREAK
+
+
+[
+	addr: 0712
+	size: 40
+	left_size: 40
+	allocated: false
+	prev: NULLPTR
+	next: 0016
+]
+
+[
+	addr: 0016
+	size: 152
+	left_size: 0
+	allocated: false
+	prev: 0712
+	next: 3952
+]
+
+[
+	addr: 3952
+	size: 112
+	left_size: 3168
+	allocated: false
+	prev: 0016
+	next: NULLPTR
+]
+
+BREAK
+
+
+[
+	addr: 0072
+	size: 96
+	left_size: 40
+	allocated: false
+	prev: NULLPTR
+	next: 0712
+]
+
+[
+	addr: 0712
+	size: 40
+	left_size: 40
+	allocated: false
+	prev: 0072
+	next: 3952
+]
+
+[
+	addr: 3952
+	size: 112
+	left_size: 3168
+	allocated: false
+	prev: 0712
+	next: NULLPTR
+]
+
+BREAK

@@ -1,0 +1,118 @@
+
+(nil)
+[
+	addr: 0080
+	size: 4000
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+
+(nil)
+[
+	addr: 0152
+	size: 3928
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+
+(nil)
+[
+	addr: 0224
+	size: 3856
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+
+(nil)
+[
+	addr: 0296
+	size: 3784
+	left_size: 64
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+BREAK
+
+
+[
+	addr: 0008
+	size: 64
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: 0296
+]
+
+[
+	addr: 0296
+	size: 3784
+	left_size: 64
+	allocated: false
+	prev: 0008
+	next: NULLPTR
+]
+
+
+
+[
+	addr: 0008
+	size: 136
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: 0296
+]
+
+[
+	addr: 0296
+	size: 3784
+	left_size: 64
+	allocated: false
+	prev: 0008
+	next: NULLPTR
+]
+
+
+
+[
+	addr: 0008
+	size: 208
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: 0296
+]
+
+[
+	addr: 0296
+	size: 3784
+	left_size: 64
+	allocated: false
+	prev: 0008
+	next: NULLPTR
+]
+
+BREAK
+
+(nil)
+[
+	addr: 0008
+	size: 4072
+	left_size: 0
+	allocated: false
+	prev: NULLPTR
+	next: NULLPTR
+]
+
+BREAK
