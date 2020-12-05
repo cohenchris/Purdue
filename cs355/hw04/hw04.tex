@@ -1,0 +1,335 @@
+\documentclass[11pt]{article}
+\input{headers04}
+
+\usepackage{fancyhdr}   
+\pagestyle{fancy}      
+\lhead{CS 355, FALL 2020}               
+\rhead{Name: Chris Cohen} %%% <-- REPLACE Hemanta K. Maji WITH YOUR NAME HERE
+
+\usepackage[strict]{changepage}  
+\newcommand{\nextoddpage}{\checkoddpage\ifoddpage{\ \newpage\ \newpage}\else{\ \newpage}\fi}  
+
+
+\begin{document}
+
+\title{Homework 4}
+
+\date{}
+
+\maketitle 
+
+\thispagestyle{fancy}  
+\pagestyle{fancy}      
+
+
+
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item {\bfseries An Example of Extended GCD Algortihm (20 points).}
+    Recall that the extended GCD algorithm takes as input two integers $a, b$ and returns a triple $(g, \alpha, \beta)$, such that 
+    $$g = \gcd(a,b), \text{ and } g = \alpha \cdot a + \beta \cdot b.$$ 
+    Here $+$ and $\cdot$ are integer addition and multiplication operations, respectively. 
+    
+    Find $(g, \alpha, \beta)$ when $a = 310, b = 2020$. 
+    
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+    The following calculations are based on this code snippet:
+   \begin{verbatim}
+   XGCD(A,B):
+      if B = 0:
+        return (A,1,0)
+
+      R = A%B
+      M = (A-R)/B
+      (G, a', B') = XGCD(B,R)
+
+      return (G, B', a' - B' * M)
+   \end{verbatim}
+  
+    Note that this is a recursive algorithm. The functions executed are listed largest to smallest. For simplicity, I calculate XGCD(2020,310) instead. This will be adjusted later.
+   \begin{verbatim}
+   XGCD(2020,310):
+      R = 2020%310 = 160
+      M = (2020-160)/310 = 6
+      (G, a', B') = XGCD(310,160) = (10,-1,2)
+
+      return (G, B', a' - B' * M) = (10,2,-1-(2*6)) = (10,2,-13)
+   \end{verbatim}
+
+   \begin{verbatim}
+   XGCD(310,160):
+      R = 310%160= 150
+      M = (310-150)/160 = 1
+      (G, a', B') = XGCD(160,150) = (10,1,-1)
+
+      return (G, B', a' - B' * M) = (10,-1,1-(-1*1)) = (10,-1,2)
+   \end{verbatim}
+
+   \begin{verbatim}
+   XGCD(160,150):
+      R = 160%150 = 10
+      M = (160-10)/150 = 1
+      (G, a', B') = XGCD(150,10) = (10,0,1)
+
+      return (G, B', a' - B' * M) = (10,1,0-(1*1)) = (10,1,-1)
+   \end{verbatim}
+
+   \begin{verbatim}
+   XGCD(150,10):
+      R = 150%10 = 0
+      M = (150-0)/10 = 0
+      (G, a', B') = XGCD(10,0) = (10,1,0)
+
+      return (G, B', a' - B' * M) = (10, 0, 1-(0*0)) = (10,0,1)
+   \end{verbatim}
+
+   \begin{verbatim}
+   XGCD(10,0):
+      if B = 0:
+        return (A,1,0) = (10,1,0)
+   \end{verbatim}
+
+   The result is XGCD(2020,310) = (10,2,-13). However, we were supposed to calculate XGCD(310,2020), so we just swap the numbers around.
+
+   Therefore, our final answer is that XGCD(310,2020) = (10,-13,2), where $10=-13*310 + 2*2020 = -4030 + 4040 = 10$.
+
+  }
+  %%%%%%%%%%%%%%%%%%
+   \newpage
+  
+
+  
+
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \item    {\bfseries  (20 points).}  Suppose we have a cryptographic protocol $P_n$ that is implemented using $\alpha n^2$ CPU instructions, where $\alpha$ is some positive constant.  
+  We expect the protocol to be broken with $\beta 2^{n/10}$ CPU instructions. 
+  
+  Suppose, today, everyone in the world uses the primitive $P_n$ using $n=n_0$, a constant value such that even if the entire computing resources of the world were put together for 8 years we cannot compute $\beta 2^{n_0/10}$ CPU instructions. 
+  
+  Assume Moore's law holds. 
+  That is, every two years, the amount of CPU instructions a CPU can run per second doubles. 
+  
+  \begin{enumerate}
+  \item (5 points) Assuming Moore's law, how much faster will be the CPUs 8 years into the future as compared to the CPUs now?
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+
+      Assuming Moore's law, CPUs will be 16x faster 8 years in the future as compared to CPUs now.
+  }
+  %%%%%%%%%%%%%%%%%%
+  \vfill
+  \item (5 points) At the end of 8 years, what choice of $n_1$ will ensure that setting $n=n_1$ will ensure that the protocol $P_n$ for $n=n_1$ cannot be broken for another 8 years? 
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+
+      To solve this, we need to make sure that we use a value of $n_1$ such that $16 * \beta 2^{n_0/10} = \beta 2^{n_1/10}$. \newline
+
+      $
+      \beta2^{n_1/10} = 16*\beta2^{n_0/10} \newline
+      2^{n_1/10} = 16*2^{n_0/10} \newline
+      2^{n_1/10} = 2^{(n_0/10) + 4} \newline
+      2^{n_1/10} = 2^{(n_0 + 40)/10} \newline
+      \frac{n_1}{10} = \frac{n_0 + 40}{10} \newline
+      n_1 = n_0 + 40 \newline
+      $
+
+      Therefore, if we set $n_1 = n_0 + 40$, the protocol $P_n$ should be secure for another 8 years.
+  }
+  %%%%%%%%%%%%%%%%%%
+  \vfill
+\newpage  
+  \item (5 points) What will be the run-time of the protocol $P_n$ using $n=n_1$ on the \underline{new computers} as compared to the run-time of the protocol $P_n$ using $n=n_0$ on today's computers? 
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+      \newline
+      \newline
+      We can set $n_1 = n_0 + 40$, and we know that the number of instructions executed (run-time) for $P_n = \alpha n^2$ for some $n$. \newline
+
+      Since we see that the run-time protocol $P_n$ using $n=n_0$ on today's computers is $\alpha*{n_0}^2$, it follows that the protocol $P_n$ using $n=n_1$ on today's computers has run-time $\alpha*{n_1}^2$. Since $n_1=n_0+40$, the new protocol runs, in terms of $n_0$, in time $\alpha*(n_0+40)^2$ on today's computers. However, since the new protocol runs on the new computers, which are 16x faster, we divide the run-time by 16. Therefore, the final run-time for the new protocol on the new computers, in terms of $n_0$, is $(\alpha(n_0+40)^2)/16$.
+
+      Taking the ratio between the two gives us the following equation: \newline
+
+      $\frac{(\alpha(n_0 + 40)^2)/16}{\alpha{n_0}^2} \newline$
+
+      $= \frac{n_0^2 + 80n_0 + 1600}{16*n_0^2}$
+
+  }
+  %%%%%%%%%%%%%%%%%%
+  \vfill
+  \item (5 points) What will be the run-time of the protocol $P_n$ using $n=n_1$ on today's computers as compared to the run-time of the protocol $P_n$ using $n=n_0$ on \underline{today's computers}? 
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+      \newline
+      \newline
+      This part uses the same logic as part (c). I've already stated the following (on today's computers, and in terms of $n_0$):
+      \begin{enumerate}
+        \item The old protocol's run-time is $\alpha*{n_0}^2$.
+        \item The new protocol's run-time is $\alpha*(n_0 + 40)^2 = \alpha({n_0}^2 + 80n_0 + 1600)$.
+      \end{enumerate}
+
+      If we take the ratio between the two, we get the following: \newline
+
+        $\frac{\alpha*(n_0 + 40)^2}{\alpha*{n_0}^2}$ \newline
+
+        $=\frac{{n_0}^2 + 80n_0 + 1600}{{n_0}^2}$
+  }
+  %%%%%%%%%%%%%%%%%%
+  \vfill
+  \end{enumerate}
+  
+  
+  ({\footnotesize {\em Remark}: This problem explains why we demand that our cryptographic algorithms run in polynomial time and it is exponentially difficult for the adversaries to break the cryptographic protocols.})
+
+\nextoddpage 
+
+    \   %%% <-- ERASE THIS LINE AND WRITE YOUR SOLUTION HERE  
+%     \newpage
+  
+  
+ 
+    
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+ \item {\bfseries Finding Inverse Using Extended GCD Algorithm (20 points).} In this problem we shall work over the group $(\bbZ_{503}^*,\times)$. 
+   Note that $503$ is a prime. 
+   The multiplication operation $\times$ is ``integer multiplication $\mod 503$.'' 
+   
+   Use the Extended GCD algorithm to find the multiplicative inverse of 50 in the group $(\bbZ_{503}^*,\times)$.
+   
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+  First off, \newline
+  XGCD(X,P) = XGCD(50,503) = (1,-171,17) \newline
+
+  The proof used in class states that:
+
+  $1 = \alpha * X + \beta * P \newline
+  1 = \alpha * X + \beta * 0 \pmod p \newline
+  1 = \alpha * X \pmod p \newline
+  $
+
+  So $a\mod p$ is the multiplicative inverse of $X$ in the group. \newline
+
+  Therefore, $mult.inv(50) = -171 \mod 503 = 332$.
+  }
+  
+  
+ \newpage 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item {\bfseries Another Application of Extended GCD Algorithm (20 points).} 
+Use the Extended GCD algorithm to find $x \in \{0,1,2,\dots, 1538\}$ that satisfies the following two equations. 
+\begin{align*}
+    x &= 10\mod 19\\
+    x &= 7 \mod 81
+\end{align*}
+Note that 19 is a prime, but 81 is \ul{not} a prime. 
+However, we have the guarantee that 19 and 81 are relatively prime, that is, $\gcd(81,19)=1$. 
+Also note that the number $1538 = 19\cdot81-1$. 
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+  \newline
+
+  First off, we can calculate that $XGCD(81,19) = (1,4,-17) \rightarrow 81*4 - 19*-17 = 1$ \newline
+
+  We can also see that $81*4 = 324 = 1\mod 19$. Therefore, 4 is 81's inverse$\mod 19$. \newline
+  Also, $19*-17 = -323 = 1\mod 81$. Therefore, -17 is 19's inverse$\mod 81$. \newline
+
+  Using those deductions, we know that: \newline
+  $10 * (81*4) = 10\mod 19$ \newline
+  and \newline
+  $7 * (19*-17) = 7\mod 81$ \newline
+
+  Finally, from HW3 5(c), we concluded that $x = a*x_p + b*x_q$ satisfies $x$ for $x\pmod p = a$ and $x\pmod q = b$. Plugging what we have into that equation, we get the following:
+
+  $x = a*x_p + b*x_q \newline
+  x = 10*(81*4) + 7*(19*-17) \newline
+  x = 3240 - 2261 \newline
+  x = 979 \mod 1539 \newline
+  x = 979
+  $ \newline
+
+  Therefore, we can conclude that the $x\in \{0,1,2, \dotsi , 1538\}$ that satisfies $x=10\mod 19$ and $x=7\mod 81$ is $979$.
+  }
+     \newpage
+  
+  
+ 
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\item {\bfseries Square Root of an Element (20 points).} 
+  Let $p$ be a prime such that $p=3\mod 4$. 
+  For example, $p\in\{3,7,11,19\dotsc\}.$
+  
+  We say that $x$ is a square-root of $a$ in the group $(\bbZ_p^*,\times)$ if $x^2 = a\mod p$. We say that $a\in \bbZ_p^*$ is a quadratic residue if $a=x^2 \mod{p}$ for some $x\in \bbZ_p^*$. Prove that if $a\in \bbZ_p^*$ is a quadratic residue then $a^{(p+1)/4}$ is a square-root of $a$.
+  
+  %Prove that if 
+ % $a^{(p+1)/4}$ is a square-root of $a$.\\ 
+  %\color{red}
+  (Remark: This statement is only true if we assume that $a$ is a quadratic residue. For example, when $p=7$, 3 is not a quadratic residue, so $3^{(7+1)/4}$ is not a square root of 3.)
+  %%%%% ANSWER %%%%%
+  {\bfseries 
+  \newline
+
+  If $(a^{(p+1)/4})^2 = a\mod p$, we can say that $a^{(p+1)/4}$ is a square root of $a$.
+
+  We can start by squaring $a^{(p+1)/4}$:
+
+  $(a^{(p+1)/4})^2 \newline
+  a^{(p+1)/2} \newline $
+
+  We also know that $a$ is a quadratic residue, so $a = x^2\mod p$ for some $x\in Z_p^*$. Substituting that into what we had above,
+
+  $(x^2)^{(p+1)/2} \pmod p \newline
+  x^{(p+1)} \pmod p \newline
+  $
+
+  Splitting that equation apart, and remembering that $x^p = x\mod p$ (which we proved in previous homeworks), 
+
+  $x^{(p+1)} \pmod p \newline
+  x^p * x \pmod p \newline
+  x * x \pmod p \newline
+  x^2 \pmod p \newline
+  $
+
+  $(a^{(p+1)/4})^2  = x^2 \pmod p\newline$
+
+  And since $a = x^2\mod p$, \newline
+
+  $(a^{(p+1)/4})^2  = a \pmod p\newline$
+
+  Therefore, we can confidently conclude that $a^{(p+1)/4}$ is a square root of $a$. 
+  }
+
+
+
+\end{enumerate}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PLEASE LIST COLLABORATORS BELOW  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bfseries Collaborators: Angga, Benjamin} \newline 
+% ENTER THEIR NAMES HERE  
+
+\end{document}

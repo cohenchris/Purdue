@@ -1,0 +1,397 @@
+\documentclass[11pt]{article}
+\input{headers01}
+
+\usepackage{fancyhdr}   
+\pagestyle{fancy}      
+\lhead{CS 355, FALL 2020}               
+\rhead{Name: Christopher Cohen}
+
+\usepackage[strict]{changepage}  
+\newcommand{\nextoddpage}{\checkoddpage\ifoddpage{\ \newpage\ \newpage}\else{\ \newpage}\fi}  
+
+
+\begin{document}
+
+\title{Homework 1}
+
+\date{}
+
+\maketitle 
+
+\thispagestyle{fancy}  
+\pagestyle{fancy}      
+
+
+
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item {\bfseries Estimating logarithm function.} For $x\in[0,1),$ we shall use the identity that 
+  $$\ln(1-x) = -x - \frac{x^2}2 - \frac{x^3}3 - \dotsi.$$
+\begin{enumerate} 
+    \item {\bfseries (5 points)} Prove that $\ln(1-x) \leq - x - \frac{x^2}2.$
+    \newline
+    %%% ANSWER %%%
+    {\bfseries
+      \newline
+      \newline
+      For all $x\in[0,1)$, $-x$ is negative, $ -\frac{x^2}2$ is negative, $ -\frac{x^3}3$ is negative, and so on. This means that the estimation for $ln(1-x)$ becomes increasingly negative. \newline
+
+      This also means that $-x -\frac{x^2}2$ will always be greater than or equal to $-x -\frac{x^2}2 -\frac{x^3}3 -\dotsi$ because of the fact that the two equations share their first two terms ($-x -\frac{x^2}2$), but the first equation has more negative terms. \newline
+      \newline
+
+      In the case that $x=0$, the two will be equal. In any other case where $x\in[0,1)$, equation 1 will be less than equation 2. Therefore, it can be said that $ln(1-x) \leq -x -\frac{x^2}2$.
+    }
+    %%%%%%%%%%%%%%
+    \newpage
+    
+    \item {\bfseries (10 points)} For $x\in[0,1/2]$, prove that 
+      $$\ln(1-x) \geq -x - \frac{x^2}{2\cdot 2^0} - \frac{x^2}{2\cdot 2^1} -\frac{x^2}{2\cdot 2^2} - \frac{x^2}{2\cdot 2^3} - \dotsi = -x-x^2.$$
+  \newline
+    %%% ANSWER %%%
+    {\bfseries
+      \newline
+      \newline
+
+      From part a, we know that, for $x\in[0,1/2]$ (which is a subset of $x\in[0,1)$), \newline
+      $\ln(1-x) = -x - \frac{x^2}2 - \frac{x^3}3 - \dotsi.$ \newline
+      \newline
+
+      If we simplify the equation given in this part and compare it with the one from part a, we can see the following: \newline
+      $ln(1-x)$ \hspace{39px} $\geq -x-\frac{x^2}{2*2^0}-\frac{x^2}{2*2^1}-\dotsi$ \newline
+      $=$ \newline
+      $-x-\frac{x^2}2-\frac{x^3}3-\dotsi \geq -x-\frac{x^2}2-\frac{x^2}4-\dotsi$ \newline
+
+      For each equation, the first two terms are identical ($-x-\frac{x^2}2$). This means that the only terms to compare are the 3rd terms and beyond. If we set up an inequality using the 3rd term: \newline
+      $-\frac{x^3}3 \geq -\frac{x^2}4$ \newline
+      $\frac{x^3}3 \leq \frac{x^2}4$ \newline
+      $\frac{x}3 \leq \frac14$ \newline
+      $x \leq \frac34$ \newline
+      \newline
+      
+      This means that $-x-\frac{x^2}2-\frac{x^3}3-\dotsi \geq -x-\frac{x^2}2-\frac{x^2}4-\dotsi$ for any $x \leq \frac34$. In this problem, $x\in[0,1/2]$, which is less than $3/4$. Therefore, we can conclude that 
+      $\ln(1-x) \geq -x - \frac{x^2}{2\cdot 2^0} - \frac{x^2}{2\cdot 2^1} -\frac{x^2}{2\cdot 2^2} - \frac{x^2}{2\cdot 2^3} - \dotsi = -x-x^2.$
+    }
+    %%%%%%%%%%%%%%
+  \newpage  
+\end{enumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item {\bfseries Tight Estimations.} 
+  Provide meaningful upper-bounds and lower-bounds for the following expressions.
+  \begin{enumerate}
+  \item {\bfseries (10 points)} $S_n = \sum_{i=1}^n \ln i$,   \newline
+    %%% ANSWER %%%
+    {\bfseries
+      \newline
+      \newline
+      This summation looks like the following: \newline
+      $ln(1) + ln(2) + \dotsi + ln(n)$ \newline
+      Which means that the function $f(x) = ln(x)$, an increasing function.\newline
+      \newline
+
+      For an increasing function $f(x)$, \newline
+      $\int_0^x \! f(t) \, \mathrm{d}t. \leq f(x) \leq \int_1^{x+1} \! f(t) \, \mathrm{d}t$ \newline
+      \newline
+      Therefore, \newline
+      $\int_0^x \! ln(t) \, \mathrm{d}t. \leq ln(x) \leq \int_1^{x+1} \! ln(t) \, \mathrm{d}t$ \newline
+      \newline
+
+      However, since the natural log of 0 is not possible, we increase the bounds of the lower-bound integral of $ln(x)$. To compensate, we add 1 to the resulting equation, giving our lower bound a possible error of up to 1. The resulting evaluation follows. \newline
+      $1 + \int_1^x \! ln(t) \, \mathrm{d}t. \leq ln(x) \leq \int_1^{x+1} \! ln(t) \, \mathrm{d}t$ \newline
+      Left Side:
+      $1 + \int_1^x \! ln(t) \, \mathrm{d}t = 1 + (t*ln(t) - t)\Big|_x^1 = 2 + x*ln(x) - x$ \newline
+      Right Side:
+      $\int_1^{x+1} \! ln(t) \, \mathrm{d}t = (t*ln(t) - t)\Big|_1^{x+1} = (x+1)*ln(x+1) - x$ \newline
+      \newline
+
+      Therefore, the final bounds are: \newline
+      $2 + x*ln(x) - x \leq \sum_{i=1}^n \ln i \leq (x+1)*ln(x+1) - x$
+    }
+    %%%%%%%%%%%%%%
+   \newpage
+  \item {\bfseries (10 points)} $A_n = n!$  \newline
+    %%% ANSWER %%%
+    {\bfseries
+      \newline
+      \newline
+      $L_n \leq ln(n!) \leq U_n$ \newline
+      $e^{L_n} \leq n! \leq e^{U_n}$ \newline
+      \newline
+      From part (a), we know that: \newline
+      $2 + x*ln(x) - x \leq \sum_{i=1}^n \ln i \leq (x+1)*ln(x+1) - x$ \newline
+      \newline
+
+      Therefore, \newline
+      $e^{2 + x*ln(x) - x} \leq n! \leq e^{(x+1)*ln(x+1) - x}$ \newline
+    }
+    %%%%%%%%%%%%%%
+   \newpage
+  \item {\bfseries (10 points)} $B_n =\binom{2n}{n} = \frac{(2n)!}{(n!)^2}$ \newline
+    %%% ANSWER %%%
+    {\bfseries
+      \newline
+      \newline
+      When estimating fractions, we know that: \newline
+      $\frac{L_{X_n}}{U_{Y_n}} \leq \frac{X_n}{Y_n} \leq \frac{U_{X_n}}{L_{Y_n}}$ \newline
+      \newline
+
+      From part (b), we know that: \newline
+      $e^{2 + x*ln(x) - x} \leq n! \leq e^{(x+1)*ln(x+1) - x}$ \newline
+      \newline
+
+      So if $X_n = (2n)!$, \newline
+      Using the information from part (b), it follows that: \newline
+      $e^{2 + (2x)*ln(2x) - 2x} \leq (2n)! \leq e^{(2x+1)*ln(2x+1) - 2x}$ \newline
+      \newline
+
+      And if $Y_n = (n!)^2$, \newline
+      Using the information from part (b), it follows that: \newline
+      $(e^{2 + x*ln(x) - x})^2 \leq (n!)^2 \leq (e^{(x+1)*ln(x+1) - x})^2$ \newline
+      \newline
+
+      Therefore, \newline
+      $\frac{e^{2 + (2x)*ln(2x) - 2x}}{(e^{(x+1)*ln(x+1) - x})^2}
+      \leq
+      \frac{(2n)!}{(n!)^2}
+      \leq
+      \frac{e^{(2x+1)*ln(2x+1) - 2x}}{(e^{2 + x*ln(x) - x})^2}
+      $
+    }
+    %%%%%%%%%%%%%%
+  \newpage  
+  \end{enumerate} 
+  
+
+
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PROBLEM 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item {\bfseries Understanding Joint Distribution.}
+  Recall that in the lectures we considered the joint distribution $(\T,\B)$ over the sample space $\{4,5,\dotsc,10\}\times\{\pred T,\pred F\}$, where $\T$ represents the time I wake up in the morning, and $\B$ represents whether I have breakfast or not. 
+  The following table summarizes the joint probability distribution.%
+  \begin{table}[h]
+  \begin{center}\footnotesize 
+  \begin{tabular}{|c|c|c|}\hline 
+  $t$ & $b$ & \probX{\T=t,\B=b} \\\hline
+  4 & \pred T & 0.01 \\\hline
+  4 & \pred F & 0.05 \\\hline 
+  5 & \pred T & 0 \\\hline
+  5 & \pred F & 0.04 \\\hline 
+  6 & \pred T & 0.1 \\\hline
+  6 & \pred F & 0.20 \\\hline 
+  7 & \pred T & 0.25 \\\hline
+  7 & \pred F & 0.10 \\\hline 
+  8 & \pred T & 0.10 \\\hline
+  8 & \pred F & 0.05 \\\hline 
+  9 & \pred T & 0.03 \\\hline
+  9 & \pred F & 0.05 \\\hline 
+  10 & \pred T & 0.01 \\\hline
+  10 & \pred F & 0.01 \\\hline 
+  \end{tabular} 
+  \end{center}
+  \end{table}
+  
+  Calculate the following probabilities.
+  \begin{enumerate}
+  \item {\bfseries (5 points)} Calculate the probability that I wake up at 8 a.m. or earlier, but do not have breakfast. 
+    That is, calculate $\probX{\T\leq 8, \B= \pred F}$,   \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        $\probX{\T\leq 8, \B= \pred F} = \probX{\T= 4, \B=\pred F} + \probX{\T= 5, \B=\pred F} + \probX{\T= 6, \B=\pred F}+ \probX{\T= 7, \B=\pred F} + \probX{\T= 8, \B=\pred F}$
+        \newline \newline
+        $\probX{\T\leq 8, \B= \pred F} = 0.05 + 0.04 + 0.2 + 0.1 + 0.05 = 0.44$
+      }
+      %%%%%%%%%%%%%%
+      \newpage
+
+  \item {\bfseries (5 points)} Calculate the probability that I wake up at 8 a.m. or earlier. That is, calculate $\probX{\T\leq 8}$,    \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        $\probX{\T\leq 8} = \probX{\T= 4} + \probX{\T= 5} + \probX{\T= 6} + \probX{\T= 7} + \probX{\T= 8}$
+        \newline
+        $= (0.01 + 0.05) + (0 + 0.04) + (0.1 + 0.2) + (0.25 + 0.1) + (0.1 + 0.05)$
+        \newline
+        \newline
+        $\probX{\T\leq 8}$ $= 0.9$
+      }
+      %%%%%%%%%%%%%%
+  \vspace{0.5\textheight}
+
+  \item {\bfseries (5 points)} Calculate the probability that I skip breakfast conditioned on the fact that I woke up at 8 a.m. or earlier. 
+    That is, compute $\probX{\B=\pred F ~|~ \T\leq 8}$.   \newline
+    %%% ANSWER %%%
+    {\bfseries
+      \newline
+      By Bayes Rule, \newline
+      $\probX{\B=\pred F ~|~ \T\leq 8} = \frac{\probX{\B=\pred F, \T\leq 8}}{\probX{\T\leq 8}}$ \newline \newline
+      We know the numerator from part (a), and the denominator from part (b). Therefore, \newline
+      $\probX{\B=\pred F ~|~ \T\leq 8} = \frac{\probX{\B=\pred F, \T\leq 8}}{\probX{\T\leq 8}} = \frac{0.44}{0.9} = 0.4888$
+    }
+    %%%%%%%%%%%%%%
+  \newpage
+  \end{enumerate} 
+  
+  \item {\bfseries Random Walk.}
+  There is a frog sitting at the origin $(0,0)$ in the first quadrant of a two-dimensional Cartesian plane. The frog first jumps uniformly at random along the X-axis to some point $(\X,0)$, where $\X\in \{1,2,3,4,5,6\}$. 
+  Then, it jumps uniformly at random along the Y-axis to some point $(\X,\Y)$, where $\Y \in \{1,2,3,4,5,6\}$. 
+  So $(\X,\Y)$ represents the final position of the frog after these two jumps. 
+  Note that $\X$ and $\Y$ are two independent random variables that are uniformly distributed over their respective sample spaces. 
+  \begin{enumerate}
+      \item {\bfseries (5 points)} What is the probability that the frog jumps more than 3 units along the Y-axis. That is, compute $\probX{\Y > 3}$. 
+      \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        \newline
+        There are 6 equally likely distances for the frog to jump on the Y-axis. Out of those 6, 3 distances are greater than 3 -- 4, 5, and 6. Therefore, \newline
+        $\probX{\Y > 3} = 0.5$
+      }
+      %%%%%%%%%%%%%%
+      \vspace{0.25\textheight}
+      \item {\bfseries (10 points)} What is the probability that the final position of the frog is above the line $X+Y=7$. That is compute $\probX{\X+\Y >7}$?
+      \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        There are 36 separate combinations of jumps. Out of those 36 combinations, there are 6 that satisfy $X+Y=7$: \newline
+        1 and 6 \newline
+        2 and 5 \newline
+        3 and 4 \newline
+        4 and 3 \newline
+        5 and 2 \newline
+        6 and 1 \newline
+        \newline
+        Therefore, \newline
+        $\probX{\X+\Y >7} = \frac{6}{36} = \frac{1}{6} = 0.1666$
+      }
+      %%%%%%%%%%%%%%
+      \vspace{0.25\textheight}
+       \item {\bfseries (10 points)} What is the probability that the frog has jumped $2$ units along X-axis conditioned on the fact that its final position is above the line $X+Y=7$?
+       That is, compute $\probX{\X=4 ~|~ \X+\Y >7}$?
+      %%% ANSWER %%%
+      \bfseries{
+        \newline
+        \newline
+        By Bayes Rule: \newline
+        $\probX{\X=4 ~|~ \X+\Y >7} = \frac{\probX{\X= 4, \X+\Y >7}}{\probX{\X+\Y >7}}$ \newline
+        And by Chain Rule: \newline
+        $\frac{\probX{\X= 4, \X+\Y >7}}{\probX{\X+\Y >7}} = \frac{\probX{\X= 4} * \probX{\X+\Y >7 ~|~ \X= 4}}{\probX{\X+\Y >7}}$ \newline
+        \newline
+        We know the denominator from part (b), and we can reduce $\probX{\X+\Y >7 ~|~ \X= 4}$ to $\probX{\Y >3}$, which we know from part (a). The final equation is: \newline
+        $\frac{\probX{\X= 4} * \probX{\Y >3}}{\probX{\X+\Y >7}} = \frac{\frac{1}{6} * \frac{1}{2}}{\frac{1}{6}} = \frac{1}{2} = 0.5$
+      }
+      %%%%%%%%%%%%%%
+  \end{enumerate}
+  \newpage
+  \item {\bfseries Coin Tossing Word Problem.}
+  We have three (independent) coins represented by random variables $\C_1,\C_2,$ and $\C_3$.
+  \begin{enumerate}[label=(\roman*)]
+      \item The first coin has $\probX{\C_1=H}=\frac14,
+      \probX{\C_2=T}=\frac34$, 
+      \item The second coin has $\probX{\C_2=H}=\frac34$ and $\probX{\C_2=T}=\frac14$, and
+      \item The third coin has $\probX{\C_3=H}=\frac14$ and $\probX{\C_3=T}=\frac34$. 
+  \end{enumerate}
+  
+  Consider the following experiment. 
+  \begin{enumerate}[label=(\Alph*)]
+      \item Toss the first coin. Let the outcome of the first coin-toss be $\omega_1$. 
+      \item If $\omega_1=H$, then we toss the second coin twice. 
+        Otherwise, (i.e., if $\omega_1=T$) toss the third coin twice. 
+        Let the two outcomes of this step be represented by $\omega_2$ and $\omega_3$. 
+      \item Output $(\omega_1,\omega_2,\omega_3)$.
+  \end{enumerate}
+  Based on this experiment, compute the probabilities below. 
+
+\begin{enumerate}
+    \item {\bfseries (5 points)} 
+  In the experiment mentioned above, what is the probability that a majority of the three outcomes $(\omega_1,\omega_2,\omega_3)$ are $H$ (head)?
+  \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        There are four different possibilities where the majority of the three outcomes can be H: \newline
+        (H H H), (H H T), (H T H), (T H H) \newline
+
+        By the Chain Rule, \newline
+        $\probX{\omega_1= H, \omega_2= H, \omega_3= H} = \probX{\omega_1= H} * \probX{\omega_2= H ~|~ \omega_1= H} * \probX{\omega_3= H ~|~ \omega_1= H, \omega_2= H}$ \newline
+        $\probX{\omega_1= H, \omega_2= H, \omega_3= H}= \frac{1}{4} * \frac{3}{4} * \frac{3}{4} = \frac{9}{64} = 0.140625$ \newline
+
+        $\probX{\omega_1= H, \omega_2= H, \omega_3= T} = \probX{\omega_1= H} * \probX{\omega_2= H ~|~ \omega_1= H} * \probX{\omega_3= T ~|~ \omega_1= H, \omega_2= H}$ \newline
+        $\probX{\omega_1= H, \omega_2= H, \omega_3= T}= \frac{1}{4} * \frac{3}{4} * \frac{1}{4} = \frac{3}{64} = 0.046875$ \newline
+
+        $\probX{\omega_1= H, \omega_2= T, \omega_3= H} = \probX{\omega_1= H} * \probX{\omega_2= T ~|~ \omega_1= H} * \probX{\omega_3= H ~|~ \omega_1= H, \omega_2= T}$ \newline
+        $\probX{\omega_1= H, \omega_2= T, \omega_3= H}= \frac{1}{4} * \frac{1}{4} * \frac{3}{4} = \frac{3}{64} = 0.046875$ \newline
+
+        $\probX{\omega_1= T, \omega_2= H, \omega_3= H} = \probX{\omega_1= T} * \probX{\omega_2= H ~|~ \omega_1= T} * \probX{\omega_3= H ~|~ \omega_1= T, \omega_2= H}$ \newline
+        $\probX{\omega_1= T, \omega_2= H, \omega_3= H}= \frac{1}{4} * \frac{1}{4} * \frac{1}{4} = \frac{1}{64} = 0.015625$ \newline
+        \newline
+        Summing everything up, we get that the probability of a majority of the tree outcomes $(\omega_1, \omega_2, \omega_3)$ are $H$ (head) is: \newline
+        $\frac{9}{64} + \frac{3}{64} + \frac{3}{64} + \frac{1}{64} = \frac{16}{64} = \frac{1}{4} = 0.25$
+      }
+      %%%%%%%%%%%%%%
+      \newpage
+      
+    \item {\bfseries (5 points)} In the experiment mentioned above, what is the probability that a majority of the three outcomes are $H$, conditioned on the fact that the first outcome was $T$?
+    \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        \newline
+        There is only one case in which the majority of the three outcomes are $H$, conditioned on the fact that the first outcome was $T$: \newline
+        $\probX{\omega_1= T, \omega_2= H, \omega_3= H}$ \newline
+        \newline
+        By Chain Rule, \newline
+        $\probX{\omega_1= T, \omega_2= H, \omega_3= H} = \probX{\omega_1= T} * \probX{\omega_2= H ~|~ \omega_1= T} * \probX{\omega_3= H ~|~ \omega_1= T, \omega_2= H} = \frac{3}{4} * \frac{1}{4} * \frac{1}{4} = \frac{3}{64} = 0.046875$ \newline
+      }
+      %%%%%%%%%%%%%%
+      \vspace{0.25\textheight}
+      
+    \item {\bfseries (5 points)} In the experiment mentioned above, what is the probability that a majority of the three outcomes are different from the first outcome?
+   \newline
+      %%% ANSWER %%%
+      {\bfseries
+        \newline
+        \newline
+        There are only two scenarios where a majority of the three outcomes are different from the first outcome, so the equation will be as follows: \newline
+        $\probX{\omega_1= H, \omega_2= T, \omega_3= T} + \probX{\omega_1= T, \omega_2= H, \omega_3= H}$ \newline
+        \newline
+
+        By Chain Rule, \newline
+        $\probX{\omega_1= H, \omega_2= T, \omega_3= T} + \probX{\omega_1= T, \omega_2= H, \omega_3= H} = \newline
+        \probX{\omega_1= H} * \probX{\omega_2= T ~|~ \omega_1= H} * \probX{\omega_3= T ~|~ \omega_1= H, \omega_2= T} + \newline
+        \probX{\omega_1= T} * \probX{\omega_2= H ~|~ \omega_1= T} * \probX{\omega_3= H ~|~ \omega_1= T, \omega_2= H} \newline
+        = \frac{1}{4} * \frac{1}{4} * \frac{1}{4} + \frac{3}{4} * \frac{1}{4} * \frac{1}{4} = \frac{1}{64} + \frac{3}{64} = \frac{4}{64} = \frac{1}{16} = 0.0625
+        $
+      }
+      %%%%%%%%%%%%%%
+  
+  
+  \end{enumerate}
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}

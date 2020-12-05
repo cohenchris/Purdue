@@ -1,0 +1,375 @@
+%% Packages
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage{bm}
+\usepackage{nicefrac}
+\usepackage{commath}
+\usepackage{bbm}
+\usepackage{boxedminipage}
+\usepackage{xparse}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{ifthen}
+\usepackage{algpseudocode}
+\usepackage{proba} 
+\usepackage{colortbl} 
+\usepackage{soul} 
+%\usepackage{upgreek}
+%\usepackage{paralist}
+%\usepackage{enumitem}
+%\usepackage{times}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{fit}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{shapes}
+\usetikzlibrary{patterns}
+\usetikzlibrary{matrix}
+
+\usepackage{geometry}
+
+%\usepackage[pdftex,bookmarks=true,pdfstartview=FitH,colorlinks,linkcolor=blue,filecolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+%    \urlstyle{sf}
+
+%\usepackage{enumitem}
+
+
+%% Document Design Choices
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{10pt}
+%\renewcommand{\labelitemi}{\ensuremath{\circ}}
+%\geometry{left=1in, right=1in, top=1in, bottom=1in}
+
+
+%% Marking
+\newcommand\TODO[1]{{\color{red}{#1}}\xspace}
+\newcommand\change[1]{{\color{red}\underline{#1}}\xspace}
+\newcommand{\commentdg}[1]{{\color{blue}{#1}}\xspace}
+\newcommand\commentop[1]{{\color{red}{#1}}\xspace}
+
+
+%% Theorems and Environments
+\newtheorem{conjecture}{Conjecture}
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{importedtheorem}{Imported Theorem}
+%\newtheorem{informaltheorem}{Informal Theorem}
+%\newtheorem{definition}{Definition}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{claim}{Claim}
+%\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{observation}{Observation}
+%\newtheorem{property}{Property}
+
+
+\newenvironment{boxedalgo}
+  {\begin{center}\begin{boxedminipage}{1\linewidth}}
+  {\end{boxedminipage}\end{center}}
+
+\newenvironment{inlinealgo}[1]
+  {\noindent\hrulefill\\\noindent{\bf {#1}}}
+  {\hrulefill}
+
+
+%% References
+\newcommand{\namedref}[2]{\hyperref[#2]{#1~\ref*{#2}}\xspace}
+\newcommand{\lemmaref}[1]{\namedref{Lemma}{lem:#1}}
+\newcommand{\theoremref}[1]{\namedref{Theorem}{thm:#1}}
+\newcommand{\inftheoremref}[1]{\namedref{Informal Theorem}{infthm:#1}}
+\newcommand{\claimref}[1]{\namedref{Claim}{clm:#1}}
+\newcommand{\corollaryref}[1]{\namedref{Corollary}{corol:#1}}
+\newcommand{\figureref}[1]{\namedref{Figure}{fig:#1}}
+\newcommand{\equationref}[1]{\namedref{Equation}{eq:#1}}
+\newcommand{\defref}[1]{\namedref{Definition}{def:#1}}
+\newcommand{\observationref}[1]{\namedref{Observation}{obs:#1}}
+\newcommand{\procedureref}[1]{\namedref{Procedure}{proc:#1}}
+\newcommand{\importedtheoremref}[1]{\namedref{Imported Theorem}{impthm:#1}}
+\newcommand{\informaltheoremref}[1]{\namedref{Informal Theorem}{infthm:#1}}
+\newcommand{\sectionref}[1]{\namedref{Section}{sec:#1}}
+\newcommand{\appendixref}[1]{\namedref{Appendix}{app:#1}}
+\newcommand{\propertyref}[1]{\namedref{Property}{prop:#1}}
+
+
+%% English
+\newcommand{\ie}{\text{i.e.}\xspace}
+%\newcommand{\st}{\text{s.t.}\xspace}
+\newcommand{\etal}{\text{et al.}\xspace}
+\newcommand{\naive}{\text{na\"ive}\xspace}
+\newcommand{\wrt}{\text{w.r.t.}\xspace}
+\newcommand{\whp}{\text{w.h.p.}\xspace}
+\newcommand{\resp}{\text{resp.}\xspace}
+\newcommand{\eg}{\text{e.g.}\xspace}
+\newcommand{\cf}{\text{cf.}\xspace}
+\newcommand{\visavis}{\text{vis-\`a-vis}\xspace}
+
+%% Authors
+\newcommand{\damgard}{Damg{\aa}rd\xspace}
+
+
+%% Crypto
+\def\alice{{{Alice}}\xspace}
+\def\bob{{{Bob}}\xspace}
+\def\eve{{{Eve}}\xspace}
+\newcommand{\poly}{\ensuremath{\mathrm{poly}}\xspace}
+\newcommand{\polylog}{\ensuremath{\mathrm{polylog}\;}\xspace}
+\newcommand{\negl}{\ensuremath{\mathsf{negl}}\xspace}
+\newcommand{\secpar}{\ensuremath{{\lambda}}\xspace}
+\newcommand{\zo}{\ensuremath{{\{0,1\}}}\xspace}
+
+  %% Functionalities
+  \newcommand{\func}[1]{\ensuremath{\cF_{\mathsf{#1}}}\xspace}
+  \newcommand{\fcom}[0]{\func{com}}
+  \newcommand{\fot}[0]{\func{ot}}
+  
+  %% Protocols
+  % \newcommand{\prot}[1]{\ensuremath{\pi_{\mathsf{#1}}}\xspace}
+
+
+%% Graph Theory
+\newcommand{\ancest}[0]{\mathsf{Ancestors}}
+\newcommand{\sibling}[0]{\mathsf{Siblings}}
+\newcommand{\parent}[0]{\mathsf{parent}}
+\newcommand{\leaves}[0]{\mathsf{leaves}}
+
+
+%% Math Symbols
+\renewcommand{\o}[0]{\ensuremath{\circ}\xspace}
+\newcommand{\dist}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}
+%\newcommand{\prob}[2]{\ensuremath{\dist{{#1}_1, \dotsc, {#1}_{#2}}}\xspace}
+\newcommand{\ip}[2]{\ensuremath{\left\langle{#1},{#2}\right\rangle}\xspace}
+\renewcommand{\vec}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\concat}[0]{\ensuremath{\circ}\xspace}
+\newcommand{\nin}[0]{\ensuremath{\not\in}\xspace}
+\newcommand{\xor}[0]{\ensuremath{\oplus}\xspace}
+\newcommand{\rv}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\p}[1]{\ensuremath{^{{\left(#1\right)}}}\xspace}
+\newcommand{\argmax}[0]{\ensuremath{\mathop{\mathrm{argmax}}~}\xspace}
+\newcommand{\argmin}[0]{\ensuremath{\mathop{\mathrm{argmin}}~}\xspace}
+\newcommand{\me}{\mathrm{e}}
+\NewDocumentCommand\mathstack{>{\SplitList{;}}m}
+  {\ensuremath{
+    \begin{smallmatrix}
+      \ProcessList{#1}{ \insertone }    
+    \end{smallmatrix}
+  }}
+\newcommand{\insertone}[1]{\ensuremath{#1}\\}
+\newcommand{\tuple}[1]{\ensuremath{{\left\langle{#1}\right\rangle}}\xspace}
+
+%\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+%\DeclareMathOperator*{\argmax}{arg\,max}
+
+  
+  %% General
+  \newcommand{\ceil}[1]{\ensuremath{\left\lceil{#1}\right\rceil}\xspace}
+  \newcommand{\floor}[1]{\ensuremath{\left\lfloor{#1}\right\rfloor}\xspace}
+  %\newcommand{\abs}[1]{\ensuremath{\left\vert{#1}\right\vert}\xspace}
+  \newcommand{\lone}[1]{\ensuremath{\left\vert{#1}\right\vert}\xspace}
+  \newcommand{\spnorm}[1]{\ensuremath{\left\Vert{#1}\right\Vert}\xspace}
+
+  %% Renamed Symbols
+  \newcommand{\eps}[0]{\varepsilon}
+  \let\epsilon\eps
+  %\let\phi\varphi
+  
+  %% Cal Alphabets
+  \newcommand{\cA}{\ensuremath{{\mathcal A}}\xspace}
+  \newcommand{\cB}{\ensuremath{{\mathcal B}}\xspace}
+  \newcommand{\cC}{\ensuremath{{\mathcal C}}\xspace}
+  \newcommand{\cD}{\ensuremath{{\mathcal D}}\xspace}
+  \newcommand{\cE}{\ensuremath{{\mathcal E}}\xspace}
+  \newcommand{\cF}{\ensuremath{{\mathcal F}}\xspace}
+  \newcommand{\cG}{\ensuremath{{\mathcal G}}\xspace}
+  \newcommand{\cH}{\ensuremath{{\mathcal H}}\xspace}
+  \newcommand{\cI}{\ensuremath{{\mathcal I}}\xspace}
+  \newcommand{\cK}{\ensuremath{{\mathcal K}}\xspace}
+  \newcommand{\cL}{\ensuremath{{\mathcal L}}\xspace}
+  \newcommand{\cM}{\ensuremath{{\mathcal M}}\xspace}
+  \newcommand{\cN}{\ensuremath{{\mathcal N}}\xspace}
+  \newcommand{\cO}{\ensuremath{{\mathcal O}}\xspace}
+  \newcommand{\cP}{\ensuremath{{\mathcal P}}\xspace}
+  \newcommand{\cQ}{\ensuremath{{\mathcal Q}}\xspace}
+  \newcommand{\cR}{\ensuremath{{\mathcal R}}\xspace}
+  \newcommand{\cS}{\ensuremath{{\mathcal S}}\xspace}
+  \newcommand{\cT}{\ensuremath{{\mathcal T}}\xspace}
+  \newcommand{\cU}{\ensuremath{{\mathcal U}}\xspace}
+  \newcommand{\cV}{\ensuremath{{\mathcal V}}\xspace}
+  \newcommand{\cW}{\ensuremath{{\mathcal W}}\xspace}
+  \newcommand{\cX}{\ensuremath{{\mathcal X}}\xspace}
+  \newcommand{\cY}{\ensuremath{{\mathcal Y}}\xspace}
+  \newcommand{\cZ}{\ensuremath{{\mathcal Z}}\xspace}
+  
+  %% Bold Alphabets
+  \newcommand{\bA}{\ensuremath{{\mathbf A}}\xspace}
+  \newcommand{\bB}{\ensuremath{{\mathbf B}}\xspace}
+  \newcommand{\bC}{\ensuremath{{\mathbf C}}\xspace}
+  \newcommand{\bD}{\ensuremath{{\mathbf D}}\xspace}
+  \newcommand{\bE}{\ensuremath{{\mathbf E}}\xspace}
+  \newcommand{\bF}{\ensuremath{{\mathbf F}}\xspace}
+  \newcommand{\bG}{\ensuremath{{\mathbf G}}\xspace}
+  \newcommand{\bQ}{\ensuremath{{\mathbf Q}}\xspace}
+  \newcommand{\bU}{\ensuremath{{\mathbf U}}\xspace}
+  \newcommand{\bV}{\ensuremath{{\mathbf V}}\xspace}
+  \newcommand{\bX}{\ensuremath{{\mathbf X}}\xspace}
+  \newcommand{\bY}{\ensuremath{{\mathbf Y}}\xspace}
+  \newcommand{\br}{\ensuremath{{\mathbf r}}\xspace}
+  
+  %% Black-board Bold Alphabets
+  \newcommand{\bbA}{\ensuremath{{\mathbb A}}\xspace}
+  \newcommand{\bbB}{\ensuremath{{\mathbb B}}\xspace}
+  \newcommand{\bbC}{\ensuremath{{\mathbb C}}\xspace}
+  \newcommand{\bbD}{\ensuremath{{\mathbb D}}\xspace}
+  \newcommand{\bbE}{\ensuremath{{\mathbb E}}\xspace}
+  \newcommand{\bbF}{\ensuremath{{\mathbb F}}\xspace}
+  \newcommand{\bbG}{\ensuremath{{\mathbb G}}\xspace}
+  \newcommand{\bbH}{\ensuremath{{\mathbb H}}\xspace}
+  \newcommand{\bbI}{\ensuremath{{\mathbb I}}\xspace}
+  \newcommand{\bbJ}{\ensuremath{{\mathbb J}}\xspace}
+  \newcommand{\bbK}{\ensuremath{{\mathbb K}}\xspace}
+  \newcommand{\bbN}{\ensuremath{{\mathbb N}}\xspace}
+  \newcommand{\bbO}{\ensuremath{{\mathbb O}}\xspace}
+  \newcommand{\bbP}{\ensuremath{{\mathbb P}}\xspace}
+  \newcommand{\bbQ}{\ensuremath{{\mathbb Q}}\xspace}
+  \newcommand{\bbR}{\ensuremath{{\mathbb R}}\xspace}
+  \newcommand{\bbS}{\ensuremath{{\mathbb S}}\xspace}
+  \newcommand{\bbT}{\ensuremath{{\mathbb T}}\xspace}
+  \newcommand{\bbU}{\ensuremath{{\mathbb U}}\xspace}
+  \newcommand{\bbV}{\ensuremath{{\mathbb V}}\xspace}
+  \newcommand{\bbZ}{\ensuremath{{\mathbb Z}}\xspace}
+  
+  %% Fraktur Alphabets
+  \newcommand{\fP}{\ensuremath{{\mathfrak P}}\xspace}
+  \newcommand{\fR}{\ensuremath{{\mathfrak R}}\xspace}
+  \newcommand{\fX}{\ensuremath{{\mathfrak X}}\xspace}
+  
+  %% Overline Aphabets
+  \newcommand{\op}{\ensuremath{{\overline p}}\xspace}
+  
+  %% Hat Aphabets
+  \newcommand{\hf}{\ensuremath{{\widehat f}}\xspace}
+  \newcommand{\hg}{\ensuremath{{\widehat g}}\xspace}
+  
+  %% Fractions
+  \newcommand{\half}{\ensuremath{\frac12}\xspace}
+  
+  %% Set
+  \newcommand{\comp}[1]{\ensuremath{\overline{{#1}}}\xspace}
+  
+  %% Models
+  \newcommand{\defeq}[0]{\ensuremath{{\;\vcentcolon=\;}}\xspace}
+  \newcommand{\eqdef}[0]{\ensuremath{{\;=\vcentcolon\;}}\xspace}
+  \newcommand{\entails}[0]{\ensuremath{{\;\models\;}}\xspace}
+  
+  %% Matrix
+  \newcommand{\tran}[0]{\ensuremath{^{\mathsf{T}}}\xspace}
+  
+  %% Probability and Distributions
+  \newcommand{\event}[1]{\ensuremath{\mathsf{#1}}\xspace}
+  \newcommand{\supp}[0]{\ensuremath{\mathsf{Supp}}\xspace}
+  \let\pr\prob
+  %\newcommand{\pr}[0]{\mathop{\mathrm{Pr}}\xspace}
+  \newcommand{\var}[0]{\mathop{\mathrm{Var}}\xspace}
+  \newcommand{\cov}[0]{\mathop{\mathrm{Cov}}\xspace}
+  %\renewcommand{\Pr}[0]{\mathrm{\generateerror}\xspace}
+  %\newcommand{\E}[0]{\mathop{\bbE}\xspace}
+  \newcommand{\getsr}[0]{\mathbin{\stackrel{\mbox{\,\tiny \$}}{\gets}}}
+  \newcommand{\drawn}{\ensuremath{\sim}\xspace}
+  %\newcommand{\sd}[2]{\ensuremath{\mathbf{\Delta}\left({#1},{#2}\right)}\xspace}
+  \newcommand{\sd}[2]{\ensuremath{\mathrm{SD}\left({#1},{#2}\right)}\xspace}
+  \newcommand{\hd}{\ensuremath{\mathrm{HD}}\xspace}
+  \newcommand{\kl}[2]{\ensuremath{\mathrm{D_{KL}}\left({#1},{#2}\right)}\xspace}
+  \newcommand{\iid}[0]{\text{i.i.d.}\xspace}
+  \newcommand{\ent}[0]{\ensuremath{\mathrm{H}}\xspace}
+  
+    %% Random Variables
+    \newcommand{\rvA}{\rv{A}}
+    \newcommand{\rvB}{\rv{B}}
+    \newcommand{\rvC}{\rv{C}}
+    \newcommand{\rvD}{\rv{D}}
+    \newcommand{\rvG}{\rv{G}}
+    \newcommand{\rvP}{\rv{P}}
+    \newcommand{\rvQ}{\rv{Q}}
+    \newcommand{\rvR}{\rv{R}}
+    \newcommand{\rvS}{\rv{S}}
+    \newcommand{\rvT}{\rv{T}}
+    \newcommand{\rvU}{\rv{U}}
+    \newcommand{\rvV}{\rv{V}}
+    \newcommand{\rvW}{\rv{W}}
+    \newcommand{\rvX}{\rv{X}}
+    \newcommand{\rvY}{\rv{Y}}
+    \newcommand{\rvZ}{\rv{Z}}
+    
+    \newcommand{\rvm}{\rv{m}}
+    \newcommand{\rvr}{\rv{r}}
+    \newcommand{\rvx}{\rv{x}}
+    \newcommand{\rvy}{\rv{y}}
+    \newcommand{\rvc}{\rv{c}}
+
+  %% Binary Operators
+  \newcommand{\band}[0]{\ensuremath{~\wedge~}\xspace}
+  \newcommand{\bor}[0]{\ensuremath{~\vee~}\xspace}
+  \let\leq\leqslant
+  \let\le\leqslant
+  \let\geq\geqslant
+  \let\ge\geqslant
+  
+  %% Combinatorial
+  \renewcommand\choose[2]{\ensuremath{{
+    \left(\begin{matrix}
+      {#1}\\
+      {#2}
+    \end{matrix}\right)}}\xspace}
+  \newcommand\smallchoose[2]{\ensuremath{{
+    \left(\begin{smallmatrix}
+      {#1}\\
+      {#2}
+    \end{smallmatrix}\right)}}\xspace}
+  \newcommand{\fallfact}[2]{\ensuremath{{#1}_{\left({#2}\right)}}\xspace}
+  %\newcommand{\fact}[1]{\ensuremath{{#1}!}\xspace}
+  
+  %% Set Operations
+  \newcommand{\union}[0]{\ensuremath{\cup}\xspace}
+  \newcommand{\intersect}[0]{\ensuremath{\cap}\xspace}
+  \newcommand{\setdiff}[0]{\ensuremath{\Delta}\xspace}
+  
+
+%% Algorithms, Predicates
+\newcommand{\pred}[1]{\ensuremath{\mathsf{#1}}\xspace}
+
+
+%% Local Terms
+\newcommand{\mycite}[1]{{\color{brown}{{#1}}}\xspace}
+\newcommand{\wt}[0]{\ensuremath{\mathsf{wt}}\xspace}
+\newcommand{\Inf}[0]{\ensuremath{\pred{Inf}}\xspace}
+%\newcommand{\Var}[0]{\ensuremath{\pred{Var}}\xspace}
+\newcommand{\mac}[0]{\pred{Mac}} 
+\newcommand{\sk}[0]{\pred{sk}} 
+\newcommand{\pk}[0]{\pred{pk}} 
+\newcommand{\gen}[0]{\pred{Gen}} 
+\newcommand{\enc}[0]{\pred{Enc}} 
+\newcommand{\dec}[0]{\pred{Dec}} 
+\newcommand{\SK}[0]{\pred{sk}} 
+\newcommand{\capprox}[0]{\approx\p c}
+\renewcommand{\tag}[0]{\pred{Tag}} 
+\newcommand{\sign}[0]{\pred{Sign}} 
+\newcommand{\ver}[0]{\pred{Ver}} 
+\newcommand{\simu}[0]{\pred{Sim}} 
+\newcommand{\ball}[0]{\pred{Ball}\xspace}
+\newcommand{\vol}[0]{\pred{Vol}\xspace}
+
+
+\newcommand{\pout}[0]{\ensuremath{\p{\text{out}}}\xspace}
+\newcommand{\pin}[0]{\ensuremath{\p{\text{in}}}\xspace}
+
+\newcommand{\Ext}[0]{\ensuremath{\pred{Ext}}\xspace}
+\newcommand{\inv}[0]{\pred{inv}}
+\providecommand{\id}[0]{\pred{id}}
