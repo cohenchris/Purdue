@@ -42,3 +42,7 @@ Repositories from my undergraduate at Purdue University
 ## CS408 - Software Testing
 - Fall 2020
 - Taught under Pedro Jose Sousa Da Fonseca
+
+## CS426 - Computer Security
+- Spring 2021
+- Taught under Jing Tian
