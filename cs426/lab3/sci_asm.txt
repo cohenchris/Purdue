@@ -1,0 +1,147 @@
+0000000000001289 <check_passwd>:
+
+# init
+    1289:	f3 0f 1e fa          	endbr64 
+    128d:	55                   	push   %rbp
+    128e:	48 89 e5             	mov    %rsp,%rbp
+    1291:	48 83 ec 70          	sub    $0x70,%rsp
+
+# move first argument (password entered) to mem addr for use in this func
+    1295:	48 89 7d 98          	mov    %rdi,-0x68(%rbp)
+
+##### ZERO OUT THE ARRAY #####
+    1299:	48 c7 45 a0 00 00 00 	movq   $0x0,-0x60(%rbp)
+    12a0:	00 
+    12a1:	48 c7 45 a8 00 00 00 	movq   $0x0,-0x58(%rbp)
+    12a8:	00 
+    12a9:	48 c7 45 b0 00 00 00 	movq   $0x0,-0x50(%rbp)
+    12b0:	00 
+    12b1:	48 c7 45 b8 00 00 00 	movq   $0x0,-0x48(%rbp)
+    12b8:	00 
+    12b9:	48 c7 45 c0 00 00 00 	movq   $0x0,-0x40(%rbp)
+    12c0:	00 
+    12c1:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+    12c8:	00 
+    12c9:	48 c7 45 d0 00 00 00 	movq   $0x0,-0x30(%rbp)
+    12d0:	00 
+    12d1:	48 c7 45 d8 00 00 00 	movq   $0x0,-0x28(%rbp)
+    12d8:	00 
+    12d9:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+    12e0:	00 
+    12e1:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    12e8:	00 
+    12e9:	48 c7 45 f0 00 00 00 	movq   $0x0,-0x10(%rbp)
+    12f0:	00 
+    12f1:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    12f8:	00 
+##############################
+
+##### PRINT BUFFER ADDR #####
+# give starting address of array to %rax
+    12f9:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+# move beginning of array mem location to %rsi (second arg register)
+    12fd:	48 89 c6             	mov    %rax,%rsi
+# move "%s" to %rdi (first arg register)
+    1300:	48 8d 3d 6c 0d 00 00 	lea    0xd6c(%rip),%rdi        # 2073 <magic_10+0x5>
+# zero out %eax
+    1307:	b8 00 00 00 00       	mov    $0x0,%eax
+# print the address of the array
+    130c:	e8 2f fe ff ff       	callq  1140 <printf@plt>
+#############################
+
+
+##### STRCPY ENTERED PASSWORD INTO ARRAY #####
+# temp save entered password into %rdx (used later for strncmp)
+    1311:	48 8b 55 98          	mov    -0x68(%rbp),%rdx
+# temp save beginning of array into %rax
+    1315:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+# set 2nd arg equal to entered password
+    1319:	48 89 d6             	mov    %rdx,%rsi
+# set 1st arg equal to beginning of array
+    131c:	48 89 c7             	mov    %rax,%rdi
+# strcpy entered password into array
+    131f:	e8 ec fd ff ff       	callq  1110 <strcpy@plt>
+##############################################
+
+
+##### CHECK IF FIRST 4 CHARACTERS = 'dave' #####
+# temp save beginning of the array into %rax
+    1324:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+
+# save 4  (length to compare) into %edx (3rd arg register)
+    1328:	ba 04 00 00 00       	mov    $0x4,%edx
+
+# load value @ 0xd3a(%rip) into 2nd arg register - this is 'dave'
+    132d:	48 8d 35 3a 0d 00 00 	lea    0xd3a(%rip),%rsi        # 206e <magic_10>
+
+# move addr to beginning of array into 1st arg register
+    1334:	48 89 c7             	mov    %rax,%rdi
+
+# strncmp(entered_pass, real_pass, 4)
+    1337:	e8 c4 fd ff ff       	callq  1100 <strncmp@plt>
+
+# if eax & eax = 1 (strncmp fails), jump to failure
+    133c:	85 c0                	test   %eax,%eax
+    133e:	75 28                	jne    1368 <check_passwd+0xdf>
+################################################
+
+
+##### CHECK IF REST OF PASSWORD ENTERED = '@handsome' #####
+    1340:	0f b6 45 a4          	movzbl -0x5c(%rbp),%eax
+# compare last byte of %eax to '@'. if ne, jump to failure
+    1344:	3c 40                	cmp    $0x40,%al
+    1346:	75 20                	jne    1368 <check_passwd+0xdf>
+# up until this point, entered pass needs to start with 'dave@'
+# substring the password (everything after 'dave@')
+    1348:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+    134c:	48 83 c0 05          	add    $0x5,%rax
+# rest of password is of length 8
+    1350:	ba 08 00 00 00       	mov    $0x8,%edx
+# into 2nd arg register, load 'handsome'
+    1355:	48 8d 35 ec 0c 00 00 	lea    0xcec(%rip),%rsi        # 2048 <magic_4>
+# move remainder of password checking into 1st arg register (after 'dave@')
+    135c:	48 89 c7             	mov    %rax,%rdi
+# compare strings
+    135f:	e8 9c fd ff ff       	callq  1100 <strncmp@plt>
+# if strncmp succeeds, jump to setting uid
+    1364:	85 c0                	test   %eax,%eax
+    1366:	74 07                	je     136f <check_passwd+0xe6>
+###########################################
+
+# failure - set return value to -1
+    1368:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+# jump to end
+    136d:	eb 5e                	jmp    13cd <check_passwd+0x144>
+
+# jmp_2
+# setting uid
+    136f:	8b 05 d3 2c 00 00    	mov    0x2cd3(%rip),%eax        # 4048 <suid>
+    1375:	89 c7                	mov    %eax,%edi
+    1377:	e8 14 fe ff ff       	callq  1190 <seteuid@plt>
+    137c:	8b 05 c6 2c 00 00    	mov    0x2cc6(%rip),%eax        # 4048 <suid>
+    1382:	89 c7                	mov    %eax,%edi
+    1384:	e8 f7 fd ff ff       	callq  1180 <setuid@plt>
+    1389:	e8 a2 fd ff ff       	callq  1130 <getuid@plt>
+    138e:	89 05 d0 30 00 00    	mov    %eax,0x30d0(%rip)        # 4464 <ruid>
+    1394:	e8 c7 fd ff ff       	callq  1160 <geteuid@plt>
+    1399:	89 05 a1 2c 00 00    	mov    %eax,0x2ca1(%rip)        # 4040 <euid>
+    139f:	8b 05 9f 2c 00 00    	mov    0x2c9f(%rip),%eax        # 4044 <debug>
+
+# jmp_3 - if eax & eax = 0, jump to success
+    13a5:	85 c0                	test   %eax,%eax
+# jump to success
+    13a7:	74 1f                	je     13c8 <check_passwd+0x13f>
+
+    13a9:	8b 15 91 2c 00 00    	mov    0x2c91(%rip),%edx        # 4040 <euid>
+    13af:	8b 05 af 30 00 00    	mov    0x30af(%rip),%eax        # 4464 <ruid>
+    13b5:	89 c6                	mov    %eax,%esi
+    13b7:	48 8d 3d c2 0c 00 00 	lea    0xcc2(%rip),%rdi        # 2080 <magic_10+0x12>
+    13be:	b8 00 00 00 00       	mov    $0x0,%eax
+    13c3:	e8 78 fd ff ff       	callq  1140 <printf@plt>
+
+# success - set return value to 0
+    13c8:	b8 00 00 00 00       	mov    $0x0,%eax
+
+# end
+    13cd:	c9                   	leaveq 
+    13ce:	c3                   	retq   

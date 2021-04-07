@@ -1,0 +1,24 @@
+< Sb
+u+UH
+<@u H
+[]A\A]A^A_
+:*3$"
+
+# magic numbers that dave2 is composed of?
+magic_0
+magic_1
+magic_2
+magic_3
+magic_4
+magic_5
+magic_6
+magic_7
+magic_8
+magic_9
+magic_10
+
+
+# functions created
+check_passwd
+main
+silence
