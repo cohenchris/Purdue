@@ -60,7 +60,7 @@
 # set 1st arg equal to beginning of array
     131c:	48 89 c7             	mov    %rax,%rdi
 # strcpy entered password into array
-    131f:	e8 ec fd ff ff       	callq  1110 <strcpy@plt>
+    131f:	e8 ec fd ff ff       	callq  1110 <strcpy@plt>            <----- vulnerable call
 ##############################################
 
 

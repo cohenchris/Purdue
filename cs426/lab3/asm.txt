@@ -1,0 +1,170 @@
+0000000000001289 <check_passwd>:
+    1289:	f3 0f 1e fa          	endbr64 
+    128d:	55                   	push   %rbp
+    128e:	48 89 e5             	mov    %rsp,%rbp
+    1291:	48 83 ec 70          	sub    $0x70,%rsp
+    1295:	48 89 7d 98          	mov    %rdi,-0x68(%rbp)
+    1299:	48 c7 45 a0 00 00 00 	movq   $0x0,-0x60(%rbp)
+    12a0:	00 
+    12a1:	48 c7 45 a8 00 00 00 	movq   $0x0,-0x58(%rbp)
+    12a8:	00 
+    12a9:	48 c7 45 b0 00 00 00 	movq   $0x0,-0x50(%rbp)
+    12b0:	00 
+    12b1:	48 c7 45 b8 00 00 00 	movq   $0x0,-0x48(%rbp)
+    12b8:	00 
+    12b9:	48 c7 45 c0 00 00 00 	movq   $0x0,-0x40(%rbp)
+    12c0:	00 
+    12c1:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+    12c8:	00 
+    12c9:	48 c7 45 d0 00 00 00 	movq   $0x0,-0x30(%rbp)
+    12d0:	00 
+    12d1:	48 c7 45 d8 00 00 00 	movq   $0x0,-0x28(%rbp)
+    12d8:	00 
+    12d9:	48 c7 45 e0 00 00 00 	movq   $0x0,-0x20(%rbp)
+    12e0:	00 
+    12e1:	48 c7 45 e8 00 00 00 	movq   $0x0,-0x18(%rbp)
+    12e8:	00 
+    12e9:	48 c7 45 f0 00 00 00 	movq   $0x0,-0x10(%rbp)
+    12f0:	00 
+    12f1:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+    12f8:	00 
+    12f9:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+    12fd:	48 89 c6             	mov    %rax,%rsi
+    1300:	48 8d 3d 6c 0d 00 00 	lea    0xd6c(%rip),%rdi        # 2073 <magic_10+0x5>
+    1307:	b8 00 00 00 00       	mov    $0x0,%eax
+    130c:	e8 2f fe ff ff       	callq  1140 <printf@plt>
+    1311:	48 8b 55 98          	mov    -0x68(%rbp),%rdx
+    1315:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+    1319:	48 89 d6             	mov    %rdx,%rsi
+    131c:	48 89 c7             	mov    %rax,%rdi
+    131f:	e8 ec fd ff ff       	callq  1110 <strcpy@plt>
+    1324:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+    1328:	ba 04 00 00 00       	mov    $0x4,%edx
+    132d:	48 8d 35 3a 0d 00 00 	lea    0xd3a(%rip),%rsi        # 206e <magic_10>
+    1334:	48 89 c7             	mov    %rax,%rdi
+    1337:	e8 c4 fd ff ff       	callq  1100 <strncmp@plt>
+    133c:	85 c0                	test   %eax,%eax
+    133e:	75 28                	jne    1368 <check_passwd+0xdf>
+    1340:	0f b6 45 a4          	movzbl -0x5c(%rbp),%eax
+    1344:	3c 40                	cmp    $0x40,%al
+    1346:	75 20                	jne    1368 <check_passwd+0xdf>
+    1348:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+    134c:	48 83 c0 05          	add    $0x5,%rax
+    1350:	ba 08 00 00 00       	mov    $0x8,%edx
+    1355:	48 8d 35 ec 0c 00 00 	lea    0xcec(%rip),%rsi        # 2048 <magic_4>
+    135c:	48 89 c7             	mov    %rax,%rdi
+    135f:	e8 9c fd ff ff       	callq  1100 <strncmp@plt>
+    1364:	85 c0                	test   %eax,%eax
+    1366:	74 07                	je     136f <check_passwd+0xe6>
+    1368:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+    136d:	eb 5e                	jmp    13cd <check_passwd+0x144>
+    136f:	8b 05 d3 2c 00 00    	mov    0x2cd3(%rip),%eax        # 4048 <suid>
+    1375:	89 c7                	mov    %eax,%edi
+    1377:	e8 14 fe ff ff       	callq  1190 <seteuid@plt>
+    137c:	8b 05 c6 2c 00 00    	mov    0x2cc6(%rip),%eax        # 4048 <suid>
+    1382:	89 c7                	mov    %eax,%edi
+    1384:	e8 f7 fd ff ff       	callq  1180 <setuid@plt>
+    1389:	e8 a2 fd ff ff       	callq  1130 <getuid@plt>
+    138e:	89 05 d0 30 00 00    	mov    %eax,0x30d0(%rip)        # 4464 <ruid>
+    1394:	e8 c7 fd ff ff       	callq  1160 <geteuid@plt>
+    1399:	89 05 a1 2c 00 00    	mov    %eax,0x2ca1(%rip)        # 4040 <euid>
+    139f:	8b 05 9f 2c 00 00    	mov    0x2c9f(%rip),%eax        # 4044 <debug>
+    13a5:	85 c0                	test   %eax,%eax
+    13a7:	74 1f                	je     13c8 <check_passwd+0x13f>
+    13a9:	8b 15 91 2c 00 00    	mov    0x2c91(%rip),%edx        # 4040 <euid>
+    13af:	8b 05 af 30 00 00    	mov    0x30af(%rip),%eax        # 4464 <ruid>
+    13b5:	89 c6                	mov    %eax,%esi
+    13b7:	48 8d 3d c2 0c 00 00 	lea    0xcc2(%rip),%rdi        # 2080 <magic_10+0x12>
+    13be:	b8 00 00 00 00       	mov    $0x0,%eax
+    13c3:	e8 78 fd ff ff       	callq  1140 <printf@plt>
+    13c8:	b8 00 00 00 00       	mov    $0x0,%eax
+    13cd:	c9                   	leaveq 
+    13ce:	c3                   	retq   
+
+00000000000013cf <main>:
+    13cf:	f3 0f 1e fa          	endbr64 
+    13d3:	55                   	push   %rbp
+    13d4:	48 89 e5             	mov    %rsp,%rbp
+    13d7:	48 83 ec 10          	sub    $0x10,%rsp
+    13db:	89 7d fc             	mov    %edi,-0x4(%rbp)
+    13de:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    13e2:	e8 49 fd ff ff       	callq  1130 <getuid@plt>
+    13e7:	89 05 77 30 00 00    	mov    %eax,0x3077(%rip)        # 4464 <ruid>
+    13ed:	e8 6e fd ff ff       	callq  1160 <geteuid@plt>
+    13f2:	89 05 48 2c 00 00    	mov    %eax,0x2c48(%rip)        # 4040 <euid>
+    13f8:	8b 05 42 2c 00 00    	mov    0x2c42(%rip),%eax        # 4040 <euid>
+    13fe:	89 05 44 2c 00 00    	mov    %eax,0x2c44(%rip)        # 4048 <suid>
+    1404:	8b 05 3a 2c 00 00    	mov    0x2c3a(%rip),%eax        # 4044 <debug>
+    140a:	85 c0                	test   %eax,%eax
+    140c:	74 1f                	je     142d <main+0x5e>
+    140e:	8b 15 2c 2c 00 00    	mov    0x2c2c(%rip),%edx        # 4040 <euid>
+    1414:	8b 05 4a 30 00 00    	mov    0x304a(%rip),%eax        # 4464 <ruid>
+    141a:	89 c6                	mov    %eax,%esi
+    141c:	48 8d 3d 5d 0c 00 00 	lea    0xc5d(%rip),%rdi        # 2080 <magic_10+0x12>
+    1423:	b8 00 00 00 00       	mov    $0x0,%eax
+    1428:	e8 13 fd ff ff       	callq  1140 <printf@plt>
+    142d:	8b 05 dd 2b 00 00    	mov    0x2bdd(%rip),%eax        # 4010 <uid_common>
+    1433:	89 c7                	mov    %eax,%edi
+    1435:	e8 56 fd ff ff       	callq  1190 <seteuid@plt>
+    143a:	e8 f1 fc ff ff       	callq  1130 <getuid@plt>
+    143f:	89 05 1f 30 00 00    	mov    %eax,0x301f(%rip)        # 4464 <ruid>
+    1445:	e8 16 fd ff ff       	callq  1160 <geteuid@plt>
+    144a:	89 05 f0 2b 00 00    	mov    %eax,0x2bf0(%rip)        # 4040 <euid>
+    1450:	8b 05 ee 2b 00 00    	mov    0x2bee(%rip),%eax        # 4044 <debug>
+    1456:	85 c0                	test   %eax,%eax
+    1458:	74 1f                	je     1479 <main+0xaa>
+    145a:	8b 15 e0 2b 00 00    	mov    0x2be0(%rip),%edx        # 4040 <euid>
+    1460:	8b 05 fe 2f 00 00    	mov    0x2ffe(%rip),%eax        # 4464 <ruid>
+    1466:	89 c6                	mov    %eax,%esi
+    1468:	48 8d 3d 11 0c 00 00 	lea    0xc11(%rip),%rdi        # 2080 <magic_10+0x12>
+    146f:	b8 00 00 00 00       	mov    $0x0,%eax
+    1474:	e8 c7 fc ff ff       	callq  1140 <printf@plt>
+    1479:	83 7d fc 02          	cmpl   $0x2,-0x4(%rbp)
+    147d:	7e 16                	jle    1495 <main+0xc6>
+    147f:	48 8d 3d 0b 0c 00 00 	lea    0xc0b(%rip),%rdi        # 2091 <magic_10+0x23>
+    1486:	e8 95 fc ff ff       	callq  1120 <puts@plt>
+    148b:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+    1490:	e9 b8 00 00 00       	jmpq   154d <main+0x17e>
+    1495:	83 7d fc 01          	cmpl   $0x1,-0x4(%rbp)
+    1499:	75 59                	jne    14f4 <main+0x125>
+    149b:	90                   	nop
+    149c:	48 8d 3d 03 0c 00 00 	lea    0xc03(%rip),%rdi        # 20a6 <magic_10+0x38>
+    14a3:	e8 78 fc ff ff       	callq  1120 <puts@plt>
+    14a8:	48 8d 35 b1 2b 00 00 	lea    0x2bb1(%rip),%rsi        # 4060 <buffer>
+    14af:	48 8d 3d 04 0c 00 00 	lea    0xc04(%rip),%rdi        # 20ba <magic_10+0x4c>
+    14b6:	b8 00 00 00 00       	mov    $0x0,%eax
+    14bb:	e8 b0 fc ff ff       	callq  1170 <__isoc99_scanf@plt>
+    14c0:	48 8d 3d 99 2b 00 00 	lea    0x2b99(%rip),%rdi        # 4060 <buffer>
+    14c7:	e8 bd fd ff ff       	callq  1289 <check_passwd>
+    14cc:	85 c0                	test   %eax,%eax
+    14ce:	74 6c                	je     153c <main+0x16d>
+    14d0:	48 8d 3d e6 0b 00 00 	lea    0xbe6(%rip),%rdi        # 20bd <magic_10+0x4f>
+    14d7:	e8 44 fc ff ff       	callq  1120 <puts@plt>
+    14dc:	ba 00 04 00 00       	mov    $0x400,%edx
+    14e1:	be 00 00 00 00       	mov    $0x0,%esi
+    14e6:	48 8d 3d 73 2b 00 00 	lea    0x2b73(%rip),%rdi        # 4060 <buffer>
+    14ed:	e8 5e fc ff ff       	callq  1150 <memset@plt>
+    14f2:	eb a8                	jmp    149c <main+0xcd>
+    14f4:	83 7d fc 02          	cmpl   $0x2,-0x4(%rbp)
+    14f8:	75 42                	jne    153c <main+0x16d>
+    14fa:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    14fe:	48 83 c0 08          	add    $0x8,%rax
+    1502:	48 8b 00             	mov    (%rax),%rax
+    1505:	ba 00 04 00 00       	mov    $0x400,%edx
+    150a:	48 89 c6             	mov    %rax,%rsi
+    150d:	48 8d 3d 4c 2b 00 00 	lea    0x2b4c(%rip),%rdi        # 4060 <buffer>
+    1514:	e8 d7 fb ff ff       	callq  10f0 <strncpy@plt>
+    1519:	48 8d 3d 40 2b 00 00 	lea    0x2b40(%rip),%rdi        # 4060 <buffer>
+    1520:	e8 64 fd ff ff       	callq  1289 <check_passwd>
+    1525:	85 c0                	test   %eax,%eax
+    1527:	74 13                	je     153c <main+0x16d>
+    1529:	48 8d 3d 8d 0b 00 00 	lea    0xb8d(%rip),%rdi        # 20bd <magic_10+0x4f>
+    1530:	e8 eb fb ff ff       	callq  1120 <puts@plt>
+    1535:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+    153a:	eb 11                	jmp    154d <main+0x17e>
+    153c:	48 8d 3d 89 0b 00 00 	lea    0xb89(%rip),%rdi        # 20cc <magic_10+0x5e>
+    1543:	e8 d8 fb ff ff       	callq  1120 <puts@plt>
+    1548:	b8 00 00 00 00       	mov    $0x0,%eax
+    154d:	c9                   	leaveq 
+    154e:	c3                   	retq   
+    154f:	90                   	nop
