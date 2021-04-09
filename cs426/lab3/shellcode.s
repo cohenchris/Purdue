@@ -2,6 +2,7 @@
 
 .global _start
 _start:
+
   xor %rax, %rax                # nullify %rax
   pushq %rax
   movq $0x68732f6e69622f2f, %rax # "hs/nib/" --> %rax
@@ -14,5 +15,3 @@ _start:
   xor   %rdx, %rdx              #         NULL
                                 #        )
   syscall
-
-.data
