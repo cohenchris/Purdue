@@ -1,0 +1,4 @@
+ARG REGISTERS
+
+ %rdi , %rsi , %rdx , %rcx , %r8 , and %r9
+  1       2     3       4     5         6
